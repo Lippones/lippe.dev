@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
+import { Header } from '@/components/header'
 
 const inter = Inter({ subsets: ['latin'], variable: '--inter' })
 
@@ -24,7 +25,17 @@ export default function RootLayout({
           // enableSystem
           // disableTransitionOnChange
         >
-          {children}
+          <div className="flex flex-col flex-1 min-h-screen">
+            <Header
+              paths={[
+                { label: 'Home', href: '/' },
+                { label: 'Projects', href: '/projects' },
+                { label: 'About', href: '/about' },
+                { label: 'Contact', href: '/contact' },
+              ]}
+            />
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>
