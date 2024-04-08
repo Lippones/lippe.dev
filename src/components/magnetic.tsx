@@ -40,7 +40,7 @@ export function Magnetic({ children, magneticPower = 0.5 }: MagneticProps) {
         yTo(0)
       })
     }
-  }, [])
+  }, [magneticPower])
 
   return cloneElement(children, {
     ref: magnetic,
