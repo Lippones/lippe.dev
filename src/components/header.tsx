@@ -7,7 +7,7 @@ import { useState } from 'react'
 import { Separator } from './ui/separator'
 import { usePathname } from 'next/navigation'
 import { Magnetic } from './magnetic'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 type path = {
   label: string
@@ -41,9 +41,15 @@ export function Header({ paths }: HeaderProps) {
       >
         <Menu className="w-5 h-5" />
       </Button>
-      {open && (
-        <NavBar handleOpenChange={setOpen} pathname={pathname} paths={paths} />
-      )}
+      <AnimatePresence mode="wait">
+        {open && (
+          <NavBar
+            paths={paths}
+            pathname={pathname}
+            handleOpenChange={setOpen}
+          />
+        )}
+      </AnimatePresence>
     </header>
   )
 }
