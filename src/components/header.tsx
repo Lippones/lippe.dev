@@ -89,7 +89,7 @@ export function NavBar({ paths, pathname, handleOpenChange }: NavBarProps) {
         <Separator className="my-8" />
         <ul className="flex flex-col gap-4">
           {paths.map((path, i) => {
-            const isCurrentPath = pathname.includes(path.href)
+            const isCurrentPath = pathname === path.href
             return (
               <motion.li
                 exit={{ opacity: 0, x: 400 }}
