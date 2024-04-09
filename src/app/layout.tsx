@@ -4,6 +4,9 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Header } from '@/components/header'
 import { QueryClientProvider } from '@/components/query-client-provider'
+import { LenisScrollProvider } from '@/components/lenis-scroll-provider'
+import { Profile } from '@/components/profile'
+import { TransitionPage } from '@/components/transition-page'
 
 const inter = Inter({ subsets: ['latin'], variable: '--inter' })
 
@@ -27,17 +30,22 @@ export default function RootLayout({
             // enableSystem
             // disableTransitionOnChange
           >
-            <div className="flex flex-col flex-1 min-h-screen">
-              <Header
-                paths={[
-                  { label: 'Home', href: '/' },
-                  { label: 'Projects', href: '/projects' },
-                  { label: 'About', href: '/about' },
-                  { label: 'Contact', href: '/contact' },
-                ]}
-              />
-              {children}
-            </div>
+            <LenisScrollProvider>
+              <TransitionPage>
+                <div className="flex flex-col flex-1 min-h-screen">
+                  <Header
+                    paths={[
+                      { label: 'Home', href: '/' },
+                      { label: 'Projects', href: '/projects' },
+                      { label: 'About', href: '/about' },
+                      { label: 'Contact', href: '/contact' },
+                    ]}
+                  />
+                  {children}
+                </div>
+                <Profile />
+              </TransitionPage>
+            </LenisScrollProvider>
           </ThemeProvider>
         </QueryClientProvider>
       </body>

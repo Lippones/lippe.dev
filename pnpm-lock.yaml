@@ -20,6 +20,9 @@ dependencies:
   '@spotify/web-api-ts-sdk':
     specifier: ^1.2.0
     version: 1.2.0
+  '@studio-freight/lenis':
+    specifier: ^1.0.42
+    version: 1.0.42
   '@t3-oss/env-nextjs':
     specifier: ^0.9.2
     version: 0.9.2(typescript@5.4.4)(zod@3.22.4)
@@ -846,6 +849,10 @@ packages:
 
   /@spotify/web-api-ts-sdk@1.2.0:
     resolution: {integrity: sha512-JUaebva3Ohwo5I5tuTqyW/FKGOMbb40YevJMySAOINRxP7qQ/AMjBzfJx0zeO6yS+wAPfQSoGNsZaUggHw8vsA==}
+    dev: false
+
+  /@studio-freight/lenis@1.0.42:
+    resolution: {integrity: sha512-HJAGf2DeM+BTvKzHv752z6Z7zy6bA643nZM7W88Ft9tnw2GsJSp6iJ+3cekjyMIWH+cloL2U9X82dKXgdU8kPg==}
     dev: false
 
   /@swc/helpers@0.5.2:

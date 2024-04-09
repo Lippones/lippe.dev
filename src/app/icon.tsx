@@ -1,7 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from 'next/og'
-import Image from 'next/image'
-import Profile from '../../public/profile.png'
 // Route segment config
 export const runtime = 'edge'
 

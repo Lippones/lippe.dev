@@ -23,7 +23,7 @@ export function Header({ paths }: HeaderProps) {
   const pathname = usePathname()
 
   return (
-    <header className="max-w-screen-2xl mx-auto px-4 md:px-8 py-6 flex items-center w-full justify-between">
+    <header className="max-w-screen-2xl mx-auto px-4 md:px-8 h-[10vh] flex items-center w-full justify-between">
       <div className="flex items-center gap-4">
         <Link href="/">
           <Image src="/logo.svg" width={40} height={40} alt="Logo" />
