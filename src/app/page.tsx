@@ -22,7 +22,12 @@ export default function Home() {
           <Button>
             Get to know me <MoveRight className="ml-2" />
           </Button>
-          <Button variant={'outline'}>Contact me</Button>
+          <Button
+            variant={'outline'}
+            className="border-dashed border-foreground"
+          >
+            Contact me
+          </Button>
         </div>
       </div>
       <Profile />

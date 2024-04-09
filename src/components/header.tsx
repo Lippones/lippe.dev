@@ -23,13 +23,12 @@ export function Header({ paths }: HeaderProps) {
   const pathname = usePathname()
 
   return (
-    <header className="max-w-screen-2xl mx-auto px-4 md:px-8 py-4 flex w-full justify-between">
-      <div className="flex items-center gap-2">
-        <Link href="/" className="flex items-center gap-2">
+    <header className="max-w-screen-2xl mx-auto px-4 md:px-8 py-6 flex items-center w-full justify-between">
+      <div className="flex items-center gap-4">
+        <Link href="/">
           <Image src="/logo.svg" width={40} height={40} alt="Logo" />
-          <span className="text-3xl font-semibold">LP.</span>
         </Link>
-        <Button variant={'outline'} className="border-dashed">
+        <Button variant={'outline'} className="border-dashed border-foreground">
           Hire me
         </Button>
       </div>
