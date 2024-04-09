@@ -10,7 +10,7 @@ export function Profile() {
       <HoverCard openDelay={200} closeDelay={200}>
         <HoverCardTrigger className="rounded-full">
           <AvatarProfile
-            avatarUrl="https:/github.com/lippones.png"
+            avatarUrl="https://github.com/lippones.png"
             status="away"
           />
         </HoverCardTrigger>
