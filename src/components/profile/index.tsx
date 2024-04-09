@@ -9,7 +9,10 @@ export function Profile() {
     <div className="absolute left-0 bottom-12">
       <HoverCard openDelay={200} closeDelay={200}>
         <HoverCardTrigger className="rounded-full">
-          <AvatarProfile avatarUrl="/profile.png" status="away" />
+          <AvatarProfile
+            avatarUrl="https:/github.com/lippones.png"
+            status="away"
+          />
         </HoverCardTrigger>
         <HoverCardContent className="w-80 flex flex-col gap-4">
           <div>
