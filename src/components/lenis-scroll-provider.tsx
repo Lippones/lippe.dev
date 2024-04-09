@@ -10,11 +10,6 @@ export function LenisScrollProvider({
   useEffect(() => {
     const lenis = new Lenis()
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    lenis.on('scroll', (e: any) => {
-      console.log(e)
-    })
-
     function raf(time: number) {
       lenis.raf(time)
       requestAnimationFrame(raf)
