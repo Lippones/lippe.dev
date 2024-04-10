@@ -7,6 +7,7 @@ import { FaGithub } from 'react-icons/fa'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Badge } from '../ui/badge'
+import { ArrowUpRight } from 'lucide-react'
 
 export function Projects() {
   const targetRef = useRef<HTMLDivElement | null>(null)
@@ -41,11 +42,12 @@ export function Projects() {
                 <li key={index}>
                   <ProjectCard
                     project={{
-                      coverImageUrl: '/web-landing.png',
+                      coverImageUrl:
+                        'https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
                       description:
                         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat architecto sunt tempore, totam fugit ea atque dignissimos obcaecati voluptate ad quisquam nemo, odio facere tenetur voluptatum dolor eligendi animi delectus!',
                       title: 'Project Title',
-                      videoUrl: 'https://www.youtube.com/watch?v=9bZkp7q19f0',
+                      slug: 'project-title',
                     }}
                     tags={['React', 'TypeScript', 'TailwindCSS']}
                   />
@@ -53,14 +55,16 @@ export function Projects() {
               ))}
             </ul>
             <div className="ml-32 w-[400px] flex flex-col items-center">
-              <h2 className="text-4xl font-bold">Ver mais projetos</h2>
+              <h2 className="text-4xl leading-relaxed font-bold">
+                Did you find it interesting?
+              </h2>
               <Button
                 variant={'outline'}
                 className="rounded-full mt-8 h-20 w-full text-2xl font-semibold"
                 asChild
               >
                 <Link target="_blank" href="https://github.com/lippones">
-                  Github <FaGithub className="ml-4" />
+                  View more projects <ArrowUpRight className="ml-4" />
                 </Link>
               </Button>
             </div>
@@ -74,33 +78,40 @@ export function Projects() {
 interface ProjectCardProps {
   project: {
     title: string
+    slug: string
     description: string
     coverImageUrl: string
-    videoUrl: string
   }
   tags: string[]
 }
 
 export function ProjectCard({ project, tags }: ProjectCardProps) {
   return (
-    <div className="project rounded-2xl text-zinc-950 w-[600px] h-[600px] shadow-lg relative overflow-hidden">
-      <Image
-        src={project.coverImageUrl}
-        width={1600}
-        height={1600}
-        className="h-full w-full object-cover"
-        quality={100}
-        alt={project.title}
-      />
-      <div className="absolute bottom-0 p-4">
-        <ul className="flex gap-2 items-center flex-wrap">
-          {tags.map((tag, index) => (
-            <li key={index} className="">
-              <Badge>{tag}</Badge>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div className="project relative rounded-2xl text-zinc-950 w-[600px] h-[600px] shadow-lg overflow-hidden before:w-full before:h-full before:absolute before:inset-0 before:bg-gradient-to-t before:to-transparent before:from-background/50">
+      <Link href={`/project/${project.slug}`} className="h-full w-full">
+        <Image
+          src={project.coverImageUrl}
+          width={1600}
+          height={1600}
+          className="h-full w-full object-cover"
+          quality={100}
+          alt={project.title}
+        />
+        <div className="absolute bottom-0 p-4">
+          <ul className="flex gap-2 items-center flex-wrap">
+            {tags.map((tag, index) => (
+              <li key={index} className="">
+                <Badge
+                  className="px-4 bg-secondary/30 backdrop-blur-lg py-1.5"
+                  variant={'secondary'}
+                >
+                  {tag}
+                </Badge>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Link>
     </div>
   )
 }

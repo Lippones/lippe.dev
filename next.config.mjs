@@ -6,6 +6,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'github.com',
       },
+      {
+        hostname: 'media.istockphoto.com',
+        protocol: 'https',
+      },
+      {
+        hostname: 'images.pexels.com',
+        protocol: 'https',
+      },
     ],
   },
 }

@@ -4,7 +4,7 @@ import { Button } from '../ui/button'
 
 export function Hero() {
   return (
-    <section className="h-[90vh] flex items-center max-w-screen-2xl w-full mx-auto px-4 md:px-8">
+    <section className="h-[90vh] flex items-center max-w-screen-2xl w-full mx-auto px-4 md:px-8 relative overflow-x-hidden">
       <div className="">
         <div>
           <h1 className="text-4xl font-bold">
