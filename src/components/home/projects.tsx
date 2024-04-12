@@ -3,7 +3,6 @@
 import { useScroll, useTransform, motion } from 'framer-motion'
 import { useRef } from 'react'
 import { Button } from '../ui/button'
-import { FaGithub } from 'react-icons/fa'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Badge } from '../ui/badge'
