@@ -183,7 +183,7 @@ interface ExperienceCardProps {
   endDate?: Date
 }
 
-export function ExperienceCard({
+function ExperienceCard({
   company,
   role,
   startDate,
