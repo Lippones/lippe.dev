@@ -7,8 +7,32 @@ import { QueryClientProvider } from '@/components/query-client-provider'
 import { LenisScrollProvider } from '@/components/lenis-scroll-provider'
 import { Profile } from '@/components/profile'
 import { TransitionPage } from '@/components/transition-page'
+import { Footer } from '@/components/footer'
+import { Analytics } from '@vercel/analytics/react'
+import { Toaster } from '@/components/ui/sonner'
+import localFont from 'next/font/local'
 
 const inter = Inter({ subsets: ['latin'], variable: '--inter' })
+const nexa = localFont({
+  src: [
+    {
+      path: '../fonts/Nexa_Bold.otf',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/Nexa_Regular.otf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/Nexa_Light.otf',
+      weight: '300',
+      style: 'normal',
+    },
+  ],
+  variable: '--nexa',
+})
 
 export const metadata: Metadata = {
   title: 'Filipe Vieira',
@@ -22,7 +46,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.variable}>
+      <body className={`${inter.variable} ${nexa.variable}`}>
         <QueryClientProvider>
           <ThemeProvider
             attribute="class"
@@ -32,7 +56,7 @@ export default function RootLayout({
           >
             <LenisScrollProvider>
               <TransitionPage>
-                <div className="flex flex-col flex-1 min-h-screen">
+                <div className="flex flex-col flex-1 min-h-screen pb-6">
                   <Header
                     paths={[
                       { label: 'Home', href: '/' },
@@ -42,6 +66,9 @@ export default function RootLayout({
                     ]}
                   />
                   {children}
+                  <Analytics />
+                  <Toaster />
+                  <Footer />
                 </div>
                 <Profile />
               </TransitionPage>

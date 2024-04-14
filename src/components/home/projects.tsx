@@ -86,8 +86,11 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, tags }: ProjectCardProps) {
   return (
-    <div className="project relative rounded-2xl text-zinc-950 w-[600px] h-[600px] shadow-lg overflow-hidden before:w-full before:h-full before:absolute before:inset-0 before:bg-gradient-to-t before:to-transparent before:from-background/50">
-      <Link href={`/project/${project.slug}`} className="h-full w-full">
+    <div className="project relative rounded-2xl text-zinc-950 w-[600px] h-[600px] shadow-lg overflow-hidden">
+      <Link
+        href={`/project/${project.slug}`}
+        className="h-full w-full before:w-full before:h-full before:absolute before:inset-0 before:bg-gradient-to-t before:to-transparent before:from-background/50"
+      >
         <Image
           src={project.coverImageUrl}
           width={1600}

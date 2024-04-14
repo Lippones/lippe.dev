@@ -21,6 +21,7 @@ const config = {
     extend: {
       fontFamily: {
         inter: 'var(--inter)',
+        nexa: 'var(--nexa)',
       },
       colors: {
         border: 'hsl(var(--border))',
