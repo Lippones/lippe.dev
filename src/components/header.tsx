@@ -32,12 +32,32 @@ export function Header({ paths }: HeaderProps) {
           Hire me
         </Button>
       </div>
+      <nav>
+        <ul className="flex gap-8 max-md:hidden">
+          {paths.map((path) => {
+            const isCurrentPath = pathname === path.href
+            return (
+              <li key={path.label}>
+                <Magnetic>
+                  <Link
+                    className={`tracking-wide group flex flex-col-reverse items-center gap-2 max-w-fit before:w-2 before:h-2 before:rounded-full before:bg-primary  ${isCurrentPath ? 'before:block' : 'before:hidden'}`}
+                    href={path.href}
+                  >
+                    {path.label}
+                  </Link>
+                </Magnetic>
+              </li>
+            )
+          })}
+        </ul>
+      </nav>
       <Button
         onClick={() => {
           setOpen((state) => !state)
         }}
         variant="ghost"
         size={'icon'}
+        className="md:hidden"
       >
         <Menu className="w-5 h-5" />
       </Button>
