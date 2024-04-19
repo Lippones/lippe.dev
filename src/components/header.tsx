@@ -71,7 +71,7 @@ export function Header({ paths }: HeaderProps) {
 }
 
 interface NavBarProps {
-  paths: path[]
+  paths: Path[]
   pathname: string
   handleOpenChange: (state: boolean) => void
 }

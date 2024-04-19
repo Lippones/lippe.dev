@@ -73,6 +73,6 @@ export default async function RootLayout({
   )
 }
 
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }))
-}
+// export function generateStaticParams() {
+//   return locales.map((locale) => ({ locale }))
+// }
