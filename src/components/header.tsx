@@ -8,14 +8,10 @@ import { Separator } from './ui/separator'
 import { usePathname } from 'next/navigation'
 import { Magnetic } from './magnetic'
 import { motion, AnimatePresence } from 'framer-motion'
-
-type path = {
-  label: string
-  href: string
-}
+import { Path } from '@/config/navigation-paths'
 
 interface HeaderProps {
-  paths: path[]
+  paths: Path[]
 }
 
 export function Header({ paths }: HeaderProps) {
@@ -75,7 +71,7 @@ export function Header({ paths }: HeaderProps) {
 }
 
 interface NavBarProps {
-  paths: path[]
+  paths: Path[]
   pathname: string
   handleOpenChange: (state: boolean) => void
 }

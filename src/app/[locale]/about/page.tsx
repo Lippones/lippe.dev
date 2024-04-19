@@ -1,4 +1,3 @@
-'use client'
 import Image from 'next/image'
 import BannerGif from '@/assets/sanji.gif'
 import Me from '@/assets/profile.png'
@@ -6,17 +5,17 @@ import { ArrowDown, Dot } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import { InfiniteText } from '@/components/infinite-text'
 import dayjs from 'dayjs'
+import { getTranslations } from 'next-intl/server'
 
-export default function About() {
+export default async function About() {
+  const t = await getTranslations('pages.about')
   return (
     <div className="max-w-screen-2xl  w-full mx-auto px-4 md:px-8 pb-10">
       <div className="mt-12 grid grid-cols-2 items-center gap-12 gap-y-28">
         <div>
-          <h1 className="text-4xl font-bold">
-            Olá, fico feliz que veio saber mais sobre mim
-          </h1>
+          <h1 className="text-4xl font-bold">{t('title')}</h1>
           <span className="mt-6 text-muted-foreground flex">
-            Esse sou eu <ArrowDown className="ml-2" />
+            {t('description')} <ArrowDown className="ml-2" />
           </span>
         </div>
         <Image
@@ -30,33 +29,7 @@ export default function About() {
           src={Me}
           alt="Minha foto"
         />
-        <p className="text-foreground/80 text-pretty">
-          Olá, meu nome é Filipe Vieira da Silva, um entusiasta da tecnologia e
-          inovação que transformou a paixão em profissão. Nasci e cresci em GV,
-          onde a diversidade cultural e as oportunidades únicas moldaram minha
-          visão de mundo e a maneira como abordo os desafios do desenvolvimento
-          de software. Com 2 anos de experiência profunda no campo da
-          tecnologia, me especializei como Full Stack Developer, habilidade que
-          me permite ter uma visão holística de projetos digitais, desde a
-          concepção até a implementação final. A versatilidade é uma das minhas
-          marcas registradas – trabalho tanto para a empresa em que estou
-          empregado quanto como freelancer, um equilíbrio que me desafia
-          constantemente e me permite expandir meu repertório técnico. Meu
-          interesse não se limita apenas ao trabalho formal; estou sempre à
-          procura de criar e desenvolver novos micro SaaS (Software as a
-          Service) e projetos independentes. Estes esforços paralelos não só
-          aprimoram minhas habilidades, mas também me permitem explorar novas
-          ideias e soluções inovadoras para os problemas do dia a dia. Eu
-          acredito que a tecnologia tem o poder de transformar vidas e negócios,
-          e é essa crença que me impulsiona a buscar a excelência em cada linha
-          de código que escrevo. Estou ansioso para colaborar com equipes e
-          projetos que compartilham dessa visão e estão em busca de um
-          desenvolvedor que traz tanto conhecimento técnico quanto uma
-          perspectiva criativa para a mesa. Se você está procurando alguém que
-          possa unir a competência técnica com uma abordagem criativa para
-          desenvolvimento de software, vamos conversar. Juntos, podemos
-          transformar ideias em realidade digital.
-        </p>
+        <p className="text-foreground/80 text-pretty">{t('biography')}</p>
       </div>
       <div className="mt-20">
         <h2 className="text-4xl font-bold relative">
