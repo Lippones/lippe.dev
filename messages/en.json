@@ -62,7 +62,7 @@
             "title": "The full package",
             "description": "Offering a comprehensive suite of services from concept to launch, ensuring a seamless and cohesive digital presence."
           },
-          "Problem-Solving": {
+          "problem-Solving": {
             "title": "Problem-Solving",
             "description": "Applying analytical skills to tackle complex challenges and deliver innovative, effective solutions."
           },
@@ -78,10 +78,10 @@
       },
       "skills": {
         "title": "Areas of expertise",
-        "items": "Front End development: Typescript, ReactJS, Next|Back End development: Node.js, NestJS, Express, Fastify, MongoDB, PostgreSQL|DevOps: Docker, Git, CI/CD, AWS, Vercel|Design: Figma"
+        "items": "Front End development: Typescript, ReactJS, Next.|Back End development: Node.js, NestJS, Express, Fastify, MongoDB, PostgreSQL.|DevOps: Docker, Git, CI/CD, AWS, Vercel.|Design: Figma."
       },
       "interest": {
-        "title": "Front-end development",
+        "title": "Personal interests",
         "items": "Games, Software Development, Design, Technology, AI"
       },
       "current_projects": {
@@ -94,28 +94,51 @@
           "freelancer": {
             "title": "Full Stack Developer",
             "company": "Freelancer",
-            "initial_date": "03/01/2022",
-            "final_date": null
+            "initial_date": "2022/01/03",
+            "final_date": "Atual"
           },
           "bttis": {
             "title": "Full Stack Developer",
             "company": "bttis",
-            "initial_date": "06/01/2021",
-            "final_date": null
+            "initial_date": "2021/01/06",
+            "final_date": "Atual"
           }
         }
       }
     }
   },
   "navigation": {
-    "home": "Home",
-    "projects": "Projects",
-    "about": "About",
-    "contact": "Contact"
+    "home": {
+      "label": "Home",
+      "href": "/"
+    },
+    "projects": {
+      "label": "Projects",
+      "href": "/projects"
+    },
+    "about": {
+      "label": "About",
+      "href": "/about"
+    },
+    "contact": {
+      "label": "Contact",
+      "href": "/contact"
+    }
   },
   "footer": {
     "thanks": "Made with 💜 by Filipe Vieira da Silva",
+    "contact": {
+      "title": "Contact me",
+      "message": "Hello, I'm contacting you through your website."
+    },
     "description": "Venturing into the digital world with passion and precision, I am Filipe Vieira, the Full Stack Developer who turns visions into realities. Combining technical prowess with creativity, I am here to deliver robust and innovative solutions. If you have a project in mind or need a tech partner, don't hesitate to get in touch. Let's build the future together.",
-    "text": "All rights reserved"
+    "copyright": "All rights reserved",
+    "follow": "Follow me",
+    "work_with_me": {
+      "title": "Let’s work together",
+      "description": "Enter your email and we will contact you as soon as possible.",
+      "textArea": "Write your message here",
+      "button": "Hero we go,Send"
+    }
   }
 }

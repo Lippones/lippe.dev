@@ -1,11 +1,18 @@
+import { getTranslations } from "next-intl/server"
+
 export type Path = {
   label: string
   href: string
 }
 
-export const navigationPaths: Path[] = [
-  { label: 'Home', href: '/' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
-]
+const paths = ['home', 'projects', 'about', 'contact'] as const
+
+
+export async function navigationPaths() {
+  const t = await getTranslations('navigation')
+
+  return paths.map((path) => ({
+    label: t(`${path}.label`),
+    href: t(`${path}.href`)
+  }))
+}

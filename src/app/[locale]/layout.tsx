@@ -48,6 +48,7 @@ export default async function RootLayout({
   params: { locale: string }
 }>) {
   unstable_setRequestLocale(locale)
+  const paths = await navigationPaths()
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${inter.variable} ${nexa.variable}`}>
@@ -56,7 +57,7 @@ export default async function RootLayout({
             <LenisScrollProvider>
               <TransitionPage>
                 <div className="flex flex-col flex-1 min-h-screen pb-6">
-                  <Header paths={navigationPaths} />
+                  <Header paths={paths} />
                   {children}
                   <Analytics />
                   <Toaster />

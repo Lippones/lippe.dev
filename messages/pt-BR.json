@@ -108,14 +108,37 @@
     }
   },
   "navigation": {
-    "home": "Início",
-    "projects": "Projetos",
-    "about": "Sobre",
-    "contact": "Contato"
+    "home": {
+      "label": "Início",
+      "href:": "/"
+    },
+    "projects": {
+      "label": "Projetos",
+      "href": "/projects"
+    },
+    "about": {
+      "label": "Sobre mim",
+      "href": "/about"
+    },
+    "contact": {
+      "label": "Contato",
+      "href": "/contact"
+    }
   },
   "footer": {
     "thanks": "Feito com 💜 por Filipe Vieira da Silva",
+    "contact": {
+      "title": "Entre em contato",
+      "message": "Olá, estou entrando em contato pelo seu site."
+    },
     "description": "Aventurando-me no mundo digital com paixão e precisão, sou Filipe Vieira, o Desenvolvedor Full Stack que transforma visões em realidades. Combinando proeza técnica com criatividade, estou aqui para entregar soluções robustas e inovadoras. Se você tem um projeto em mente ou precisa de um parceiro tecnológico, não hesite em entrar em contato. Vamos construir o futuro juntos.",
-    "text": "Todos os direitos reservados"
+    "copyright": "Todos os direitos reservados",
+    "follow": "Me siga",
+    "work_with_me": {
+      "title": "Trabalhe comigo",
+      "description": "Digite seu e-mail e entraremos em contato o mais breve possível.",
+      "textArea": "Escreva sua mensagem aqui",
+      "button": "Vamos nessa,Enviar"
+    }
   }
 }

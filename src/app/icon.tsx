@@ -22,6 +22,8 @@ export default function Icon() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          padding: '4px',
+          borderRadius: '12px',
         }}
       >
         <img src="https://www.lippe.dev/logo.svg" alt="Logo" />

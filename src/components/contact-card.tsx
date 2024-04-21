@@ -32,7 +32,14 @@ const formSchema = z.object({
 
 type formSchemaData = z.infer<typeof formSchema>
 
-export function ContactCard() {
+interface ContactCardProps {
+  title: string
+  description: string
+  textArea: string
+  button: string[]
+}
+
+export function ContactCard({ button, description, textArea, title }: ContactCardProps) {
   const [step, setStep] = useState(1)
 
   const {
@@ -83,9 +90,9 @@ export function ContactCard() {
   return (
     <Card className="w-full bg-background/60 backdrop-blur-md md:w-[500px]">
       <CardHeader>
-        <CardTitle>Let’s work together</CardTitle>
+        <CardTitle>{title}</CardTitle>
         <CardDescription>
-          Enter your email and we will contact you as soon as possible.
+          {description}
         </CardDescription>
       </CardHeader>
       <CardContent className="">
@@ -95,7 +102,7 @@ export function ContactCard() {
           ) : (
             <Textarea
               disabled={isSubmitting}
-              placeholder="Write your message here..."
+              placeholder={textArea}
               {...register('message')}
             />
           )}
@@ -114,7 +121,7 @@ export function ContactCard() {
               {isSubmitting && (
                 <Loader2 className="mr-2 h-4 w-6 animate-spin" />
               )}{' '}
-              {step === 1 ? 'Here we go' : 'Send'}
+              {step === 1 ? button[0] : [button[1]]}
             </Button>
           </CardFooter>
         </form>

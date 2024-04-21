@@ -6,12 +6,42 @@ import { Separator } from '@/components/ui/separator'
 import { InfiniteText } from '@/components/infinite-text'
 import dayjs from 'dayjs'
 import { getTranslations } from 'next-intl/server'
+import customParseFormat from 'dayjs/plugin/customParseFormat'
+dayjs.extend(customParseFormat)
 
 export default async function About() {
   const t = await getTranslations('pages.about')
+
+  const highlights = ['development', 'design', 'the_full_package', 'problem-Solving', 'project_management', 'continuous_learning'] as const
+  const experience = ['freelancer', 'bttis'] as const
+
+  const skills = t('skills.items').split('|')
+  const interest = t('interest.items').split(',')
+  const currentProjects = t('current_projects.items').split(',')
+
+  const highlightsItems = highlights.map((highlight) => {
+    return {
+      title: t(`highlights.items.${highlight}.title`),
+      description: t(`highlights.items.${highlight}.description`),
+    }
+  })
+
+  const experienceItems = experience.map((experience) => {
+    const finalDate = t(`experience.items.${experience}.final_date`)
+    console.log(finalDate)
+    return {
+      title: t(`experience.items.${experience}.title`),
+      company: t(`experience.items.${experience}.company`),
+      initialDate: dayjs(t(`experience.items.${experience}.initial_date`), 'YYYY/MM/DD').toDate(),
+      // Unfortunately the library does not support null values
+      finalDate: finalDate === 'Atual' ? null : dayjs(t(`experience.items.${experience}.final_date`), 'YYYY/MM/DD').toDate()
+    }
+  })
+
+
   return (
     <div className="max-w-screen-2xl  w-full mx-auto px-4 md:px-8 pb-10">
-      <div className="mt-12 grid grid-cols-2 items-center gap-12 gap-y-28">
+      <div className="mt-12 grid md:grid-cols-2 items-center gap-8 md:gap-12 md:gap-y-28">
         <div>
           <h1 className="text-4xl font-bold">{t('title')}</h1>
           <span className="mt-6 text-muted-foreground flex">
@@ -20,128 +50,93 @@ export default async function About() {
         </div>
         <Image
           src={BannerGif}
-          alt="Banner image"
+          alt="Sanji cooking"
           className="rounded-2xl w-full"
         />
         <Image
           quality={100}
           className="rounded-2xl max-h-[500px] object-cover"
           src={Me}
-          alt="Minha foto"
+          alt="Me"
         />
         <p className="text-foreground/80 text-pretty">{t('biography')}</p>
       </div>
       <div className="mt-20">
         <h2 className="text-4xl font-bold relative">
-          Posso te ajudar em{' '}
+          {t('highlights.title')}{' '}
           <InfiniteText
-            texts={[
-              'desenvolvimento de software',
-              'desenvolvimento de software',
-              'desenvolvimento de software',
-            ]}
-          />{' '}
+            texts={highlightsItems.map((item) => item.title)}
+          />
         </h2>
         <ul className="mt-6 grid md:grid-cols-3 gap-8">
-          <li className="flex flex-col gap-2 mt-4">
-            <span className="text-sm text-muted-foreground">01.</span>
-            <Separator />
-            <h3 className="font-semibold">Desenvolvimento de software</h3>
-            <p className="text-sm text-muted-foreground">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
-              aliquam repellat dolore hic distinctio. Ea mollitia tenetur soluta
-              iure enim ipsa veritatis sunt quam sint doloribus. Eveniet
-              voluptatum delectus veniam?
-            </p>
-          </li>
-          <li className="flex flex-col gap-2 mt-4">
-            <span className="text-sm text-muted-foreground">02.</span>
-            <Separator />
-            <h3 className="font-semibold">Desenvolvimento de software</h3>
-            <p className="text-sm text-muted-foreground">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
-              aliquam repellat dolore hic distinctio. Ea mollitia tenetur soluta
-              iure enim ipsa veritatis sunt quam sint doloribus. Eveniet
-              voluptatum delectus veniam?
-            </p>
-          </li>
-          <li className="flex flex-col gap-2 mt-4">
-            <span className="text-sm text-muted-foreground">03.</span>
-            <Separator />
-            <h3 className="font-semibold">Desenvolvimento de software</h3>
-            <p className="text-sm text-muted-foreground">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
-              aliquam repellat dolore hic distinctio. Ea mollitia tenetur soluta
-              iure enim ipsa veritatis sunt quam sint doloribus. Eveniet
-              voluptatum delectus veniam?
-            </p>
-          </li>
+          {
+            highlightsItems.map((item, index) => (
+              <li key={index} className="flex flex-col gap-2">
+                <span className="text-sm text-muted-foreground">{(index + 1).toString().padStart(2, '0')}</span>
+                <Separator />
+                <h3 className="font-semibold capitalize">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">
+                  {
+                    item.description
+                  }
+                </p>
+              </li>
+            ))
+          }
         </ul>
       </div>
-      <div className="mt-20 grid grid-cols-[300px_300px] gap-x-8 gap-y-12">
+      <div className="mt-20 grid sm:grid-cols-[300px_300px] gap-x-8 gap-y-12">
         <div>
-          <h2 className="text-2xl font-bold">Areas of expertise</h2>
+          <h2 className="text-2xl font-bold">{t('skills.title')}</h2>
           <ul className="mt-6 flex flex-col gap-2">
-            <li className="text-sm text-muted-foreground">
-              Front-end development
-            </li>
-            <li className="text-sm text-muted-foreground">
-              Back-end development
-            </li>
-            <li className="text-sm text-muted-foreground">Design</li>
-            <li className="text-sm text-muted-foreground">DevOps</li>
+            {
+              skills.map((skill, index) => (
+                <li key={index} className="text-sm text-muted-foreground">
+                  {skill}
+                </li>
+              ))
+            }
           </ul>
         </div>
         <div>
-          <h2 className="text-2xl font-bold">Currently learning</h2>
+          <h2 className="text-2xl font-bold">{t('interest.title')}</h2>
           <ul className="mt-6 flex flex-col gap-2">
-            <li className="text-sm text-muted-foreground">
-              Front-end development
-            </li>
-            <li className="text-sm text-muted-foreground">
-              Back-end development
-            </li>
-            <li className="text-sm text-muted-foreground">Design</li>
-            <li className="text-sm text-muted-foreground">DevOps</li>
+            {
+              interest.map((item, index) => (
+                <li key={index} className="text-sm text-muted-foreground">
+                  {item}
+                </li>
+              ))
+            }
           </ul>
         </div>
         <div>
-          <h2 className="text-2xl font-bold">Personal interests</h2>
+          <h2 className="text-2xl font-bold">{t('current_projects.title')}</h2>
           <ul className="mt-6 flex flex-col gap-2">
-            <li className="text-sm text-muted-foreground">
-              Front-end development
-            </li>
-            <li className="text-sm text-muted-foreground">
-              Back-end development
-            </li>
-            <li className="text-sm text-muted-foreground">Design</li>
-            <li className="text-sm text-muted-foreground">DevOps</li>
+            {
+              currentProjects.map((item, index) => (
+                <li key={index} className="text-sm text-muted-foreground">
+                  {item}
+                </li>
+              ))
+            }
           </ul>
         </div>
         <div>
-          <h2 className="text-2xl font-bold">Current projects</h2>
+          <h2 className="text-2xl font-bold">{t('experience.title')}</h2>
           <ul className="mt-6 flex flex-col gap-2">
-            <li className="text-sm text-muted-foreground">
-              Front-end development
-            </li>
-            <li className="text-sm text-muted-foreground">
-              Back-end development
-            </li>
-            <li className="text-sm text-muted-foreground">Design</li>
-            <li className="text-sm text-muted-foreground">DevOps</li>
-          </ul>
-        </div>
-        <div>
-          <h2 className="text-2xl font-bold">Carreira</h2>
-          <ul className="mt-6 flex flex-col gap-2">
-            <li>
-              <ExperienceCard
-                company="Bttis"
-                role="Desenvolvedor Full Stack"
-                startDate={new Date()}
-                endDate={new Date()}
-              />
-            </li>
+            {
+              experienceItems.map((item, index) => (
+                <li key={index}>
+                  <ExperienceCard
+                    company={item.company}
+                    role={item.title}
+                    startDate={item.initialDate}
+                    endDate={item.finalDate}
+                  />
+                </li>
+              ))
+            }
           </ul>
         </div>
       </div>
@@ -153,7 +148,7 @@ interface ExperienceCardProps {
   company: string
   role: string
   startDate: Date
-  endDate?: Date
+  endDate: Date | null
 }
 
 function ExperienceCard({
@@ -166,7 +161,7 @@ function ExperienceCard({
     <div>
       <h3 className="text-lg font-semibold">{role}</h3>
       <div className="flex  text-muted-foreground items-center">
-        <p className="text-sm">Empresa {company}</p>
+        <p className="text-sm">{company}</p>
         <Dot className="h-8 w-8" />
         <p className="text-sm">
           {dayjs(startDate).get('year')} -{' '}
