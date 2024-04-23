@@ -39,7 +39,12 @@ interface ContactCardProps {
   button: string[]
 }
 
-export function ContactCard({ button, description, textArea, title }: ContactCardProps) {
+export function ContactCard({
+  button,
+  description,
+  textArea,
+  title,
+}: ContactCardProps) {
   const [step, setStep] = useState(1)
 
   const {
@@ -91,9 +96,7 @@ export function ContactCard({ button, description, textArea, title }: ContactCar
     <Card className="w-full bg-background/60 backdrop-blur-md md:w-[500px]">
       <CardHeader>
         <CardTitle>{title}</CardTitle>
-        <CardDescription>
-          {description}
-        </CardDescription>
+        <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent className="">
         <form onSubmit={nextStep} className="flex flex-col">

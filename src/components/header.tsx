@@ -35,7 +35,10 @@ export function Header({ paths }: HeaderProps) {
           {paths.map((path) => {
             console.log(path)
             console.log(currentPath)
-            const matchesPathName = currentPath === undefined && path.href === '/' ? true : `/${currentPath}` === path.href;
+            const matchesPathName =
+              currentPath === undefined && path.href === '/'
+                ? true
+                : `/${currentPath}` === path.href
             return (
               <li key={path.label}>
                 <Magnetic>
