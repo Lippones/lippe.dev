@@ -144,6 +144,6 @@
   "development-alert": {
     "title": "🚧 Esta página está em desenvolvimento!",
     "description": "Este site está em desenvolvimento. Alguns recursos podem não funcionar corretamente.",
-    "button": "Continuar mesmo assim"
+    "button": "Entendido"
   }
 }
