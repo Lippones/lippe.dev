@@ -1,9 +1,23 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Hero } from '@/components/home/hero'
 import { Projects } from '@/components/home/projects'
-import { getTranslations } from 'next-intl/server'
+import { availableLocales } from '@/config'
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
+import { notFound } from 'next/navigation'
 
-export default async function Home() {
+interface HomePageProps {
+  params: {
+    locale: string
+  }
+}
+
+export default async function Home({ params: { locale } }: HomePageProps) {
+  unstable_setRequestLocale(locale)
+
+  if (!availableLocales.some((l) => l.locale === locale)) {
+    return notFound()
+  }
+
   const t = await getTranslations('pages.home')
 
   const projects = ['EventFlow', 'DoBrasil', 'DEJORD', 'DevStore'] as const

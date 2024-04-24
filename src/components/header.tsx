@@ -33,8 +33,6 @@ export function Header({ paths }: HeaderProps) {
       <nav>
         <ul className="flex gap-8 max-md:hidden">
           {paths.map((path) => {
-            console.log(path)
-            console.log(currentPath)
             const matchesPathName =
               currentPath === undefined && path.href === '/'
                 ? true

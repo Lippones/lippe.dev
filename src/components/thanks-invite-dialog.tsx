@@ -11,8 +11,17 @@ import {
 } from '@/components/ui/dialog'
 import { useSearchParams } from 'next/navigation'
 import { Button } from './ui/button'
+import { Suspense } from 'react'
 
 export function ThanksInviteDialog() {
+  return (
+    <Suspense fallback={null}>
+      <InviteDialog />
+    </Suspense>
+  )
+}
+
+export function InviteDialog() {
   const query = useSearchParams()
   const invite = query.get('invite')
 

@@ -62,7 +62,7 @@
             "title": "O pacote completo",
             "description": "Oferecendo um conjunto completo de serviços do conceito ao lançamento, garantindo uma presença digital coesa e sem interrupções."
           },
-          "problem_solving": {
+          "problem-solving": {
             "title": "Resolução de Problemas",
             "description": "Aplicando habilidades analíticas para enfrentar desafios complexos e entregar soluções inovadoras e eficazes."
           },
@@ -95,13 +95,13 @@
             "title": "Desenvolvedor Full Stack",
             "company": "Freelancer",
             "initial_date": "01/03/2022",
-            "final_date": null
+            "final_date": "Atual"
           },
           "bttis": {
             "title": "Desenvolvedor Full Stack",
             "company": "bttis",
             "initial_date": "01/06/2021",
-            "final_date": null
+            "final_date": "Atual"
           }
         }
       }
@@ -110,7 +110,7 @@
   "navigation": {
     "home": {
       "label": "Início",
-      "href:": "/"
+      "href": "/"
     },
     "projects": {
       "label": "Projetos",
