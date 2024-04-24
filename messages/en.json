@@ -140,5 +140,10 @@
       "textArea": "Write your message here",
       "button": "Hero we go,Send"
     }
+  },
+  "development-alert": {
+    "title": "🚧 This page is under development!",
+    "description": "You may find bugs and broken things. I'm working to fix everything as quickly as possible and bring you a great experience.",
+    "button": "Understand"
   }
 }
