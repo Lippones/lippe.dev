@@ -94,7 +94,7 @@ export function Projects({
                 className="rounded-full mt-8 h-20 w-full text-2xl font-semibold"
                 asChild
               >
-                <Link target="_blank" href="https://github.com/lippones">
+                <Link target="_blank" href="/projects">
                   {more.description} <ArrowUpRight className="ml-4" />
                 </Link>
               </Button>

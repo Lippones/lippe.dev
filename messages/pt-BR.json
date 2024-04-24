@@ -13,33 +13,37 @@
         "more": {
           "title": "Achou interessante?",
           "description": "Veja mais projetos"
+        }
+      }
+    },
+    "projects": {
+      "title": "Meus projetos",
+      "description": "Aqui estão alguns de meus projetos, você pode encontra mais em meu",
+      "items": {
+        "EventFlow": {
+          "title": "EventFlow",
+          "description": "Uma aplicação web para coletar e gerenciar leads de eventos.",
+          "tags": "NextJS,NestJS,MongoDB,GraphQL,PostgreSQL,Microservices,Docker,CI/CD,Vercel,AWS",
+          "slug": "eventflow",
+          "image": "eventflow.png"
         },
-        "items": {
-          "EventFlow": {
-            "title": "EventFlow",
-            "description": "Uma aplicação web para coletar e gerenciar leads de eventos.",
-            "tags": "NextJS,NestJS,MongoDB,GraphQL,PostgreSQL,Microservices,Docker,CI/CD,Vercel,AWS",
-            "slug": "eventflow",
-            "image": "eventflow"
-          },
-          "DoBrasil": {
-            "title": "DoBrasil",
-            "description": "Uma aplicação web para gerenciamento de eventos.",
-            "tags": "NextJS,Fastify,PostgreSQL,Docker,CI/CD",
-            "image": "eventflow"
-          },
-          "DEJORD": {
-            "title": "DEJORD",
-            "description": "Uma aplicação para gerenciamento de pacientes e equipe em uma clínica de reabilitação para dependentes químicos. Projeto desenvolvido na faculdade.",
-            "tags": "NextJS,Fastify,PostgreSQL,Docker,CI/CD",
-            "image": "eventflow"
-          },
-          "DevStore": {
-            "title": "DevStore",
-            "description": "Projeto para entender melhor testes E2E usando Cypress.",
-            "tags": "ReactJS,Node.js,MongoDB",
-            "image": "eventflow"
-          }
+        "DoBrasil": {
+          "title": "DoBrasil",
+          "description": "Uma aplicação web para gerenciamento de eventos.",
+          "tags": "NextJS,Fastify,PostgreSQL,Docker,CI/CD",
+          "image": "eventflow.png"
+        },
+        "DEJORD": {
+          "title": "DEJORD",
+          "description": "Uma aplicação para gerenciamento de pacientes e equipe em uma clínica de reabilitação para dependentes químicos. Projeto desenvolvido na faculdade.",
+          "tags": "NextJS,Fastify,PostgreSQL,Docker,CI/CD",
+          "image": "eventflow.png"
+        },
+        "DevStore": {
+          "title": "DevStore",
+          "description": "Projeto para entender melhor testes E2E usando Cypress.",
+          "tags": "ReactJS,Node.js,MongoDB",
+          "image": "devstore"
         }
       }
     },
