@@ -33,15 +33,15 @@ export function Projects({
 }: ProjectsProps) {
   const targetRef = useRef<HTMLDivElement | null>(null)
   const { scrollYProgress } = useScroll({
-    target: targetRef
+    target: targetRef,
   })
-  let x = useTransform(scrollYProgress, [0, 1], ['0%', '-80%'])
+  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-80%'])
 
   const matches = useMediaQuery('(min-width: 768px)')
 
   if (!matches) {
     return (
-      <section className='relative flex max-w-screen-2xl w-full mx-auto px-4 md:px-8'>
+      <section className="relative flex max-w-screen-2xl w-full mx-auto px-4 md:px-8">
         <div className="md:sticky md:h-screen top-0 flex items-center overflow-hidden">
           <div className="flex flex-col md:flex-row">
             <div className="w-[400px] flex-shrink-0 mr-36">
@@ -53,7 +53,10 @@ export function Projects({
             <div className="flex flex-col mt-12 gap-32 md:flex-row items-center">
               <ul className="flex flex-col md:flex-row md:flex-shrink-0 gap-12 md:gap-6">
                 {projects.map(
-                  ({ coverImageUrl, description, slug, tags, title }, index) => (
+                  (
+                    { coverImageUrl, description, slug, tags, title },
+                    index,
+                  ) => (
                     <li key={index}>
                       <ProjectCard
                         project={{
@@ -93,7 +96,7 @@ export function Projects({
     <section
       ref={targetRef}
       style={{
-        height: 600 * projects.length
+        height: 600 * projects.length,
       }}
       className={`relative flex max-w-screen-2xl w-full mx-auto px-4 md:px-8`}
     >
