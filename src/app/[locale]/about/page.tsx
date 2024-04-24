@@ -5,18 +5,32 @@ import { ArrowDown, Dot } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import { InfiniteText } from '@/components/infinite-text'
 import dayjs from 'dayjs'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
+import { availableLocales } from '@/config'
+import { notFound } from 'next/navigation'
 dayjs.extend(customParseFormat)
 
-export default async function About() {
+interface AboutPageProps {
+  params: {
+    locale: string
+  }
+}
+
+export default async function About({ params: { locale } }: AboutPageProps) {
+  unstable_setRequestLocale(locale)
+
+  if (!availableLocales.some((l) => l.locale === locale)) {
+    return notFound()
+  }
+
   const t = await getTranslations('pages.about')
 
   const highlights = [
     'development',
     'design',
     'the_full_package',
-    'problem-Solving',
+    'problem-solving',
     'project_management',
     'continuous_learning',
   ] as const
@@ -35,7 +49,7 @@ export default async function About() {
 
   const experienceItems = experience.map((experience) => {
     const finalDate = t(`experience.items.${experience}.final_date`)
-    console.log(finalDate)
+
     return {
       title: t(`experience.items.${experience}.title`),
       company: t(`experience.items.${experience}.company`),

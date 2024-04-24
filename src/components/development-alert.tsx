@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 'use client'
-import { setCookie } from '@/actions'
+// import { setCookie } from '@/actions'
 import { Button } from './ui/button'
 import {
   AlertDialog,
@@ -29,7 +29,7 @@ export function DevelopmentAlert({
   return (
     <AlertDialog
       onOpenChange={() => {
-        setCookie('isAlertConfirmed', 'true')
+        // setCookie('isAlertConfirmed', 'true')
       }}
       defaultOpen={!isAlertConfirmed}
     >

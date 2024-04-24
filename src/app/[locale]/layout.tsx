@@ -16,7 +16,9 @@ import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 import { availableLocales } from '@/config'
 import { navigationPaths } from '@/config/navigation-paths'
 import { DevelopmentAlert } from '@/components/development-alert'
-import { cookies } from 'next/headers'
+import { locale } from 'dayjs'
+import { notFound } from 'next/navigation'
+// import { cookies } from 'next/headers'
 
 const inter = Inter({ subsets: ['latin'], variable: '--inter' })
 const nexa = localFont({
@@ -49,10 +51,16 @@ export default async function RootLayout({
   children: React.ReactNode
   params: { locale: string }
 }>) {
+  const isValidLocale = locales.some((param) => param === locale)
+  if (!isValidLocale) notFound()
+
   unstable_setRequestLocale(locale)
-  const paths = await navigationPaths()
-  const isAlertConfirmed = cookies().get('isAlertConfirmed')?.value === 'true'
-  const t = await getTranslations()
+
+  const [paths, t] = await Promise.all([
+    navigationPaths(),
+    getTranslations('development-alert'),
+  ])
+  // const isAlertConfirmed = await getCookieData('isAlertConfirmed')
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -68,10 +76,10 @@ export default async function RootLayout({
                   <Toaster />
                   <ThanksInviteDialog />
                   <DevelopmentAlert
-                    button={t('development-alert.button')}
-                    title={t('development-alert.title')}
-                    description={t('development-alert.description')}
-                    isAlertConfirmed={isAlertConfirmed}
+                    button={t('button')}
+                    title={t('title')}
+                    description={t('description')}
+                    isAlertConfirmed={true}
                   />
                   <Footer />
                 </div>
@@ -85,6 +93,14 @@ export default async function RootLayout({
   )
 }
 
-// export function generateStaticParams() {
-//   return locales.map((locale) => ({ locale }))
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }))
+}
+
+// export async function generateMetadata(params: { locale: string }) {
+//   const t = await getTranslations({ locale, namespace: 'Metadata' })
+
+//   return {
+//     title: t('title'),
+//   }
 // }
