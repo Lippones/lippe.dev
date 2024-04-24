@@ -18,6 +18,8 @@ export function Header({ paths }: HeaderProps) {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
 
+  const currentPath = pathname.split('/')[2]
+
   return (
     <header className="max-w-screen-2xl mx-auto px-4 md:px-8 h-[10vh] flex items-center w-full justify-between">
       <div className="flex items-center gap-4">
@@ -31,12 +33,17 @@ export function Header({ paths }: HeaderProps) {
       <nav>
         <ul className="flex gap-8 max-md:hidden">
           {paths.map((path) => {
-            const isCurrentPath = pathname === path.href
+            console.log(path)
+            console.log(currentPath)
+            const matchesPathName =
+              currentPath === undefined && path.href === '/'
+                ? true
+                : `/${currentPath}` === path.href
             return (
               <li key={path.label}>
                 <Magnetic>
                   <Link
-                    className={`tracking-wide group flex flex-col-reverse items-center gap-2 max-w-fit before:w-2 before:h-2 before:rounded-full before:bg-primary  ${isCurrentPath ? 'before:block' : 'before:hidden'}`}
+                    className={`tracking-wide group flex flex-col-reverse items-center gap-2 max-w-fit before:w-2 before:h-2 before:rounded-full before:bg-primary  ${matchesPathName ? 'before:block' : 'before:hidden'}`}
                     href={path.href}
                   >
                     {path.label}

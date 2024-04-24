@@ -12,9 +12,11 @@ import { Analytics } from '@vercel/analytics/react'
 import { Toaster } from '@/components/ui/sonner'
 import localFont from 'next/font/local'
 import { ThanksInviteDialog } from '@/components/thanks-invite-dialog'
-import { unstable_setRequestLocale } from 'next-intl/server'
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 import { availableLocales } from '@/config'
 import { navigationPaths } from '@/config/navigation-paths'
+import { DevelopmentAlert } from '@/components/development-alert'
+import { cookies } from 'next/headers'
 
 const inter = Inter({ subsets: ['latin'], variable: '--inter' })
 const nexa = localFont({
@@ -48,6 +50,10 @@ export default async function RootLayout({
   params: { locale: string }
 }>) {
   unstable_setRequestLocale(locale)
+  const paths = await navigationPaths()
+  const isAlertConfirmed = cookies().get('isAlertConfirmed')?.value === 'true'
+  const t = await getTranslations()
+
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${inter.variable} ${nexa.variable}`}>
@@ -56,11 +62,17 @@ export default async function RootLayout({
             <LenisScrollProvider>
               <TransitionPage>
                 <div className="flex flex-col flex-1 min-h-screen pb-6">
-                  <Header paths={navigationPaths} />
+                  <Header paths={paths} />
                   {children}
                   <Analytics />
                   <Toaster />
                   <ThanksInviteDialog />
+                  <DevelopmentAlert
+                    button={t('development-alert.button')}
+                    title={t('development-alert.title')}
+                    description={t('development-alert.description')}
+                    isAlertConfirmed={isAlertConfirmed}
+                  />
                   <Footer />
                 </div>
                 <Profile />
