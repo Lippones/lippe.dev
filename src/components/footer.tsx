@@ -12,7 +12,7 @@ import { Separator } from './ui/separator'
 export async function Footer() {
   const t = await getTranslations('footer')
   return (
-    <footer className="min-h-[400px] gap-6 grid md:grid-cols-2 bg-secondary/60 justify-items-end py-6 max-w-screen-2xl w-full mx-auto px-4 md:px-8 border rounded-2xl">
+    <footer className="min-h-[400px] gap-6 grid lg:grid-cols-2 bg-secondary/60 justify-items-end py-6 max-w-screen-2xl w-full mx-auto px-4 md:px-8 border rounded-2xl">
       <div className="flex flex-col justify-between">
         <div>
           <Image src="/logo.svg" width={30} height={30} alt="Logo" />
@@ -51,7 +51,7 @@ export async function Footer() {
           {t('thanks')}
         </span>
       </div>
-      <div className="flex w-full flex-col gap-6 justify-between">
+      <div className="flex w-full flex-col gap-6 justify-between lg:w-[500px]">
         <ContactCard description={t('work_with_me.description')} title={t('work_with_me.title')} textArea={t('work_with_me.textArea')} button={t('work_with_me.button').split(',')} />
         <div className="flex w-full justify-between bg-background/60 border backdrop-blur-md rounded-lg px-6 py-3 items-center">
           <span className="font-semibold">{t('follow')}</span>

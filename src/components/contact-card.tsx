@@ -88,7 +88,7 @@ export function ContactCard({ button, description, textArea, title }: ContactCar
   }
 
   return (
-    <Card className="w-full bg-background/60 backdrop-blur-md md:w-[500px]">
+    <Card className="w-full bg-background/60 backdrop-blur-md">
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardDescription>
