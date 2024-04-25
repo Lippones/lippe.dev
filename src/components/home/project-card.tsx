@@ -10,20 +10,25 @@ interface ProjectCardProps {
     coverImageUrl: string
   }
   tags: string[]
+  showDescription?: boolean
 }
 
-export function ProjectCard({ project, tags }: ProjectCardProps) {
+export function ProjectCard({
+  project,
+  tags,
+  showDescription,
+}: ProjectCardProps) {
   return (
-    <div className="project relative rounded-2xl text-zinc-950 w-full md:w-[600px] h-[600px] shadow-lg overflow-hidden">
+    <div className="project text-zinc-950 w-full md:w-[600px]">
       <Link
         href={`/project/${project.slug}`}
-        className="h-full w-full before:w-full before:h-full before:absolute before:inset-0 before:bg-gradient-to-t before:to-transparent before:from-background/50"
+        className="w-full relative  before:w-full before:h-full before:absolute before:inset-0 before:bg-gradient-to-t before:to-transparent before:from-background/50"
       >
         <Image
           src={project.coverImageUrl}
           width={1600}
           height={1600}
-          className="h-full w-full object-cover"
+          className="h-[400px] rounded-2xl overflow-hidden w-full object-cover"
           quality={100}
           priority
           alt={project.title}
@@ -43,6 +48,13 @@ export function ProjectCard({ project, tags }: ProjectCardProps) {
           </ul>
         </div>
       </Link>
+      {showDescription && (
+        <div className="mt-2">
+          <p className="text-muted-foreground text-pretty">
+            {project.description}
+          </p>
+        </div>
+      )}
     </div>
   )
 }

@@ -13,33 +13,37 @@
         "more": {
           "title": "Did you find it interesting?",
           "description": "View more projects"
+        }
+      }
+    },
+    "projects": {
+      "title": "My projects",
+      "description": "Here some of my projects, you can find more in my",
+      "items": {
+        "EventFlow": {
+          "title": "EventFlow",
+          "description": "A web application for collecting and managing event leads.",
+          "tags": "NextJS,NestJS,MongoDB,GraphQL,PostgreSQL,Microservices,Docker,CI/CD,Vercel,AWS",
+          "slug": "eventflow",
+          "image": "eventflow.png"
         },
-        "items": {
-          "EventFlow": {
-            "title": "EventFlow",
-            "description": "A web application for collecting and managing event leads.",
-            "tags": "NextJS,NestJS,MongoDB,GraphQL,PostgreSQL,Microservices,Docker,CI/CD,Vercel,AWS",
-            "slug": "eventflow",
-            "image": "eventflow"
-          },
-          "DoBrasil": {
-            "title": "DoBrasil",
-            "description": "A web application for event management.",
-            "tags": "NextJS,Fastify,PostgreSQL,Docker,CI/CD",
-            "image": "eventflow"
-          },
-          "DEJORD": {
-            "title": "DEJORD",
-            "description": "An application for patient and staff management in a rehabilitation clinic for substance abuse. A project developed during college.",
-            "tags": "NextJS, Fastify, PostgreSQL, Docker, CI/CD",
-            "image": "eventflow"
-          },
-          "DevStore": {
-            "title": "DevStore",
-            "description": "A project to better understand E2E testing using Cypress.",
-            "tags": "ReactJS, Node.js, MongoDB",
-            "image": "eventflow"
-          }
+        "DoBrasil": {
+          "title": "DoBrasil",
+          "description": "A web application for event management.",
+          "tags": "NextJS,Fastify,PostgreSQL,Docker,CI/CD",
+          "image": "eventflow.png"
+        },
+        "DEJORD": {
+          "title": "DEJORD",
+          "description": "An application for patient and staff management in a rehabilitation clinic for substance abuse. A project developed during college.",
+          "tags": "NextJS, Fastify, PostgreSQL, Docker, CI/CD",
+          "image": "dejord.jpg"
+        },
+        "DevStore": {
+          "title": "DevStore",
+          "description": "A project to better understand E2E testing using Cypress.",
+          "tags": "ReactJS, Node.js, MongoDB",
+          "image": "devstore.png"
         }
       }
     },

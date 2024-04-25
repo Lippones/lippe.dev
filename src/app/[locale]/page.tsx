@@ -18,7 +18,7 @@ export default async function Home({ params: { locale } }: HomePageProps) {
     return notFound()
   }
 
-  const t = await getTranslations('pages.home')
+  const t = await getTranslations('pages')
 
   const projects = ['EventFlow', 'DoBrasil', 'DEJORD', 'DevStore'] as const
 
@@ -26,7 +26,7 @@ export default async function Home({ params: { locale } }: HomePageProps) {
     return {
       title: t(`projects.items.${project}.title`),
       description: t(`projects.items.${project}.description`),
-      coverImageUrl: `/projects/${t(`projects.items.${project}.image`)}.png`,
+      coverImageUrl: `/projects/${t(`projects.items.${project}.image`)}`,
       slug: project,
       tags: t(`projects.items.${project}.tags`).split(','),
     }
@@ -35,17 +35,17 @@ export default async function Home({ params: { locale } }: HomePageProps) {
   return (
     <main className="h-full flex flex-col">
       <Hero
-        title={t('hero.title')}
-        contact={t('hero.contact_button')}
-        description={t('hero.description')}
-        getToKnowMe={t('hero.about_button')}
+        title={t('home.hero.title')}
+        contact={t('home.hero.contact_button')}
+        description={t('home.hero.description')}
+        getToKnowMe={t('home.hero.about_button')}
       />
       <Projects
         title={t('projects.title')}
         description={t('projects.description')}
         more={{
-          title: t('projects.more.title'),
-          description: t('projects.more.description'),
+          title: t('home.projects.more.title'),
+          description: t('home.projects.more.description'),
         }}
         projects={projectData}
       />
