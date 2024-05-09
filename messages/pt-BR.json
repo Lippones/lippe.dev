@@ -37,13 +37,13 @@
           "title": "DEJORD",
           "description": "Uma aplicação para gerenciamento de pacientes e equipe em uma clínica de reabilitação para dependentes químicos. Projeto desenvolvido na faculdade.",
           "tags": "NextJS,Fastify,PostgreSQL,Docker,CI/CD",
-          "image": "eventflow.png"
+          "image": "dejord.jpg"
         },
         "DevStore": {
           "title": "DevStore",
           "description": "Projeto para entender melhor testes E2E usando Cypress.",
           "tags": "ReactJS,Node.js,MongoDB",
-          "image": "devstore"
+          "image": "devstore.png"
         }
       }
     },
