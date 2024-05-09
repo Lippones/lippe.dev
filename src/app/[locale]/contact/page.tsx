@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import React, { useEffect, useRef } from 'react'
 import ThreeGlobe from 'three-globe'
@@ -15,6 +16,8 @@ import {
 } from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import MapaData from '@/assets/custom.geo.json'
+import Airports from '@/assets/airports.json'
+import Flights from '@/assets/flights.json'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
@@ -93,6 +96,40 @@ export default function Contact() {
     globeMaterial.emissiveIntensity = 0.2
     globeMaterial.shininess = 20
     globe.globeMaterial(globeMaterial)
+
+    setTimeout(() => {
+      globe
+        .arcsData(Flights.flights)
+        .arcColor((e: any) => {
+          return e.status ? '#9cff00' : '#FF4000'
+        })
+        .arcAltitude((e: any) => {
+          return e.arcAlt
+        })
+        .arcStroke((e: any) => {
+          return e.status ? 0.5 : 0.3
+        })
+        .arcDashLength(0.9)
+        .arcDashGap(4)
+        .arcDashAnimateTime(1000)
+        .arcsTransitionDuration(1000)
+        // .arcDashInitialGap((e) => e.order * 1)
+        .labelsData(Airports.airports)
+        .labelColor(() => '#ffcb21')
+        .labelDotOrientation((e: any) => {
+          return e.text === 'ALA' ? 'top' : 'right'
+        })
+        .labelDotRadius(0.3)
+        .labelSize((e: any) => e.size)
+        .labelText('city')
+        .labelResolution(6)
+        .labelAltitude(0.01)
+        .pointsData(Airports.airports)
+        .pointColor(() => '#ffffff')
+        .pointsMerge(true)
+        .pointAltitude(0.07)
+        .pointRadius(0.05)
+    }, 1000)
 
     scene.add(globe)
     scene.add(camera)
