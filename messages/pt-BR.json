@@ -149,5 +149,11 @@
     "title": "🚧 Esta página está em desenvolvimento!",
     "description": "Este site está em desenvolvimento. Alguns recursos podem não funcionar corretamente.",
     "button": "Entendido"
+  },
+  "config": {
+    "metadata": {
+      "title": "Filipe Vieira da Silva - Desenvolvedor FullStack",
+      "description": "Desenvolvedor FullStack com experiência em Javascript, Typescript, ReactJS, Next e Node.js. Pronto para oferecer soluções inovadoras e de alta qualidade que ajudam as empresas a alcançar seus objetivos comerciais."
+    }
   }
 }

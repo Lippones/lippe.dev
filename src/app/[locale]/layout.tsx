@@ -13,12 +13,13 @@ import { Toaster } from '@/components/ui/sonner'
 import localFont from 'next/font/local'
 import { ThanksInviteDialog } from '@/components/thanks-invite-dialog'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
-import { availableLocales } from '@/config'
+import { availableLocales, userData } from '@/config'
 import { navigationPaths } from '@/config/navigation-paths'
 import { DevelopmentAlert } from '@/components/development-alert'
-import { locale } from 'dayjs'
 import { notFound } from 'next/navigation'
-// import { cookies } from 'next/headers'
+import { Metadata } from 'next'
+import { createTranslator } from 'next-intl'
+import { InternalizationProvider } from '@/context/i18n'
 
 const inter = Inter({ subsets: ['latin'], variable: '--inter' })
 const nexa = localFont({
@@ -60,33 +61,34 @@ export default async function RootLayout({
     navigationPaths(),
     getTranslations('development-alert'),
   ])
-  // const isAlertConfirmed = await getCookieData('isAlertConfirmed')
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${inter.variable} ${nexa.variable}`}>
         <QueryClientProvider>
-          <ThemeProvider attribute="class" defaultTheme="dark">
-            <LenisScrollProvider>
-              <TransitionPage>
-                <div className="flex flex-col flex-1 min-h-screen pb-6">
-                  <Header paths={paths} />
-                  {children}
-                  <Analytics />
-                  <Toaster />
-                  <ThanksInviteDialog />
-                  <DevelopmentAlert
-                    button={t('button')}
-                    title={t('title')}
-                    description={t('description')}
-                    isAlertConfirmed={true}
-                  />
-                  <Footer />
-                </div>
-                <Profile />
-              </TransitionPage>
-            </LenisScrollProvider>
-          </ThemeProvider>
+          <InternalizationProvider locale={locale}>
+            <ThemeProvider attribute="class" defaultTheme="dark">
+              <LenisScrollProvider>
+                <TransitionPage>
+                  <div className="flex flex-col flex-1 min-h-screen pb-6">
+                    <Header paths={paths} />
+                    {children}
+                    <Analytics />
+                    <Toaster />
+                    <ThanksInviteDialog />
+                    <DevelopmentAlert
+                      button={t('button')}
+                      title={t('title')}
+                      description={t('description')}
+                      isAlertConfirmed={false}
+                    />
+                    <Footer />
+                  </div>
+                  <Profile />
+                </TransitionPage>
+              </LenisScrollProvider>
+            </ThemeProvider>
+          </InternalizationProvider>
         </QueryClientProvider>
       </body>
     </html>
@@ -97,10 +99,31 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
 }
 
-// export async function generateMetadata(params: { locale: string }) {
-//   const t = await getTranslations({ locale, namespace: 'Metadata' })
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string }
+}): Promise<Metadata> {
+  const messages = await import(`/messages/${locale}.json`)
+  const t = createTranslator({ locale, messages })
 
-//   return {
-//     title: t('title'),
-//   }
-// }
+  const languages: Record<string, URL> = {}
+
+  return {
+    title: {
+      template: '%s',
+      default: t('config.metadata.title'),
+    },
+    description: t('config.metadata.description'),
+    authors: [
+      {
+        name: userData.name,
+      },
+    ],
+    creator: 'Filipe Vieira',
+    publisher: userData.name,
+    alternates: {
+      languages,
+    },
+  }
+}

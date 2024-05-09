@@ -28,7 +28,7 @@ export function ProjectCard({
           src={project.coverImageUrl}
           width={1600}
           height={1600}
-          className="h-[400px] rounded-2xl overflow-hidden w-full object-cover"
+          className="h-[400px] border rounded-2xl overflow-hidden w-full object-cover"
           quality={100}
           priority
           alt={project.title}

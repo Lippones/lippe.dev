@@ -149,5 +149,11 @@
     "title": "🚧 This page is under development!",
     "description": "You may find bugs and broken things. I'm working to fix everything as quickly as possible and bring you a great experience.",
     "button": "Understand"
+  },
+  "config": {
+    "metadata": {
+      "title": "Filipe Vieira da Silva - FullStack Developer",
+      "description": "FullStack developer with experience in Javascript, Typescript, ReactJS, Next and Node.js. Ready to deliver innovative, high-quality solutions that help companies achieve their business objectives."
+    }
   }
 }
