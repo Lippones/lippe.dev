@@ -67,7 +67,11 @@ export default async function RootLayout({
       <body className={`${inter.variable} ${nexa.variable}`}>
         <QueryClientProvider>
           <InternalizationProvider locale={locale}>
-            <ThemeProvider attribute="class" defaultTheme="dark">
+            <ThemeProvider
+              attribute="class"
+              forcedTheme="dark"
+              defaultTheme="dark"
+            >
               <LenisScrollProvider>
                 <TransitionPage>
                   <div className="flex flex-col flex-1 min-h-screen pb-6">

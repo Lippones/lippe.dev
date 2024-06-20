@@ -119,8 +119,12 @@ export function ContactCard({
               {errors.message.message}
             </span>
           )}
-          <CardFooter className="px-0 mt-8">
-            <Button disabled={isSubmitting} type="submit" className="w-full">
+          <CardFooter className="p-0 mt-8">
+            <Button
+              disabled={isSubmitting}
+              type="submit"
+              className="w-full mt-auto"
+            >
               {isSubmitting && (
                 <Loader2 className="mr-2 h-4 w-6 animate-spin" />
               )}{' '}
