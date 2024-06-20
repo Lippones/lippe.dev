@@ -1,5 +1,8 @@
 {
   "extends": "@lippe/tsconfig/lib.json",
   "include": ["."],
+  "compilerOptions": {
+    "moduleResolution": "Bundler"
+  },
   "exclude": ["dist", "build", "node_modules"]
 }

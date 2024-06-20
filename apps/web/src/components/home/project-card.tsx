@@ -23,7 +23,7 @@ export function ProjectCard({
     <div className="project w-full text-zinc-950 md:w-[600px]">
       <Link
         href={`/project/${project.slug}`}
-        className="relative w-full  before:absolute before:inset-0 before:h-full before:w-full before:bg-gradient-to-t before:from-background/50 before:to-transparent"
+        className="relative w-full before:absolute before:inset-0 before:h-full before:w-full before:bg-gradient-to-t before:from-background/50 before:to-transparent"
       >
         <Image
           src={project.coverImageUrl}

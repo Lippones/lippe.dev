@@ -5,7 +5,7 @@
   "main": "index.ts",
   "types": "index.ts",
   "dependencies": {
-    "@t3-oss/env-nextjs": "^0.10.1",
+    "@t3-oss/env-nextjs": "^0.8.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
@@ -16,7 +16,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "@lippe/eslint-config/library"
+      "@lippe/eslint-config/nextjs"
     ]
   },
   "prettier": "@lippe/prettier"

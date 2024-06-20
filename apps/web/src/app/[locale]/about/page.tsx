@@ -70,7 +70,7 @@ export default async function About({ params: { locale } }: AboutPageProps) {
   })
 
   return (
-    <div className="mx-auto  w-full max-w-screen-2xl px-4 pb-10 md:px-8">
+    <div className="mx-auto w-full max-w-screen-2xl px-4 pb-10 md:px-8">
       <div className="mt-12 grid items-center gap-8 md:grid-cols-2 md:gap-12 md:gap-y-28">
         <div>
           <h1 className="text-4xl font-bold">{t('title')}</h1>
@@ -178,7 +178,7 @@ function ExperienceCard({
   return (
     <div>
       <h3 className="text-lg font-semibold">{role}</h3>
-      <div className="flex  items-center text-muted-foreground">
+      <div className="flex items-center text-muted-foreground">
         <p className="text-sm">{company}</p>
         <Dot className="h-8 w-8" />
         <p className="text-sm">

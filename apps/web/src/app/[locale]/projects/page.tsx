@@ -32,8 +32,8 @@ export default async function Projects({ params: { locale } }: ProjectsProps) {
     }
   })
   return (
-    <div className="mx-auto  mt-10 w-full max-w-screen-2xl px-4 pb-10 md:px-8">
-      <h1 className="text-4xl font-bold ">Meus projetos</h1>
+    <div className="mx-auto mt-10 w-full max-w-screen-2xl px-4 pb-10 md:px-8">
+      <h1 className="text-4xl font-bold">Meus projetos</h1>
       <p>
         {' '}
         <Link href="https://github.com/lippones">Github</Link>

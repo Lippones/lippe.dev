@@ -1,14 +1,12 @@
 'use client'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { ContactEmail, render } from '@lippe/email'
+import { ContactEmail, render, sendEmail } from '@lippe/email'
 import { track } from '@vercel/analytics/react'
 import { Loader2 } from 'lucide-react'
 import { FormEvent, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
-
-import { sendEmail } from '@/services/email'
 
 import { Button } from './ui/button'
 import {
@@ -63,14 +61,11 @@ export function ContactCard({
       message,
     })
 
+    const stringEmail = render(<ContactEmail email={email} message={message} />)
+
     try {
       await sendEmail({
-        html: render(
-          ContactEmail({
-            email,
-            message,
-          }),
-        ),
+        html: stringEmail,
         subject: 'New contact from your website',
         to: 'filipe68ft@hotmail.com',
       })

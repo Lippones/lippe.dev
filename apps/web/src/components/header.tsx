@@ -43,7 +43,7 @@ export function Header({ paths }: HeaderProps) {
               <li key={path.label}>
                 <Magnetic>
                   <Link
-                    className={`group flex max-w-fit flex-col-reverse items-center gap-2 tracking-wide before:h-2 before:w-2 before:rounded-full before:bg-primary  ${matchesPathName ? 'before:block' : 'before:hidden'}`}
+                    className={`group flex max-w-fit flex-col-reverse items-center gap-2 tracking-wide before:h-2 before:w-2 before:rounded-full before:bg-primary ${matchesPathName ? 'before:block' : 'before:hidden'}`}
                     href={path.href}
                   >
                     {path.label}
@@ -133,11 +133,11 @@ export function NavBar({ paths, pathname, handleOpenChange }: NavBarProps) {
               >
                 <Magnetic magneticPower={0.2}>
                   <Link
-                    className={`group flex max-w-fit items-center gap-2 text-4xl tracking-wide before:h-2 before:w-2 before:rounded-full before:bg-primary  ${isCurrentPath ? 'before:block' : 'before:hidden'}`}
+                    className={`group flex max-w-fit items-center gap-2 text-4xl tracking-wide before:h-2 before:w-2 before:rounded-full before:bg-primary ${isCurrentPath ? 'before:block' : 'before:hidden'}`}
                     href={path.href}
                   >
                     {path.label}{' '}
-                    <ArrowUpRight className="h-8 w-8 -translate-x-8 opacity-0 transition-all  group-hover:translate-x-0 group-hover:opacity-100" />
+                    <ArrowUpRight className="h-8 w-8 -translate-x-8 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
                   </Link>
                 </Magnetic>
               </motion.li>
