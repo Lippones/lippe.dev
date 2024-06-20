@@ -1,0 +1,23 @@
+{
+  "name": "@lippe/env",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.ts",
+  "types": "index.ts",
+  "dependencies": {
+    "@t3-oss/env-nextjs": "^0.8.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@lippe/eslint-config": "workspace:*",
+    "@lippe/prettier": "workspace:*",
+    "@lippe/tsconfig": "workspace:*",
+    "@types/node": "^20"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@lippe/eslint-config/library"
+    ]
+  },
+  "prettier": "@lippe/prettier"
+}
