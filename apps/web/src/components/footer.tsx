@@ -14,7 +14,10 @@ import { Separator } from './ui/separator'
 export async function Footer() {
   const t = await getTranslations('footer')
   return (
-    <footer className="mx-auto grid min-h-[400px] w-full max-w-screen-2xl justify-items-end gap-6 rounded-2xl border bg-secondary/60 px-4 py-6 md:px-8 lg:grid-cols-2">
+    <footer
+      id="footer"
+      className="mx-auto grid min-h-[400px] w-full max-w-screen-2xl justify-items-end gap-6 rounded-2xl border bg-secondary/60 px-4 py-6 md:px-8 lg:grid-cols-2"
+    >
       <div className="flex flex-col justify-between">
         <div>
           <Image src="/logo.svg" width={30} height={30} alt="Logo" />

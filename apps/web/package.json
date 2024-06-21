@@ -13,6 +13,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.6.0",
     "@lippe/email": "workspace:*",
+    "@lippe/auth": "workspace:*",
     "@lippe/env": "workspace:*",
     "@radix-ui/react-alert-dialog": "^1.1.0",
     "@radix-ui/react-avatar": "^1.1.0",

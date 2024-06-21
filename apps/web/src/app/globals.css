@@ -68,7 +68,10 @@
 
   @layer base {
     * {
-      @apply border-border scrollbar-thin scrollbar-track-rounded-lg scrollbar-thumb-primary scrollbar-track-zinc-950 ;
+      @apply border-border scrollbar-thin scrollbar-track-rounded-lg scrollbar-thumb-primary scrollbar-track-zinc-950;
+    }
+    html {
+      @apply scroll-smooth;
     }
     body {
       @apply bg-background text-foreground font-nexa antialiased ;

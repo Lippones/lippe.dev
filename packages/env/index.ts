@@ -7,6 +7,8 @@ export const env = createEnv({
     SPOTIFY_SECRET: z.string().min(1),
     RESEND_API_KEY: z.string().min(1),
     CONTACT_EMAIL: z.string().min(1),
+    DATABASE_URL: z.string().min(1),
+    AUTH_SECRET: z.string().min(1),
   },
   client: {},
   experimental__runtimeEnv: process.env,

@@ -1,0 +1,24 @@
+{
+  "name": "@lippe/drizzle",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.ts",
+  "types": "index.ts",
+  "dependencies": {
+    "@neondatabase/serverless": "^0.9.3",
+    "drizzle-orm": "^0.31.2"
+  },
+  "devDependencies": {
+    "@lippe/eslint-config": "workspace:*",
+    "@lippe/prettier": "workspace:*",
+    "@lippe/tsconfig": "workspace:*",
+    "@types/node": "^20.14.6",
+    "drizzle-kit": "^0.22.7"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@lippe/eslint-config/lib"
+    ]
+  },
+  "prettier": "@lippe/prettier"
+}
