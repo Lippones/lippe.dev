@@ -4,9 +4,17 @@
   "private": true,
   "main": "index.ts",
   "types": "index.ts",
+  "scripts": {
+    "db:generate": "pnpm env:load drizzle-kit generate",
+    "db:migrate": "pnpm env:load tsx migrate.ts",
+    "db:push": "pnpm env:load drizzle-kit push",
+    "env:load": "dotenv -e ../../.env --"
+  },
   "dependencies": {
     "@neondatabase/serverless": "^0.9.3",
-    "drizzle-orm": "^0.31.2"
+    "drizzle-orm": "^0.31.2",
+    "dotenv-cli": "7.3.0",
+    "postgres": "^3.4.4"
   },
   "devDependencies": {
     "@lippe/eslint-config": "workspace:*",

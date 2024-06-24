@@ -5,6 +5,8 @@
   "main": "index.ts",
   "types": "index.ts",
   "dependencies": {
+    "@auth/drizzle-adapter": "^1.4.1",
+    "@lippe/drizzle": "workspace:*",
     "next-auth": "^5.0.0-beta.19"
   },
   "devDependencies": {

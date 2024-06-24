@@ -28,7 +28,6 @@ export default async function middleware(req: NextRequest) {
 
   if (isPrivatePage) {
     const session = await auth()
-    console.log(session)
 
     if (!session || session.user.role !== 'admin') {
       return NextResponse.redirect(new URL('/', req.url))
