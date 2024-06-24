@@ -30,8 +30,8 @@ export default async function middleware(req: NextRequest) {
     const session = await auth()
     console.log(session)
 
-    if (!session || session.user.role !== 'admin') {
-      return NextResponse.redirect(new URL('/', req.url))
+    if (!session || session.user?.role !== 'admin') {
+      // return NextResponse.redirect(new URL('/', req.url))
     }
 
     return intlMiddleware(req)

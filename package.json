@@ -14,5 +14,8 @@
     "packages/*",
     "config/*"
   ],
-  "packageManager": "bun@1.1.15"
+  "packageManager": "bun@1.1.15",
+  "dependencies": {
+    "server-only": "^0.0.1"
+  }
 }
