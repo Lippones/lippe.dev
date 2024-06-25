@@ -5,7 +5,7 @@
   "main": "index.js",
   "types": "index.ts",
   "scripts": {
-    "email:dev": "pnpm env:load email dev",
+    "email:dev": "bun env:load email dev",
     "env:load": "dotenv -e ../../.env --"
   },
   "dependencies": {

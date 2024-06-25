@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import '../globals.css'
 
-import { Analytics } from '@vercel/analytics/react'
 import { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
@@ -9,19 +8,8 @@ import { notFound } from 'next/navigation'
 import { createTranslator } from 'next-intl'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 
-import { DevelopmentAlert } from '@/components/development-alert'
-import { Footer } from '@/components/footer'
-import { Header } from '@/components/header'
-import { LenisScrollProvider } from '@/components/lenis-scroll-provider'
-import { Profile } from '@/components/profile'
-import { QueryClientProvider } from '@/components/query-client-provider'
-import { ThanksInviteDialog } from '@/components/thanks-invite-dialog'
-import { ThemeProvider } from '@/components/theme-provider'
-import { TransitionPage } from '@/components/transition-page'
-import { Toaster } from '@/components/ui/sonner'
-import { availableLocales, userData } from '@/config'
-import { navigationPaths } from '@/config/navigation-paths'
-import { InternalizationProvider } from '@/context/i18n'
+import { Providers } from '@/components/providers'
+import { availableLocales, navigationPaths, userData } from '@/config'
 
 const inter = Inter({ subsets: ['latin'], variable: '--inter' })
 const nexa = localFont({
@@ -67,35 +55,17 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${inter.variable} ${nexa.variable}`}>
-        <QueryClientProvider>
-          <InternalizationProvider locale={locale}>
-            <ThemeProvider
-              attribute="class"
-              forcedTheme="dark"
-              defaultTheme="dark"
-            >
-              <LenisScrollProvider>
-                <TransitionPage>
-                  <div className="flex min-h-screen flex-1 flex-col pb-6">
-                    <Header paths={paths} />
-                    {children}
-                    <Analytics />
-                    <Toaster />
-                    <ThanksInviteDialog />
-                    <DevelopmentAlert
-                      button={t('button')}
-                      title={t('title')}
-                      description={t('description')}
-                      isAlertConfirmed={false}
-                    />
-                    <Footer />
-                  </div>
-                  <Profile />
-                </TransitionPage>
-              </LenisScrollProvider>
-            </ThemeProvider>
-          </InternalizationProvider>
-        </QueryClientProvider>
+        <Providers
+          developmentAlert={{
+            title: t('title'),
+            button: t('button'),
+            description: t('description'),
+          }}
+          paths={paths}
+          locale={locale}
+        >
+          {children}
+        </Providers>
       </body>
     </html>
   )

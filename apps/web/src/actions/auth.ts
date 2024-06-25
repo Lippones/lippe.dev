@@ -1,6 +1,6 @@
 'use server'
 
-import { signIn } from "@lippe/auth"
+import { signIn } from '@lippe/auth'
 
 type Providers = 'spotify' | 'github'
 
