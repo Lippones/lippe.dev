@@ -10,9 +10,14 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from '../ui/hover-card'
 import { Separator } from '../ui/separator'
 import { AvatarProfile } from './avatar-profile'
 
+export const dynamic = 'force-dynamic'
+
 export function Profile() {
   const [currentTime, setCurrentTime] = useState<number | null>(null)
-  const fetcher = (url: string) => fetch(url).then((r) => r.json())
+  const fetcher = (url: string) =>
+    fetch(url, {
+      cache: 'no-cache',
+    }).then((r) => r.json())
 
   const audioRef = useRef<HTMLAudioElement | null>(null)
 

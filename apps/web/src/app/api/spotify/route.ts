@@ -3,6 +3,8 @@ import { accounts } from '@lippe/drizzle/schema'
 import { env } from '@lippe/env'
 import axios from 'axios'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
   const user = await db.query.users.findFirst({
     where(fields, { eq }) {
