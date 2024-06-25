@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from 'react'
 import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
 import useSWR from 'swr'
 
-import { api } from '@/services/api'
 import { SpotifyCurrentTrackResponse } from '@/services/spotify/types'
 
 import { Button } from '../ui/button'
@@ -11,19 +10,22 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from '../ui/hover-card'
 import { Separator } from '../ui/separator'
 import { AvatarProfile } from './avatar-profile'
 
+export const dynamic = 'force-dynamic'
+
 export function Profile() {
   const [currentTime, setCurrentTime] = useState<number | null>(null)
+  const fetcher = (url: string) =>
+    fetch(url, {
+      cache: 'no-cache',
+    }).then((r) => r.json())
 
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
-  const { data, mutate } = useSWR<SpotifyCurrentTrackResponse>(
-    '/spotify',
-    (url: string) => api.get(url).then((res) => res.data),
-    {
-      refreshInterval: 1000 * 5, // 5 seconds
-      loadingTimeout: 0,
-    },
-  )
+  const { data, mutate } = useSWR<SpotifyCurrentTrackResponse>('/api/spotify', {
+    refreshInterval: 1000 * 5, // 5 seconds
+    loadingTimeout: 0,
+    fetcher,
+  })
 
   function handlePlayPreview() {
     const audio = audioRef.current
