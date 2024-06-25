@@ -14,6 +14,14 @@ export const env = createEnv({
   client: {
     NEXT_PUBLIC_URL: z.string().url(),
   },
-  //@ts-expect-error Ja validado
-  experimental__runtimeEnv: process.env,
+  runtimeEnv: {
+    SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
+    SPOTIFY_SECRET: process.env.SPOTIFY_SECRET,
+    RESEND_API_KEY: process.env.RESEND_API_KEY, 
+    CONTACT_EMAIL: process.env.CONTACT_EMAIL,
+    DATABASE_URL: process.env.DATABASE_URL,
+    AUTH_SECRET: process.env.AUTH_SECRET,
+    SPOTIFY_EMAIL: process.env.SPOTIFY_EMAIL,
+    NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL,
+  },
 })
