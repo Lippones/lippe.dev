@@ -6,6 +6,8 @@ import { authConfig } from './auth-config'
 
 export type { Session, User } from 'next-auth'
 
+export * from 'next-auth'
+
 export const {
   auth,
   signIn,
