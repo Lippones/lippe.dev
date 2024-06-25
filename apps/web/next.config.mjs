@@ -18,6 +18,10 @@ const nextConfig = {
         hostname: 'images.pexels.com',
         protocol: 'https',
       },
+      {
+        hostname: 'i.scdn.co',
+        protocol: 'https',
+      },
     ],
   },
 }

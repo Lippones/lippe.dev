@@ -1,7 +1,9 @@
+import { ComponentProps } from 'react'
+
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { ProfileStatus } from './profile-status'
 
-interface AvatarProfileProps {
+interface AvatarProfileProps extends ComponentProps<'div'> {
   avatarUrl: string
   status: 'online' | 'offline' | 'away'
 }
