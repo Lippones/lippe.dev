@@ -1,0 +1,159 @@
+{
+  "pages": {
+    "home": {
+      "hero": {
+        "title": "Olá, eu sou o Filipe - Desenvolvedor FullStack 👋",
+        "description": "Gosto mergulhar no mundo da tecnologia e inovação. Com experiência sólida em Javascript, Typescript, ReactJS, Next e Node.js, estou sempre pronto para oferecer soluções inovadoras e de alta qualidade que ajudam as empresas a alcançar seus objetivos comerciais.",
+        "about_button": "Conheça-me",
+        "contact_button": "Contate-me"
+      },
+      "projects": {
+        "title": "Projetos",
+        "description": "Alguns dos meus projetos",
+        "more": {
+          "title": "Achou interessante?",
+          "description": "Veja mais projetos"
+        }
+      }
+    },
+    "projects": {
+      "title": "Meus projetos",
+      "description": "Aqui estão alguns de meus projetos, você pode encontra mais em meu",
+      "items": {
+        "EventFlow": {
+          "title": "EventFlow",
+          "description": "Uma aplicação web para coletar e gerenciar leads de eventos.",
+          "tags": "NextJS,NestJS,MongoDB,GraphQL,PostgreSQL,Microservices,Docker,CI/CD,Vercel,AWS",
+          "slug": "eventflow",
+          "image": "eventflow.png"
+        },
+        "DoBrasil": {
+          "title": "DoBrasil",
+          "description": "Uma aplicação web para gerenciamento de eventos.",
+          "tags": "NextJS,Fastify,PostgreSQL,Docker,CI/CD",
+          "image": "eventflow.png"
+        },
+        "DEJORD": {
+          "title": "DEJORD",
+          "description": "Uma aplicação para gerenciamento de pacientes e equipe em uma clínica de reabilitação para dependentes químicos. Projeto desenvolvido na faculdade.",
+          "tags": "NextJS,Fastify,PostgreSQL,Docker,CI/CD",
+          "image": "dejord.jpg"
+        },
+        "DevStore": {
+          "title": "DevStore",
+          "description": "Projeto para entender melhor testes E2E usando Cypress.",
+          "tags": "ReactJS,Node.js,MongoDB",
+          "image": "devstore.png"
+        }
+      }
+    },
+    "about": {
+      "title": "Sobre mim",
+      "description": "Sim, este sou eu",
+      "biography": "Olá, meu nome é Filipe Vieira da Silva, e sou um Desenvolvedor Full Stack. Nasci e cresci no Brasil. Com 2 anos de experiência como Desenvolvedor Full Stack, possuo habilidades que vão desde a concepção inicial até a implementação final. Trabalho tanto para a empresa em que estou empregado quanto como freelancer. Meu interesse não se limita apenas ao emprego formal; estou sempre à procura de criar e desenvolver novos micro SaaS (Software as a Service) e projetos independentes. Esses esforços paralelos não só aprimoram minhas habilidades, mas também me permitem explorar novas ideias e soluções inovadoras para problemas do dia a dia. Acredito que a tecnologia tem o poder de transformar vidas e negócios. Estou ansioso para colaborar com equipes e projetos que compartilham dessa visão e estão em busca de um desenvolvedor que traz tanto conhecimento técnico quanto uma perspectiva criativa para a mesa. Se você está procurando alguém que possa combinar competência técnica com uma abordagem criativa para o desenvolvimento de software, vamos conversar. Juntos, podemos transformar ideias em realidade.",
+      "highlights": {
+        "title": "Posso te ajudar com",
+        "items": {
+          "development": {
+            "title": "Desenvolvimento",
+            "description": "Utilizando minha experiência para criar soluções web impressionantes, amigáveis e de alto desempenho."
+          },
+          "design": {
+            "title": "Design",
+            "description": "Criando designs visualmente atraentes e intuitivos que engajam os usuários e melhoram a experiência do usuário."
+          },
+          "the_full_package": {
+            "title": "O pacote completo",
+            "description": "Oferecendo um conjunto completo de serviços do conceito ao lançamento, garantindo uma presença digital coesa e sem interrupções."
+          },
+          "problem-solving": {
+            "title": "Resolução de Problemas",
+            "description": "Aplicando habilidades analíticas para enfrentar desafios complexos e entregar soluções inovadoras e eficazes."
+          },
+          "project_management": {
+            "title": "Gerenciamento de Projetos",
+            "description": "Coordenando projetos com precisão, desde o planejamento inicial até a execução e entrega bem-sucedidas."
+          },
+          "continuous_learning": {
+            "title": "Aprendizado Contínuo",
+            "description": "Mantendo-me à frente da curva ao atualizar continuamente meu conjunto de habilidades e adotar as últimas tecnologias."
+          }
+        }
+      },
+      "skills": {
+        "title": "Áreas de especialização",
+        "items": "Desenvolvimento Front End: Typescript, ReactJS, Next|Desenvolvimento Back End: Node.js, NestJS, Express, Fastify, MongoDB, PostgreSQL|DevOps: Docker, Git, CI/CD, AWS, Vercel|Design: Figma"
+      },
+      "interest": {
+        "title": "Desenvolvimento Front-end",
+        "items": "Jogos, Desenvolvimento de Software, Design, Tecnologia, IA"
+      },
+      "current_projects": {
+        "title": "Projetos atuais",
+        "items": "EventFlow"
+      },
+      "experience": {
+        "title": "Experiência profissional",
+        "items": {
+          "freelancer": {
+            "title": "Desenvolvedor Full Stack",
+            "company": "Freelancer",
+            "initial_date": "2022/01/03",
+            "final_date": "Atual"
+          },
+          "bttis": {
+            "title": "Desenvolvedor Full Stack",
+            "company": "bttis",
+            "initial_date": "2023/01/06",
+            "final_date": "Atual"
+          }
+        }
+      }
+    }
+  },
+  "navigation": {
+    "home": {
+      "label": "Início",
+      "href": "/"
+    },
+    "projects": {
+      "label": "Projetos",
+      "href": "/projects"
+    },
+    "about": {
+      "label": "Sobre mim",
+      "href": "/about"
+    },
+    "contact": {
+      "label": "Contato",
+      "href": "#footer"
+    }
+  },
+  "footer": {
+    "thanks": "Feito com 💜 por Filipe Vieira da Silva",
+    "contact": {
+      "title": "Entre em contato",
+      "message": "Olá, estou entrando em contato pelo seu site."
+    },
+    "description": "Aventurando-me no mundo digital com paixão e precisão, sou Filipe Vieira, o Desenvolvedor Full Stack que transforma visões em realidades. Combinando proeza técnica com criatividade, estou aqui para entregar soluções robustas e inovadoras. Se você tem um projeto em mente ou precisa de um parceiro tecnológico, não hesite em entrar em contato. Vamos construir o futuro juntos.",
+    "copyright": "Todos os direitos reservados",
+    "follow": "Me siga",
+    "work_with_me": {
+      "title": "Trabalhe comigo",
+      "description": "Digite seu e-mail e entraremos em contato o mais breve possível.",
+      "textArea": "Escreva sua mensagem aqui",
+      "button": "Vamos nessa,Enviar"
+    }
+  },
+  "development-alert": {
+    "title": "🚧 Esta página está em desenvolvimento!",
+    "description": "Este site está em desenvolvimento. Alguns recursos podem não funcionar corretamente.",
+    "button": "Entendido"
+  },
+  "config": {
+    "metadata": {
+      "title": "Filipe Vieira da Silva - Desenvolvedor FullStack",
+      "description": "Desenvolvedor FullStack com experiência em Javascript, Typescript, ReactJS, Next e Node.js. Pronto para oferecer soluções inovadoras e de alta qualidade que ajudam as empresas a alcançar seus objetivos comerciais."
+    }
+  }
+}

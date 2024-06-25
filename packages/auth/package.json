@@ -1,0 +1,24 @@
+{
+  "name": "@lippe/auth",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.ts",
+  "types": "index.ts",
+  "dependencies": {
+    "@auth/drizzle-adapter": "^1.4.1",
+    "@lippe/drizzle": "workspace:*",
+    "next-auth": "^5.0.0-beta.19"
+  },
+  "devDependencies": {
+    "@lippe/eslint-config": "workspace:*",
+    "@lippe/prettier": "workspace:*",
+    "@lippe/tsconfig": "workspace:*",
+    "@types/node": "^20.14.6"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@lippe/eslint-config/lib"
+    ]
+  },
+  "prettier": "@lippe/prettier"
+}

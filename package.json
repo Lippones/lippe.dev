@@ -1,63 +1,21 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
   "private": true,
+  "name": "lippe.dev",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "email": "email dev"
-  },
-  "dependencies": {
-    "@hookform/resolvers": "^3.3.4",
-    "@radix-ui/react-alert-dialog": "^1.0.5",
-    "@radix-ui/react-avatar": "^1.0.4",
-    "@radix-ui/react-dialog": "^1.0.5",
-    "@radix-ui/react-hover-card": "^1.0.7",
-    "@radix-ui/react-separator": "^1.0.3",
-    "@radix-ui/react-slot": "^1.0.2",
-    "@react-email/components": "^0.0.16",
-    "@react-email/render": "^0.0.12",
-    "@react-email/tailwind": "^0.0.15",
-    "@spotify/web-api-ts-sdk": "^1.2.0",
-    "@studio-freight/lenis": "^1.0.42",
-    "@t3-oss/env-nextjs": "^0.9.2",
-    "@tanstack/react-query": "^5.29.0",
-    "@vercel/analytics": "^1.2.2",
-    "axios": "^1.6.8",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.0",
-    "dayjs": "^1.11.10",
-    "discord.js": "^14.14.1",
-    "framer-motion": "^11.0.25",
-    "gsap": "^3.12.5",
-    "lucide-react": "^0.365.0",
-    "next": "14.2.2",
-    "next-intl": "^3.11.1",
-    "next-themes": "^0.3.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-hook-form": "^7.51.3",
-    "react-icons": "^5.0.1",
-    "resend": "^3.2.0",
-    "sonner": "^1.4.41",
-    "tailwind-merge": "^2.2.2",
-    "tailwindcss-animate": "^1.0.7",
-    "usehooks-ts": "^3.1.0",
-    "zod": "^3.22.4"
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint"
   },
   "devDependencies": {
-    "@rocketseat/eslint-config": "^2.2.2",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "autoprefixer": "^10.0.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.2",
-    "postcss": "^8",
-    "tailwind-scrollbar": "^3.1.0",
-    "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "turbo": "^2.0.4"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "config/*"
+  ],
+  "packageManager": "bun@1.1.15",
+  "dependencies": {
+    "server-only": "^0.0.1"
   }
 }

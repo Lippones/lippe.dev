@@ -1,0 +1,33 @@
+{
+  "name": "@lippe/drizzle",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.ts",
+  "types": "index.ts",
+  "scripts": {
+    "db:generate": "bun env:load drizzle-kit generate",
+    "db:migrate": "bun env:load tsx migrate.ts",
+    "db:push": "bun env:load drizzle-kit push",
+    "env:load": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^0.9.3",
+    "dotenv-cli": "7.3.0",
+    "drizzle-orm": "^0.31.2",
+    "postgres": "^3.4.4",
+    "tsx": "^4.15.7"
+  },
+  "devDependencies": {
+    "@lippe/eslint-config": "workspace:*",
+    "@lippe/prettier": "workspace:*",
+    "@lippe/tsconfig": "workspace:*",
+    "@types/node": "^20.14.6",
+    "drizzle-kit": "^0.22.7"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@lippe/eslint-config/lib"
+    ]
+  },
+  "prettier": "@lippe/prettier"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@lippe/prettier",
+  "version": "0.0.0",
+  "main": "index.mjs",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "prettier": "^3.3.2",
+    "prettier-plugin-tailwindcss": "^0.6.5"
+  },
+  "prettier": "@lippe/prettier"
+}
