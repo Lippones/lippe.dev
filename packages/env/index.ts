@@ -12,7 +12,7 @@ export const env = createEnv({
     SPOTIFY_EMAIL: z.string().email(),
   },
   client: {
-    NEXT_PUBLIC_URL: z.string().url().default('http://localhost:3000'),
+    NEXT_PUBLIC_URL: z.string().url(),
   },
   //@ts-expect-error Ja validado
   experimental__runtimeEnv: process.env,
