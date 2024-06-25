@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "bun env:load next dev",
+    "dev": "next dev",
     "build": "bun env:load next build",
-    "build:deploy": "bun env:load next build && bun start",
+    "build:deploy": "next build",
     "start": "bun env:load next start",
     "lint": "eslint .",
     "env:load": "dotenv -e ../../.env --"

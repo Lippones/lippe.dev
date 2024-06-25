@@ -1,13 +1,14 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["NODE_ENV","SPOTIFY_CLIENT_ID","SPOTIFY_SECRET", "RESEND_API_KEY", "CONTACT_EMAIL", "DATABASE_URL", "AUTH_SECRET", "SPOTIFY_EMAIL", "NEXT_PUBLIC_URL"],
   "globalDependencies": [".env"],
-  "globalEnv": ["NODE_ENV"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "build:deploy": {
+      "env":["NODE_ENV","SPOTIFY_CLIENT_ID","SPOTIFY_SECRET", "RESEND_API_KEY", "CONTACT_EMAIL", "DATABASE_URL", "AUTH_SECRET", "SPOTIFY_EMAIL", "NEXT_PUBLIC_URL"],
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
@@ -15,11 +16,13 @@
       "dependsOn": ["^lint"]
     },
     "start": {
+      "env": ["NODE_ENV","SPOTIFY_CLIENT_ID","SPOTIFY_SECRET", "RESEND_API_KEY", "CONTACT_EMAIL", "DATABASE_URL", "AUTH_SECRET", "SPOTIFY_EMAIL", "NEXT_PUBLIC_URL"],
       "cache": false,
       "persistent": true
     },
     "email:dev": {},
     "dev": {
+      "env": ["SPOTIFY_CLIENT_ID","SPOTIFY_SECRET", "RESEND_API_KEY", "CONTACT_EMAIL", "DATABASE_URL", "AUTH_SECRET", "SPOTIFY_EMAIL", "NEXT_PUBLIC_URL"],
       "cache": false,
       "persistent": true
     }
