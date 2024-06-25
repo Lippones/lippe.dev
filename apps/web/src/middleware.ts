@@ -1,5 +1,5 @@
 import { auth } from '@lippe/auth'
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest } from 'next/server'
 import createIntlMiddleware from 'next-intl/middleware'
 
 import { availableLocales } from './config'
