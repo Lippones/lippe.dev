@@ -48,9 +48,9 @@ export function Profile() {
       const interval = setInterval(() => {
         setCurrentTime((prev) => {
           if (prev !== null) {
-            if (prev >= data.item.duration_ms) {
+            if (prev >= data?.item?.duration_ms) {
               mutate() // Invalida a query quando a música termina
-              return data.item.duration_ms
+              return data?.item?.duration_ms
             }
             return prev + 1000
           }
