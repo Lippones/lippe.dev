@@ -53,7 +53,7 @@ export function Providers({
                 />
                 <Footer />
               </div>
-              <Profile />
+              {/* <Profile /> */}
             </TransitionPage>
           </LenisScrollProvider>
         </ThemeProvider>
