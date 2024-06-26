@@ -16,8 +16,8 @@ export default async function Image() {
   const [t, avatarUrl, bannerUrl] = await Promise.all([
     getTranslations('config.metadata'),
 
-    fetch(new URL('../../assets/profile.png', import.meta.url)).then((res) =>
-      res.arrayBuffer(),
+    fetch(new URL('../../assets/profile_120.png', import.meta.url)).then(
+      (res) => res.arrayBuffer(),
     ),
 
     fetch(new URL('../../assets/banner.jpg', import.meta.url)).then((res) =>
