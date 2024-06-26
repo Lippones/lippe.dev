@@ -15,7 +15,7 @@ import { SpotifyCard } from './spotify-card'
 export const dynamic = 'force-dynamic'
 
 export function Profile() {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const [currentTime, setCurrentTime] = useState<number | null>(null)
   const [percentageCompleted, setPercentageCompleted] = useState<number | null>(
     null,
