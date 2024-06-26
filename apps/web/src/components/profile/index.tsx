@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import useSWR from 'swr'
 
@@ -33,12 +34,12 @@ export function Profile() {
     fetcher,
   })
 
-  function handlePlayPreview() {
+  function handlePlayPreview(play: boolean) {
     const audio = audioRef.current
 
     if (!audio) return
 
-    if (audio.paused) {
+    if (play) {
       audio.play()
       audio.volume = 0.1
     } else {
@@ -76,39 +77,42 @@ export function Profile() {
     }
   }, [currentTime, data])
 
+  const profileStatus = data ? (data.is_playing ? 'online' : 'away') : 'offline'
+
   return (
-    <div
-      onMouseEnter={handlePlayPreview}
-      onMouseLeave={handlePlayPreview}
-      className="absolute bottom-12 left-0"
-    >
-      <div className="relative">
+    <div className="sticky bottom-4 left-0 mx-auto w-full max-w-screen-2xl px-4 pb-10 md:px-8">
+      <div className="relative max-w-fit">
         {data && data.is_playing && (
           <>
             <audio ref={audioRef} src={data.item.preview_url} />
-            <Badge
-              variant={'secondary'}
-              className="absolute -bottom-10 z-10 inline-flex max-w-[160px] cursor-pointer flex-nowrap overflow-hidden rounded-full border border-zinc-600 p-2"
-            >
-              <BadgeSpotify currentTime={currentTime} data={data} />
-              <BadgeSpotify
-                currentTime={currentTime}
-                data={data}
-                aria-hidden="true"
-              />
-            </Badge>
+            <Link href={data.item.external_urls.spotify} target="_blank">
+              <Badge
+                variant={'secondary'}
+                className="absolute -bottom-10 z-10 inline-flex max-w-[160px] cursor-pointer flex-nowrap overflow-hidden rounded-full border border-zinc-600 p-2"
+              >
+                <BadgeSpotify currentTime={currentTime} data={data} />
+                <BadgeSpotify
+                  currentTime={currentTime}
+                  data={data}
+                  aria-hidden="true"
+                />
+              </Badge>
+            </Link>
           </>
         )}
         <HoverCard
           openDelay={200}
           closeDelay={200}
           open={open}
-          onOpenChange={setOpen}
+          onOpenChange={(value) => {
+            setOpen(value)
+            handlePlayPreview(value)
+          }}
         >
           <HoverCardTrigger className="rounded-full">
             <AvatarProfile
               avatarUrl="https://github.com/lippones.png"
-              status="away"
+              status={profileStatus}
               onClick={() => setOpen(!open)}
             />
           </HoverCardTrigger>
@@ -123,10 +127,18 @@ export function Profile() {
             <div>
               <span className="text-sm font-bold">Bio</span>
               <p className="mt-2 text-xs text-muted-foreground">
-                I love diving deep into the world of technology and innovation.
-                With solid experience in Javascript, Typescript, ReactJS, Next
-                and Node.js, I am always ready to offer innovative, high-quality
-                solutions that help companies achieve their business goals.
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠳⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⣀⡴⢧⣀⠀⠀⣀⣠⠤⠤⠤⠤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠘⠏⢀⡴⠊⠁⠀⠀⠀⠀⠀⠀⠈⠙⠦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⣰⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢶⣶⣒⣶⠦⣤⣀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⢀⣰⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣟⠲⡌⠙⢦⠈⢧⠀
+                ⠀⠀⠀⣠⢴⡾⢟⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⡴⢃⡠⠋⣠⠋⠀
+                ⠐⠀⠞⣱⠋⢰⠁⢿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⠤⢖⣋⡥⢖⣫⠔⠋⠀⠀⠀
+                ⠈⠠⡀⠹⢤⣈⣙⠚⠶⠤⠤⠤⠴⠶⣒⣒⣚⣩⠭⢵⣒⣻⠭⢖⠏⠁⢀⣀⠀⠀⠀⠀
+                ⠠⠀⠈⠓⠒⠦⠭⠭⠭⣭⠭⠭⠭⠭⠿⠓⠒⠛⠉⠉⠀⠀⣠⠏⠀⠀⠘⠞⠀⠀⠀⠀
+                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠓⢤⣀⠀⠀⠀⠀⠀⠀⣀⡤⠞⠁⠀⣰⣆⠀⠀⠀⠀⠀⠀
+                ⠀⠀⠀⠀⠀⠘⠿⠀⠀⠀⠀⠀⠈⠉⠙⠒⠒⠛⠉⠁⠀⠀⠀⠉⢳⡞⠉⠀⠀⠀⠀⠁
               </p>
             </div>
             <Separator />
