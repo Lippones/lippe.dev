@@ -14,9 +14,13 @@ import { Separator } from './ui/separator'
 
 interface HeaderProps {
   paths: Path[]
+  hireMe: {
+    text: string
+    href: string
+  }
 }
 
-export function Header({ paths }: HeaderProps) {
+export function Header({ paths, hireMe }: HeaderProps) {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
 
@@ -28,8 +32,12 @@ export function Header({ paths }: HeaderProps) {
         <Link href="/">
           <Image src="/logo.svg" width={40} height={40} alt="Logo" />
         </Link>
-        <Button variant={'outline'} className="border-dashed border-foreground">
-          Hire me
+        <Button
+          variant={'outline'}
+          className="border-dashed border-foreground"
+          asChild
+        >
+          <Link href={hireMe.href}>{hireMe.text}</Link>
         </Button>
       </div>
       <nav>

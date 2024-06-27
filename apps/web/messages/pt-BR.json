@@ -22,27 +22,46 @@
       "items": {
         "EventFlow": {
           "title": "EventFlow",
-          "description": "Uma aplicação web para coletar e gerenciar leads de eventos.",
+          "description": "Uma aplicação web para coletar e gerenciar leads de eventos. (Em desenvolvimento)",
           "tags": "NextJS,NestJS,MongoDB,GraphQL,PostgreSQL,Microservices,Docker,CI/CD,Vercel,AWS",
           "slug": "eventflow",
           "image": "eventflow.png"
         },
+        "PeriniCabinets": {
+          "title": "Perini Cabinets",
+          "description": "Um ecommerce de móveis planejados, desenvolvido para um cliente. O projeto de encontrar e receber clientes todos os dias.",
+          "tags": "NextJS,TRPC,PostgreSQL,Docker,CI/CD,Vercel,AWS,Stripe",
+          "slug": "perinicabinets",
+          "image": "perinicabinets.png"
+        },
         "DoBrasil": {
           "title": "DoBrasil",
-          "description": "Uma aplicação web para gerenciamento de eventos.",
+          "description": "Uma aplicação web para gerenciamento de campanhas, onde é possível comprar rifa e concorrer a prêmios. Foi uma plataforma desenvolvida para um cliente, mas foi descontinuada e retirada do ar.",
           "tags": "NextJS,Fastify,PostgreSQL,Docker,CI/CD",
-          "image": "eventflow.png"
+          "image": "dobrasil.jpg"
         },
         "DEJORD": {
           "title": "DEJORD",
-          "description": "Uma aplicação para gerenciamento de pacientes e equipe em uma clínica de reabilitação para dependentes químicos. Projeto desenvolvido na faculdade.",
+          "description": "Projeto desenvolvido na faculdade, trabalho este que desenvolvemos para o Dejord (Desafio Jovem do Rio Doce), instituição de reabilitação de dependentes químicos. Uma aplicação para gerenciamento de pacientes e equipe.",
           "tags": "NextJS,Fastify,PostgreSQL,Docker,CI/CD",
           "image": "dejord.jpg"
+        },
+        "IgniteCall": {
+          "title": "Ignite Call",
+          "description": "The Ignite Call project is a scheduling application that allows users to share their calendar and allow others to reserve available time slots. The application also integrates with Google Calendar to view schedules on different platforms. We developed this project using a customized Design System.",
+          "tags": "NextJS,Fastify,Prisma,Design System,PostgreSQL,Docker,CI/CD",
+          "image": "igniteCall.png"
+        },
+        "Habits": {
+          "title": "Habits",
+          "description": "O Habits é um app de monitoramento de tarefas diárias que ajuda os usuários a rastrear atividades realizadas e não realizadas. O usuário cadastra hábitos indicando os dias da semana em que devem ser realizados. Diariamente, uma lista de hábitos é gerada para o usuário marcar o status de cada um. O progresso diário é mostrado em uma barra de progresso e nas cores dos quadrados que representam os dias, com cores mais claras indicando mais hábitos completos. A aplicação possui backend, versão web e mobile.",
+          "tags": "NextJS,Fastify,Prisma,Design System,PostgreSQL,Docker,CI/CD",
+          "image": "habits.png"
         },
         "DevStore": {
           "title": "DevStore",
           "description": "Projeto para entender melhor testes E2E usando Cypress.",
-          "tags": "ReactJS,Node.js,MongoDB",
+          "tags": "NextJS, cypress",
           "image": "devstore.png"
         }
       }
@@ -85,7 +104,7 @@
         "items": "Desenvolvimento Front End: Typescript, ReactJS, Next|Desenvolvimento Back End: Node.js, NestJS, Express, Fastify, MongoDB, PostgreSQL|DevOps: Docker, Git, CI/CD, AWS, Vercel|Design: Figma"
       },
       "interest": {
-        "title": "Desenvolvimento Front-end",
+        "title": "Interesses e hobbies",
         "items": "Jogos, Desenvolvimento de Software, Design, Tecnologia, IA"
       },
       "current_projects": {
@@ -112,6 +131,10 @@
     }
   },
   "navigation": {
+    "hire": {
+      "label": "Contrate me",
+      "href": "#footer"
+    },
     "home": {
       "label": "Início",
       "href": "/"
@@ -123,10 +146,6 @@
     "about": {
       "label": "Sobre mim",
       "href": "/about"
-    },
-    "contact": {
-      "label": "Contato",
-      "href": "#footer"
     }
   },
   "footer": {

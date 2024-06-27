@@ -1,6 +1,5 @@
 import { Analytics } from '@vercel/analytics/react'
 
-import { DevelopmentAlert } from '@/components/development-alert'
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 import { LenisScrollProvider } from '@/components/lenis-scroll-provider'
@@ -19,20 +18,13 @@ interface ProvidersProps {
     label: string
     href: string
   }[]
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  developmentAlert: {
-    title: string
-    description: string
-    button: string
+  hireMe: {
+    text: string
+    href: string
   }
 }
 
-export function Providers({
-  children,
-  locale,
-  paths,
-  developmentAlert: { button, description, title },
-}: ProvidersProps) {
+export function Providers({ children, locale, paths, hireMe }: ProvidersProps) {
   return (
     <QueryClientProvider>
       <InternalizationProvider locale={locale}>
@@ -40,17 +32,11 @@ export function Providers({
           <LenisScrollProvider>
             <TransitionPage>
               <div className="flex min-h-screen flex-1 flex-col pb-6">
-                <Header paths={paths} />
+                <Header paths={paths} hireMe={hireMe} />
                 {children}
                 <Analytics />
                 <Toaster />
                 <ThanksInviteDialog />
-                <DevelopmentAlert
-                  button={button}
-                  title={title}
-                  description={description}
-                  isAlertConfirmed={false}
-                />
                 <Footer />
               </div>
               <Profile />

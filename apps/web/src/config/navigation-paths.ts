@@ -1,3 +1,4 @@
+'use server'
 import { getTranslations } from 'next-intl/server'
 
 export type Path = {
@@ -5,7 +6,7 @@ export type Path = {
   href: string
 }
 
-const paths = ['home', 'projects', 'about', 'contact'] as const
+const paths = ['home', 'projects', 'about'] as const
 
 export async function navigationPaths() {
   const t = await getTranslations('navigation')
