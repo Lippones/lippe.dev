@@ -27,60 +27,62 @@ export function Header({ paths, hireMe }: HeaderProps) {
   const currentPath = pathname.split('/')[2]
 
   return (
-    <header className="mx-auto flex h-[10vh] w-full max-w-screen-2xl items-center justify-between px-4 md:px-8">
-      <div className="flex items-center gap-4">
-        <Link href="/">
-          <Image src="/logo.svg" width={40} height={40} alt="Logo" />
-        </Link>
+    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/60 px-4 backdrop-blur-sm">
+      <div className="mx-auto flex h-[10vh] w-full max-w-screen-2xl items-center justify-between md:px-8">
+        <div className="flex items-center gap-4">
+          <Link href="/">
+            <Image src="/logo.svg" width={40} height={40} alt="Logo" />
+          </Link>
+          <Button
+            variant={'outline'}
+            className="border-dashed border-foreground"
+            asChild
+          >
+            <Link href={hireMe.href}>{hireMe.text}</Link>
+          </Button>
+        </div>
+        <nav>
+          <ul className="flex gap-8 max-md:hidden">
+            {paths.map((path) => {
+              const matchesPathName =
+                currentPath === undefined && path.href === '/'
+                  ? true
+                  : `/${currentPath}` === path.href
+              return (
+                <li key={path.label}>
+                  <Magnetic>
+                    <Link
+                      className={`group flex max-w-fit flex-col-reverse items-center gap-2 tracking-wide before:top-8 before:h-2 before:w-2 before:rounded-full before:bg-primary ${matchesPathName ? 'before:absolute' : 'before:hidden'}`}
+                      href={path.href}
+                    >
+                      {path.label}
+                    </Link>
+                  </Magnetic>
+                </li>
+              )
+            })}
+          </ul>
+        </nav>
         <Button
-          variant={'outline'}
-          className="border-dashed border-foreground"
-          asChild
+          onClick={() => {
+            setOpen((state) => !state)
+          }}
+          variant="ghost"
+          size={'icon'}
+          className="md:hidden"
         >
-          <Link href={hireMe.href}>{hireMe.text}</Link>
+          <Menu className="h-5 w-5" />
         </Button>
+        <AnimatePresence mode="wait">
+          {open && (
+            <NavBar
+              paths={paths}
+              pathname={pathname}
+              handleOpenChange={setOpen}
+            />
+          )}
+        </AnimatePresence>
       </div>
-      <nav>
-        <ul className="flex gap-8 max-md:hidden">
-          {paths.map((path) => {
-            const matchesPathName =
-              currentPath === undefined && path.href === '/'
-                ? true
-                : `/${currentPath}` === path.href
-            return (
-              <li key={path.label}>
-                <Magnetic>
-                  <Link
-                    className={`group flex max-w-fit flex-col-reverse items-center gap-2 tracking-wide before:h-2 before:w-2 before:rounded-full before:bg-primary ${matchesPathName ? 'before:block' : 'before:hidden'}`}
-                    href={path.href}
-                  >
-                    {path.label}
-                  </Link>
-                </Magnetic>
-              </li>
-            )
-          })}
-        </ul>
-      </nav>
-      <Button
-        onClick={() => {
-          setOpen((state) => !state)
-        }}
-        variant="ghost"
-        size={'icon'}
-        className="md:hidden"
-      >
-        <Menu className="h-5 w-5" />
-      </Button>
-      <AnimatePresence mode="wait">
-        {open && (
-          <NavBar
-            paths={paths}
-            pathname={pathname}
-            handleOpenChange={setOpen}
-          />
-        )}
-      </AnimatePresence>
     </header>
   )
 }

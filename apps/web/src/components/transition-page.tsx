@@ -13,14 +13,14 @@ export function TransitionPage({ children }: { children: React.ReactNode }) {
           animate={{ scaleY: 0 }}
           exit={{ scaleY: 1 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute left-0 top-0 h-screen w-full origin-bottom bg-white"
+          className="absolute left-0 top-0 z-[9999] h-screen w-full origin-bottom bg-white"
         />
         <motion.div
           initial={{ scaleY: 1 }}
           animate={{ scaleY: 0 }}
           exit={{ scaleY: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute left-0 top-0 h-screen w-full origin-top bg-white"
+          className="absolute left-0 top-0 z-[9999] h-screen w-full origin-top bg-white"
         />
       </motion.div>
     </AnimatePresence>
