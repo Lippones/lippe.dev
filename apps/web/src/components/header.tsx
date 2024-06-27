@@ -52,7 +52,7 @@ export function Header({ paths, hireMe }: HeaderProps) {
                 <li key={path.label}>
                   <Magnetic>
                     <Link
-                      className={`group flex max-w-fit flex-col-reverse items-center gap-2 tracking-wide before:top-8 before:h-2 before:w-2 before:rounded-full before:bg-primary ${matchesPathName ? 'before:absolute' : 'before:hidden'}`}
+                      className={`group flex max-w-fit flex-col-reverse items-center gap-2 tracking-wide before:h-2 before:w-2 before:rounded-full before:bg-primary ${matchesPathName ? 'before:absolute before:top-8' : 'before:hidden'}`}
                       href={path.href}
                     >
                       {path.label}
