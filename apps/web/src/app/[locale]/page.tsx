@@ -21,7 +21,15 @@ export default async function Home({ params: { locale } }: HomePageProps) {
 
   const t = await getTranslations('pages')
 
-  const projects = ['EventFlow', 'DoBrasil', 'DEJORD', 'DevStore'] as const
+  const projects = [
+    'EventFlow',
+    'PeriniCabinets',
+    'DoBrasil',
+    'DEJORD',
+    'IgniteCall',
+    'Habits',
+    'DevStore',
+  ] as const
 
   const projectData = projects.map((project) => {
     return {

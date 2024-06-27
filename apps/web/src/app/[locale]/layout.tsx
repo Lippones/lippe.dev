@@ -47,19 +47,15 @@ export default async function RootLayout({
 
   unstable_setRequestLocale(locale)
 
-  const [paths, t] = await Promise.all([
-    navigationPaths(),
-    getTranslations('development-alert'),
-  ])
+  const [paths, t] = await Promise.all([navigationPaths(), getTranslations()])
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${inter.variable} ${nexa.variable}`}>
         <Providers
-          developmentAlert={{
-            title: t('title'),
-            button: t('button'),
-            description: t('description'),
+          hireMe={{
+            text: t('navigation.hire.label'),
+            href: t('navigation.hire.href'),
           }}
           paths={paths}
           locale={locale}

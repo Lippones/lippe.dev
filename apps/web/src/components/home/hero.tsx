@@ -1,4 +1,5 @@
 import { MoveRight } from 'lucide-react'
+import Link from 'next/link'
 
 import { Button } from '../ui/button'
 
@@ -20,14 +21,17 @@ export function Hero({ contact, description, getToKnowMe, title }: HeroProps) {
           </p>
         </div>
         <div className="mt-6 flex items-center gap-4">
-          <Button>
-            {getToKnowMe} <MoveRight className="ml-2" />
+          <Button asChild>
+            <Link href="/about">
+              {getToKnowMe} <MoveRight className="ml-2" />
+            </Link>
           </Button>
           <Button
             variant={'outline'}
             className="border-dashed border-foreground"
+            asChild
           >
-            {contact}
+            <Link href="#footer">{contact}</Link>
           </Button>
         </div>
       </div>
