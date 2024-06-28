@@ -1,7 +1,6 @@
 {
   "name": "server",
   "module": "src/index.ts",
-  "type": "module",
   "scripts": {
     "dev": "bun --watch src/http/server.ts",
     "build": "bun build src/http/server.ts",
