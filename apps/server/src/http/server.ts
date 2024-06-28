@@ -18,12 +18,12 @@ app.setSerializerCompiler(serializerCompiler)
 app.setValidatorCompiler(validatorCompiler)
 
 app.register(fastifyCors, {
-  origin: '*',
+  origin: ['https://lippe.dev', 'http://localhost:3000'],
 })
 
 app.register(fastifyIO, {
   cors: {
-    origin: '*',
+    origin: ['https://lippe.dev', 'http://localhost:3000'],
   },
 })
 
