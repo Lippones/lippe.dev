@@ -1,23 +1,52 @@
 import fastifyCors from '@fastify/cors'
+import fastifySwagger from '@fastify/swagger'
+import fastifySwaggerUi from '@fastify/swagger-ui'
 import fastify from 'fastify'
+import fastifyIO from 'fastify-socket.io'
 import {
+  jsonSchemaTransform,
   serializerCompiler,
   validatorCompiler,
   type ZodTypeProvider,
 } from 'fastify-type-provider-zod'
 
-const app = fastify({
-  logger: true,
-}).withTypeProvider<ZodTypeProvider>()
+import { currentPlayingTrack } from './routes/spotify/current-playing-track'
+
+const app = fastify({}).withTypeProvider<ZodTypeProvider>()
 
 app.setSerializerCompiler(serializerCompiler)
 app.setValidatorCompiler(validatorCompiler)
 
-app.register(fastifyCors)
+app.register(fastifyCors, {
+  origin: '*',
+})
 
-app.get('/', async () => {
+app.register(fastifyIO, {
+  cors: {
+    origin: '*',
+  },
+})
+
+app.register(fastifySwagger, {
+  openapi: {
+    info: {
+      title: 'Lippe.dev API',
+      version: '1.0.0',
+    },
+    servers: [],
+  },
+  transform: jsonSchemaTransform,
+})
+
+app.register(fastifySwaggerUi, {
+  routePrefix: '/docs',
+})
+
+app.withTypeProvider<ZodTypeProvider>().get('/health', async () => {
   return 'Health check'
 })
+
+app.register(currentPlayingTrack)
 
 app
   .listen({
