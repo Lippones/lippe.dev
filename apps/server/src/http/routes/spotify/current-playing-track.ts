@@ -1,7 +1,7 @@
 import type { FastifyInstance } from 'fastify'
 
-import { getCurrentPlayingTrackInSpotify } from '@/utils/get-current-track-spotify'
-import { startGlobalTimer } from '@/utils/global-timer'
+import { getCurrentPlayingTrackInSpotify } from '../../../utils/get-current-track-spotify'
+import { startGlobalTimer } from '../../../utils/global-timer'
 
 export async function currentPlayingTrack(app: FastifyInstance) {
   app.after(async () => {
