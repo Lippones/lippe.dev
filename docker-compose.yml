@@ -1,0 +1,12 @@
+services:
+  server:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - PROJECT=server
+    env_file:
+      - .env
+    ports:
+      - "3333:3333"
+    
