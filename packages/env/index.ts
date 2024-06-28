@@ -13,6 +13,7 @@ export const env = createEnv({
   },
   client: {
     NEXT_PUBLIC_URL: z.string().url(),
+    NEXT_PUBLIC_API_URL: z.string().url(),
   },
   runtimeEnv: {
     SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
@@ -23,5 +24,6 @@ export const env = createEnv({
     AUTH_SECRET: process.env.AUTH_SECRET,
     SPOTIFY_EMAIL: process.env.SPOTIFY_EMAIL,
     NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL,
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
   },
 })

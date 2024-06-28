@@ -46,6 +46,7 @@
     "react-icons": "^5.2.1",
     "resend": "^3.3.0",
     "sharp": "^0.33.4",
+    "socket.io-client": "^4.7.5",
     "sonner": "^1.5.0",
     "swr": "^2.2.5",
     "tailwind-merge": "^2.3.0",

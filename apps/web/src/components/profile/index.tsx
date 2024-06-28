@@ -1,8 +1,9 @@
 'use client'
 
+import { env } from '@lippe/env'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
-import useSWR from 'swr'
+import { io } from 'socket.io-client'
 
 import { SpotifyCurrentTrackResponse } from '@/services/spotify/types'
 
@@ -15,23 +16,21 @@ import { SpotifyCard } from './spotify-card'
 
 export const dynamic = 'force-dynamic'
 
+const socket = io(env.NEXT_PUBLIC_API_URL)
+
 export function Profile() {
+  const [data, setData] = useState<SpotifyCurrentTrackResponse | null>(null)
   const [open, setOpen] = useState(false)
   const [currentTime, setCurrentTime] = useState<number | null>(null)
   const [percentageCompleted, setPercentageCompleted] = useState<number | null>(
     null,
   )
-  const fetcher = (url: string) =>
-    fetch(url, {
-      cache: 'no-cache',
-    }).then((r) => r.json())
 
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
-  const { data, mutate } = useSWR<SpotifyCurrentTrackResponse>('/api/spotify', {
-    refreshInterval: 1000 * 5, // 5 seconds
-    loadingTimeout: 0,
-    fetcher,
+  socket.on('current-track', (data: SpotifyCurrentTrackResponse) => {
+    setCurrentTime(data.progress_ms)
+    setData(data)
   })
 
   function handlePlayPreview(play: boolean) {
@@ -55,10 +54,6 @@ export function Profile() {
       const interval = setInterval(() => {
         setCurrentTime((prev) => {
           if (prev !== null) {
-            if (prev >= data?.item?.duration_ms) {
-              mutate() // Invalida a query quando a música termina
-              return data?.item?.duration_ms
-            }
             return prev + 1000
           }
           return null
@@ -67,7 +62,7 @@ export function Profile() {
 
       return () => clearInterval(interval)
     }
-  }, [data, mutate])
+  }, [data])
 
   useEffect(() => {
     if (currentTime !== null && data) {

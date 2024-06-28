@@ -14,5 +14,11 @@
     "packages/*",
     "config/*"
   ],
-  "packageManager": "bun@1.1.15"
+  "packageManager": "bun@1.1.15",
+  "dependencies": {
+    "@fastify/swagger": "^8.14.0",
+    "@fastify/swagger-ui": "^4.0.0",
+    "axios": "^1.7.2",
+    "socket.io": "^4.7.5"
+  }
 }
