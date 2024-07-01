@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { cn } from '@/lib/utils'
+
 import { Badge } from '../ui/badge'
 
 interface ProjectCardProps {
@@ -12,15 +14,17 @@ interface ProjectCardProps {
   }
   tags: string[]
   showDescription?: boolean
+  className?: string
 }
 
 export function ProjectCard({
   project,
   tags,
   showDescription,
+  className,
 }: ProjectCardProps) {
   return (
-    <div className="project w-full text-zinc-950 md:max-w-[600px]">
+    <div className={cn('w-full text-zinc-950 md:max-w-[600px]', className)}>
       <Link
         href={`/project/${project.slug}`}
         className="relative w-full before:absolute before:inset-0 before:h-full before:w-full before:bg-gradient-to-t before:from-background/50 before:to-transparent"

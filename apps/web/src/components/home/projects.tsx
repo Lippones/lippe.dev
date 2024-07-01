@@ -80,6 +80,7 @@ export function Projects({
                         slug,
                       }}
                       tags={tags}
+                      className="md:w-[500px]"
                     />
                   </li>
                 ),

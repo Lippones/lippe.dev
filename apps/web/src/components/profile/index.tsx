@@ -1,11 +1,9 @@
 'use client'
 
-import { env } from '@lippe/env'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
-import { io } from 'socket.io-client'
 
-import { SpotifyCurrentTrackResponse } from '@/services/spotify/types'
+import { currentTrackStore } from '@/context/current-track'
 
 import { Badge } from '../ui/badge'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '../ui/hover-card'
@@ -16,10 +14,16 @@ import { SpotifyCard } from './spotify-card'
 
 export const dynamic = 'force-dynamic'
 
-const socket = io(env.NEXT_PUBLIC_API_URL)
-
 export function Profile() {
-  const [data, setData] = useState<SpotifyCurrentTrackResponse | null>(null)
+  const { currentTrack, startConnection } = currentTrackStore((state) => ({
+    startConnection: state.startConnection,
+    currentTrack: state.currentTrack,
+  }))
+
+  useEffect(() => {
+    startConnection()
+  }, [])
+
   const [open, setOpen] = useState(false)
   const [currentTime, setCurrentTime] = useState<number | null>(null)
   const [percentageCompleted, setPercentageCompleted] = useState<number | null>(
@@ -27,11 +31,6 @@ export function Profile() {
   )
 
   const audioRef = useRef<HTMLAudioElement | null>(null)
-
-  socket.on('current-track', (data: SpotifyCurrentTrackResponse) => {
-    setCurrentTime(data.progress_ms)
-    setData(data)
-  })
 
   function handlePlayPreview(play: boolean) {
     const audio = audioRef.current
@@ -47,8 +46,8 @@ export function Profile() {
   }
 
   useEffect(() => {
-    if (data) {
-      const progressMs = data.progress_ms
+    if (currentTrack) {
+      const progressMs = currentTrack.progress_ms
       setCurrentTime(progressMs)
 
       const interval = setInterval(() => {
@@ -62,33 +61,40 @@ export function Profile() {
 
       return () => clearInterval(interval)
     }
-  }, [data])
+  }, [currentTrack])
 
   useEffect(() => {
-    if (currentTime !== null && data) {
-      const durationMs = data.item.duration_ms
+    if (currentTime !== null && currentTrack && currentTrack.is_playing) {
+      const durationMs = currentTrack.item.duration_ms
       const percentage = (currentTime / durationMs) * 100
       setPercentageCompleted(percentage)
     }
-  }, [currentTime, data])
+  }, [currentTime, currentTrack])
 
-  const profileStatus = data ? (data.is_playing ? 'online' : 'away') : 'offline'
+  const profileStatus = currentTrack
+    ? currentTrack.is_playing
+      ? 'online'
+      : 'away'
+    : 'offline'
 
   return (
     <div className="sticky bottom-4 left-0 mx-auto w-full max-w-screen-2xl px-4 pb-10 md:px-8">
       <div className="relative max-w-fit">
-        {data && data.is_playing && (
+        {currentTrack && currentTrack.is_playing && (
           <>
-            <audio ref={audioRef} src={data.item.preview_url} />
-            <Link href={data.item.external_urls.spotify} target="_blank">
+            <audio ref={audioRef} src={currentTrack.item.preview_url} />
+            <Link
+              href={currentTrack.item.external_urls.spotify}
+              target="_blank"
+            >
               <Badge
                 variant={'secondary'}
                 className="absolute -bottom-10 z-10 inline-flex max-w-[160px] cursor-pointer flex-nowrap overflow-hidden rounded-full border border-zinc-600 p-2"
               >
-                <BadgeSpotify currentTime={currentTime} data={data} />
+                <BadgeSpotify currentTime={currentTime} data={currentTrack} />
                 <BadgeSpotify
                   currentTime={currentTime}
-                  data={data}
+                  data={currentTrack}
                   aria-hidden="true"
                 />
               </Badge>
@@ -137,10 +143,10 @@ export function Profile() {
               </p>
             </div>
             <Separator />
-            {data && data.is_playing && (
+            {currentTrack && currentTrack.is_playing && (
               <SpotifyCard
                 currentTime={currentTime}
-                data={data}
+                data={currentTrack}
                 percentageCompleted={percentageCompleted}
               />
             )}

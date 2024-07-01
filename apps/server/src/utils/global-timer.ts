@@ -9,6 +9,7 @@ export function startGlobalTimer(io: Server) {
     return
   }
 
+  console.log('Starting global timer')
   globalTimer = setInterval(async () => {
     try {
       const track = await getCurrentPlayingTrackInSpotify()
@@ -17,4 +18,11 @@ export function startGlobalTimer(io: Server) {
       console.error('Error fetching track:')
     }
   }, 5000)
+}
+
+export function stopGlobalTimer() {
+  if (globalTimer) {
+    clearInterval(globalTimer)
+    globalTimer = null
+  }
 }
