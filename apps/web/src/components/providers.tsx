@@ -30,17 +30,17 @@ export function Providers({ children, locale, paths, hireMe }: ProvidersProps) {
       <InternalizationProvider locale={locale}>
         <ThemeProvider attribute="class" forcedTheme="dark" defaultTheme="dark">
           <LenisScrollProvider>
-            <TransitionPage>
-              <div className="flex min-h-screen flex-1 flex-col pb-6">
-                <Header paths={paths} hireMe={hireMe} />
-                {children}
-                <Analytics />
-                <Toaster />
-                <ThanksInviteDialog />
-                <Footer />
-              </div>
-              <Profile />
-            </TransitionPage>
+            {/* <TransitionPage> */}
+            <div className="flex min-h-screen flex-1 flex-col pb-6">
+              <Header paths={paths} hireMe={hireMe} />
+              {children}
+              <Analytics />
+              <Toaster />
+              <ThanksInviteDialog />
+              <Footer />
+            </div>
+            <Profile />
+            {/* </TransitionPage> */}
           </LenisScrollProvider>
         </ThemeProvider>
       </InternalizationProvider>
