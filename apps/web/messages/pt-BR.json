@@ -66,6 +66,20 @@
         }
       }
     },
+    "guestbook": {
+      "title": "Livro de visitas",
+      "description": "Olá, espero que tenha gostado do meu site, deixe seu rastro aqui, caso não saiba o que falar, apenas deixe uma piada. Estou aberto a sugestões e críticas construtivas.",
+      "form": {
+        "message": "Escreva sua mensagem...",
+        "button": "Faça login para deixar uma mensagem",
+        "logged": "Enviar mensagem",
+        "error": "A mensagem deve ter no mínimo 10 caracteres."
+      },
+      "loginOptions": {
+        "title": "Escolha uma opção de login",
+        "description": "Você pode logar utilizando uma das opções abaixo, irei solicitar apenas informações públicas. Não precisa se preocupar em perder a mensagem que já escreveu e poderá excluir a qualquer momento."
+      }
+    },
     "about": {
       "title": "Sobre mim",
       "description": "Sim, este sou eu",
@@ -142,6 +156,10 @@
     "projects": {
       "label": "Projetos",
       "href": "/projects"
+    },
+    "guestbook": {
+      "label": "Livro de visitas",
+      "href": "/guestbook"
     },
     "about": {
       "label": "Sobre mim",

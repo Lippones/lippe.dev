@@ -22,6 +22,13 @@
       "when": 1719335327786,
       "tag": "0002_empty_kang",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1720108769514,
+      "tag": "0003_demonic_silver_fox",
+      "breakpoints": true
     }
   ]
 }

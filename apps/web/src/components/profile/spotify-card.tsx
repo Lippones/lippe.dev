@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { SpotifyCurrentTrackResponse } from '@/services/spotify/types'
+import { SpotifyCurrentTrackResponse } from '@/@types/spotify-response'
 import { formatMilliseconds } from '@/utils/format-milliseconds'
 
 import { Progress } from '../ui/progress'

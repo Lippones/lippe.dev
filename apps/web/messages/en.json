@@ -66,6 +66,20 @@
         }
       }
     },
+    "guestbook": {
+      "title": "Guestbook",
+      "description": "Hello, I hope you liked my website, leave your trace here, if you don't know what to say, just leave a joke. I am open to suggestions and constructive criticism.",
+      "form": {
+        "message": "Write your message...",
+        "button": "Log in to leave a message",
+        "logged": "Send message",
+        "error": "The message must have at least 10 characters."
+      },
+      "loginOptions": {
+        "title": "Choose a login option",
+        "description": "You can log in using one of the options below, I will only request public information. You don't have to worry about losing the message you've already written and you can delete it at any time."
+      }
+    },
     "about": {
       "title": "About me",
       "description": "Yes, this is me",
@@ -142,6 +156,10 @@
     "projects": {
       "label": "Projects",
       "href": "/projects"
+    },
+    "guestbook": {
+      "label": "Guestbook",
+      "href": "/guestbook"
     },
     "about": {
       "label": "About",

@@ -22,6 +22,7 @@ export function Profile() {
 
   useEffect(() => {
     startConnection()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const [open, setOpen] = useState(false)
@@ -79,7 +80,11 @@ export function Profile() {
 
   return (
     <div className="sticky bottom-4 left-0 mx-auto w-full max-w-screen-2xl px-4 pb-10 md:px-8">
-      <div className="relative max-w-fit">
+      <div
+        className="relative max-w-fit"
+        onMouseEnter={() => handlePlayPreview(true)}
+        onMouseLeave={() => handlePlayPreview(false)}
+      >
         {currentTrack && currentTrack.is_playing && (
           <>
             <audio ref={audioRef} src={currentTrack.item.preview_url} />
@@ -106,8 +111,8 @@ export function Profile() {
           closeDelay={200}
           open={open}
           onOpenChange={(value) => {
+            // handlePlayPreview(value)
             setOpen(value)
-            handlePlayPreview(value)
           }}
         >
           <HoverCardTrigger className="rounded-full">

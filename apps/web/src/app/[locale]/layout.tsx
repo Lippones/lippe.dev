@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import '../globals.css'
 
+import { env } from '@lippe/env'
 import { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
@@ -79,7 +80,10 @@ export async function generateMetadata({
   const messages = await import(`/messages/${locale}.json`)
   const t = createTranslator({ locale, messages })
 
-  const languages: Record<string, URL> = {}
+  const languages = {
+    en: '/en',
+    'pt-BR': '/pt-BR',
+  }
 
   return {
     title: {
@@ -95,7 +99,9 @@ export async function generateMetadata({
     creator: 'Filipe Vieira',
     publisher: userData.name,
     alternates: {
+      canonical: '/',
       languages,
     },
+    metadataBase: new URL(env.NEXT_PUBLIC_URL),
   }
 }
