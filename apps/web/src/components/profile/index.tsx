@@ -22,6 +22,7 @@ export function Profile() {
 
   useEffect(() => {
     startConnection()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const [open, setOpen] = useState(false)

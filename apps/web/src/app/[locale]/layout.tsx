@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import '../globals.css'
 
+import { env } from '@lippe/env'
 import { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
@@ -97,5 +98,6 @@ export async function generateMetadata({
     alternates: {
       languages,
     },
+    metadataBase: new URL(env.NEXT_PUBLIC_URL),
   }
 }

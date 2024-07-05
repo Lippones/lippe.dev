@@ -13,8 +13,6 @@ api.interceptors.request.use(
   async (config) => {
     const token = await generateJWTSession()
 
-    console.log(token)
-
     if (token) {
       config.headers.Authorization = `Bearer ${token}`
     }
