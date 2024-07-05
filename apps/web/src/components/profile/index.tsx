@@ -35,12 +35,9 @@ export function Profile() {
   function handlePlayPreview(play: boolean) {
     const audio = audioRef.current
 
-    console.log('handlePlayPreview', audio)
-
     if (!audio) return
 
     if (play) {
-      console.log('play')
       audio.play()
       audio.volume = 0.1
     } else {

@@ -2,12 +2,13 @@ import { DrizzleAdapter } from '@auth/drizzle-adapter'
 import { db } from '@lippe/drizzle'
 import { NextAuthConfig, Session } from 'next-auth'
 
+import { DiscordProvider } from './providers/discord-provider'
 import { GithubProvider } from './providers/github-provider'
 import { SpotifyProvider } from './providers/spotify-provider'
 
 export const authConfig = {
   adapter: DrizzleAdapter(db),
-  providers: [SpotifyProvider, GithubProvider],
+  providers: [SpotifyProvider, GithubProvider, DiscordProvider],
   callbacks: {
     jwt({ token, user, session, trigger }) {
       if (user) {

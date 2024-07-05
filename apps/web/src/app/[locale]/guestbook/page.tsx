@@ -1,15 +1,35 @@
+import { notFound } from 'next/navigation'
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
+import { Suspense } from 'react'
+
+import { availableLocales } from '@/config'
+
 import { GuestBook } from './guest-book'
 
-export default function Page() {
+interface PageProps {
+  params: {
+    locale: string
+  }
+}
+
+export default async function Page({ params: { locale } }: PageProps) {
+  unstable_setRequestLocale(locale)
+
+  if (!availableLocales.some((l) => l.locale === locale)) {
+    return notFound()
+  }
+
+  const t = await getTranslations('pages.guestbook')
+
   return (
     <div className="mx-auto min-h-screen w-full max-w-screen-2xl px-4 py-10 md:px-8">
-      <h1 className="text-4xl font-bold">Guestbook</h1>
+      <h1 className="text-4xl font-bold">{t('title')}</h1>
       <p className="mt-2 max-w-[800px] text-pretty text-sm text-muted-foreground">
-        Olá, espero que tenha gostado do meu site, deixe seu rastro aqui, caso
-        não saiba o que falar, apenas deixe uma piada. Estou aberto a sugestões
-        e críticas construtivas.
+        {t('description')}
       </p>
-      <GuestBook />
+      <Suspense fallback={<div>Loading</div>}>
+        <GuestBook />
+      </Suspense>
     </div>
   )
 }

@@ -1,9 +1,13 @@
 'use client'
+import { useMutation } from '@tanstack/react-query'
 import { formatDistance } from 'date-fns'
+import { Trash2 } from 'lucide-react'
 import { useState } from 'react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { deleteMessage } from '@/services/guestbook'
 import { Message } from '@/services/guestbook/types'
 
 interface MessageListProps {
@@ -11,7 +15,18 @@ interface MessageListProps {
 }
 
 export function MessageList({ messages }: MessageListProps) {
-  const amountOfWords = 36
+  const [filteredMessages, setFilteredMessages] = useState<Message[]>(messages)
+
+  const { mutate: handleDeleteMessage } = useMutation({
+    mutationKey: ['deleteMessage'],
+    mutationFn: deleteMessage,
+    onMutate(props) {
+      setFilteredMessages(
+        messages.filter((message) => message.guestbook.id !== props.id),
+      )
+    },
+  })
+  const amountOfWords = 124
 
   const [isExpanded, setIsExpanded] = useState<boolean[]>([])
 
@@ -25,14 +40,17 @@ export function MessageList({ messages }: MessageListProps) {
 
   return (
     <ul className="flex flex-col divide-y overflow-hidden rounded-md border-y">
-      {messages.map(
-        ({ user, guestbook: { id, message, createdAt } }, index) => {
+      {filteredMessages.map(
+        ({ user, guestbook: { id, message, authorId, createdAt } }, index) => {
           const splittedText = message.split(' ')
           const itCanOverflow = splittedText.length > amountOfWords
           const beginText = itCanOverflow
             ? splittedText.slice(0, amountOfWords - 1).join(' ')
             : message
           const endText = splittedText.slice(amountOfWords - 1).join(' ')
+
+          const isOwnerOrAdmin =
+            user.email === 'filipe68ft@hotmail.com' || user.id === authorId
 
           return (
             <li key={id}>
@@ -60,6 +78,18 @@ export function MessageList({ messages }: MessageListProps) {
                           {formatDistance(createdAt, new Date())}
                         </span>
                       </div>
+                      {isOwnerOrAdmin && (
+                        <Button
+                          variant={'ghost'}
+                          size={'icon'}
+                          className="ml-auto"
+                          onClick={() => {
+                            handleDeleteMessage({ id })
+                          }}
+                        >
+                          <Trash2 className="size-4 text-destructive" />
+                        </Button>
+                      )}
                     </div>
                   </CardTitle>
                 </CardHeader>

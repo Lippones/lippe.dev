@@ -4,10 +4,12 @@ import { auth, signIn } from '@lippe/auth'
 import { env } from '@lippe/env'
 import { sign } from 'jsonwebtoken'
 
-type Providers = 'spotify' | 'github'
+type Providers = 'spotify' | 'github' | 'discord'
 
-export async function signInProvider(provider: Providers) {
-  return signIn(provider)
+export async function signInProvider(provider: Providers, redirect?: string) {
+  return signIn(provider, {
+    redirectTo: redirect,
+  })
 }
 
 // TODO: refactor this function in the future

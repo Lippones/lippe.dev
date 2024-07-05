@@ -20,3 +20,21 @@ export async function getMessages({ page, perPage }: GetMessagesProps) {
 
   return data
 }
+
+interface SendMessageProps {
+  message: string
+}
+
+export async function sendMessage({ message }: SendMessageProps) {
+  await api.post('/guestbook', {
+    message,
+  })
+}
+
+interface DeleteMessageProps {
+  id: string
+}
+
+export async function deleteMessage({ id }: DeleteMessageProps) {
+  await api.delete(`/guestbook/${id}`)
+}

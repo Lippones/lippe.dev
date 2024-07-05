@@ -13,12 +13,15 @@ export const env = createEnv({
     SPOTIFY_EMAIL: z.string().email(),
     GITHUB_CLIENT_ID: z.string(),
     GITHUB_CLIENT_SECRET: z.string(),
+    DISCORD_CLIENT_ID: z.string(),
+    DISCORD_CLIENT_SECRET: z.string(),
   },
   client: {
     NEXT_PUBLIC_URL: z.string().url(),
     NEXT_PUBLIC_API_URL: z.string().url(),
   },
   runtimeEnv: {
+    NODE_ENV: process.env.NODE_ENV,
     SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
     SPOTIFY_SECRET: process.env.SPOTIFY_SECRET,
     RESEND_API_KEY: process.env.RESEND_API_KEY, 
@@ -30,6 +33,7 @@ export const env = createEnv({
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
     GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
     GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
-    NODE_ENV: process.env.NODE_ENV,
+    DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
+    DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
   },
 })
