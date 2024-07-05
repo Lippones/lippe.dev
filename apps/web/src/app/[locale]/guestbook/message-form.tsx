@@ -70,7 +70,9 @@ export function MessageForm({ isAuthenticated }: MessageFormProps) {
           placeholder="Escreva sua mensagem..."
         />
         <div className="flex">
-          {errors.message && <span>Error</span>}
+          {errors.message && (
+            <span className="mt-2 text-sm text-red-500">{t('form.error')}</span>
+          )}
           <span className="ml-auto mt-2 text-xs text-muted-foreground">
             {message?.length || 0}/{MAX_MESSAGE_LENGTH}
           </span>
@@ -80,7 +82,7 @@ export function MessageForm({ isAuthenticated }: MessageFormProps) {
         <Button
           className="ml-auto mt-2"
           disabled={isSubmitting}
-          type={message?.length >= 10 ? 'submit' : 'button'}
+          type={'submit'}
         >
           {isSubmitting && <Loader2 className="mr-2 size-4 animate-spin" />}{' '}
           {t('form.logged')}

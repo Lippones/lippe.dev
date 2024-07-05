@@ -5,6 +5,7 @@ import { Suspense } from 'react'
 import { availableLocales } from '@/config'
 
 import { GuestBook } from './guest-book'
+import { GuestSkeleton } from './guest-skeleton'
 
 interface PageProps {
   params: {
@@ -27,7 +28,7 @@ export default async function Page({ params: { locale } }: PageProps) {
       <p className="mt-2 max-w-[800px] text-pretty text-sm text-muted-foreground">
         {t('description')}
       </p>
-      <Suspense fallback={<div>Loading</div>}>
+      <Suspense fallback={<GuestSkeleton />}>
         <GuestBook />
       </Suspense>
     </div>

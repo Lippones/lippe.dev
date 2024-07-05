@@ -1,4 +1,5 @@
 'use client'
+import type { Session } from '@lippe/auth'
 import { useMutation } from '@tanstack/react-query'
 import { formatDistance } from 'date-fns'
 import { Trash2 } from 'lucide-react'
@@ -12,9 +13,10 @@ import { Message } from '@/services/guestbook/types'
 
 interface MessageListProps {
   messages: Message[]
+  session: Session | null
 }
 
-export function MessageList({ messages }: MessageListProps) {
+export function MessageList({ messages, session }: MessageListProps) {
   const [filteredMessages, setFilteredMessages] = useState<Message[]>(messages)
 
   const { mutate: handleDeleteMessage } = useMutation({
@@ -50,7 +52,8 @@ export function MessageList({ messages }: MessageListProps) {
           const endText = splittedText.slice(amountOfWords - 1).join(' ')
 
           const isOwnerOrAdmin =
-            user.email === 'filipe68ft@hotmail.com' || user.id === authorId
+            session?.user.email === 'filipe68ft@hotmail.com' ||
+            session?.user.id === authorId
 
           return (
             <li key={id}>

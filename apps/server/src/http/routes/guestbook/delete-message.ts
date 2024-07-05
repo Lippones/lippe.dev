@@ -32,14 +32,21 @@ export async function deleteMessage(app: FastifyInstance) {
           return reply.status(401).send({ message: 'Unauthorized' })
         }
 
-        const user = await db.query.users.findFirst({
-          where(fields) {
-            return eq(fields.id, id)
-          },
-        })
+        const [user, message] = await Promise.all([
+          db.query.users.findFirst({
+            where(fields) {
+              return eq(fields.id, id)
+            },
+          }),
+          db.query.guestbooks.findFirst({
+            where(fields) {
+              return eq(fields.id, messageId)
+            },
+          }),
+        ])
 
         const isOwner =
-          user?.id === id || user?.email === 'filipe68ft@hotmail.com'
+          message?.authorId === id || user?.email === 'filipe68ft@hotmail.com'
 
         if (!isOwner) {
           return reply.status(401).send({ message: 'Unauthorized' })
