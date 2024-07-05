@@ -1,4 +1,4 @@
-import { count, db, eq } from '@lippe/drizzle'
+import { count, db, desc, eq } from '@lippe/drizzle'
 import { guestbooks, users } from '@lippe/drizzle/schema'
 import type { FastifyInstance } from 'fastify'
 import type { ZodTypeProvider } from 'fastify-type-provider-zod'
@@ -26,7 +26,8 @@ export async function getMessage(app: FastifyInstance) {
           .from(guestbooks)
           .leftJoin(users, eq(guestbooks.authorId, users.id))
           .offset((page - 1) * perPage)
-          .limit(perPage),
+          .limit(perPage)
+          .orderBy(desc(guestbooks.createdAt)),
         db.select({ amount: count() }).from(guestbooks),
       ])
 

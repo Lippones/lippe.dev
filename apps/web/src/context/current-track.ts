@@ -1,8 +1,7 @@
-import { env } from '@lippe/env'
-import { io } from 'socket.io-client'
 import { create } from 'zustand'
 
 import { SpotifyCurrentTrackResponse } from '@/@types/spotify-response'
+import { socket } from '@/services/socket'
 
 interface CurrentTrackStore {
   currentTrack: SpotifyCurrentTrackResponse | null
@@ -14,11 +13,8 @@ export const currentTrackStore = create<CurrentTrackStore>((set, get) => ({
   currentTrack: null,
   connected: false,
   startConnection: () => {
-    if (get().connected) return
-
-    const socket = io(env.NEXT_PUBLIC_API_URL)
-
     socket.on('connect', () => {
+      if (get().connected || socket.connected) return
       console.log('Connected to the server')
       socket.emit('join')
       set({ connected: true })

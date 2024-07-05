@@ -44,9 +44,31 @@ export async function createMessage(app: FastifyInstance) {
           return reply.status(404).send({ message: 'User not found' })
         }
 
-        await db.insert(guestbooks).values({
-          authorId: id,
-          message,
+        const newMessage = await db
+          .insert(guestbooks)
+          .values({
+            authorId: id,
+            message,
+          })
+          .returning({
+            id: guestbooks.id,
+            message: guestbooks.message,
+            authorId: guestbooks.authorId,
+            createdAt: guestbooks.createdAt,
+            updatedAt: guestbooks.updatedAt,
+          })
+
+        app.io.emit('new-message', {
+          message: {
+            guestbook: newMessage[0],
+            user: {
+              id: user.id,
+              name: user.name,
+              email: user.email,
+              emailVerified: user.emailVerified,
+              image: user.image,
+            },
+          },
         })
 
         return reply.status(201).send()

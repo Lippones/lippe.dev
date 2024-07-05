@@ -2,12 +2,13 @@
 import type { Session } from '@lippe/auth'
 import { useMutation } from '@tanstack/react-query'
 import { formatDistance } from 'date-fns'
-import { Trash2 } from 'lucide-react'
-import { useState } from 'react'
+import { Loader2, Trash2 } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { guestbookStore } from '@/context/guest-book'
 import { deleteMessage } from '@/services/guestbook'
 import { Message } from '@/services/guestbook/types'
 
@@ -17,17 +18,30 @@ interface MessageListProps {
 }
 
 export function MessageList({ messages, session }: MessageListProps) {
-  const [filteredMessages, setFilteredMessages] = useState<Message[]>(messages)
+  const {
+    messages: filteredMessages,
+    setMessages,
+    startConnection,
+  } = guestbookStore((state) => ({
+    messages: state.messages,
+    startConnection: state.startConnection,
+    setMessages: state.setMessages,
+  }))
 
-  const { mutate: handleDeleteMessage } = useMutation({
-    mutationKey: ['deleteMessage'],
-    mutationFn: deleteMessage,
-    onMutate(props) {
-      setFilteredMessages(
-        messages.filter((message) => message.guestbook.id !== props.id),
-      )
-    },
-  })
+  useEffect(() => {
+    startConnection()
+  }, [])
+
+  useEffect(() => {
+    console.log('messages', messages)
+    setMessages(messages)
+  }, [messages, setMessages])
+
+  const { mutate: handleDeleteMessage, isPending: isDeletingMessage } =
+    useMutation({
+      mutationKey: ['deleteMessage'],
+      mutationFn: deleteMessage,
+    })
   const amountOfWords = 124
 
   const [isExpanded, setIsExpanded] = useState<boolean[]>([])
@@ -86,11 +100,16 @@ export function MessageList({ messages, session }: MessageListProps) {
                           variant={'ghost'}
                           size={'icon'}
                           className="ml-auto"
+                          disabled={isDeletingMessage}
                           onClick={() => {
                             handleDeleteMessage({ id })
                           }}
                         >
-                          <Trash2 className="size-4 text-destructive" />
+                          {isDeletingMessage ? (
+                            <Loader2 className="mr-2 size-4 animate-spin text-destructive" />
+                          ) : (
+                            <Trash2 className="size-4 text-destructive" />
+                          )}
                         </Button>
                       )}
                     </div>

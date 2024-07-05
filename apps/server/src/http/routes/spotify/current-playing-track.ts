@@ -11,26 +11,28 @@ export async function currentPlayingTrack(app: FastifyInstance) {
       socket.disconnect(true)
     })
     app.io.on('connection', (socket) => {
-      socket.on('join', () => {
-        if (connectedClients.has(socket.id)) {
-          console.log(`Client ${socket.id} is already in the room.`)
-          return
+      // socket.on('join', () => {
+      if (connectedClients.has(socket.id)) {
+        console.log(`Client ${socket.id} is already in the room.`)
+        return
+      }
+
+      connectedClients.add(socket.id)
+
+      console.info(`Client ${socket.id} joined the room.`)
+
+      const sendCurrentTrack = async () => {
+        try {
+          const track = await getCurrentPlayingTrackInSpotify()
+          socket.emit('current-track', track)
+        } catch (error) {
+          console.error('Error fetching initial track:')
         }
+      }
 
-        connectedClients.add(socket.id)
-
-        const sendCurrentTrack = async () => {
-          try {
-            const track = await getCurrentPlayingTrackInSpotify()
-            socket.emit('current-track', track)
-          } catch (error) {
-            console.error('Error fetching initial track:', error)
-          }
-        }
-
-        sendCurrentTrack()
-        startGlobalTimer(app.io)
-      })
+      sendCurrentTrack()
+      startGlobalTimer(app.io)
+      // })
 
       socket.on('disconnect', () => {
         connectedClients.delete(socket.id)

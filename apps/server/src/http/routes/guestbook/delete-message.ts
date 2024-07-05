@@ -52,7 +52,12 @@ export async function deleteMessage(app: FastifyInstance) {
           return reply.status(401).send({ message: 'Unauthorized' })
         }
 
-        await db.delete(guestbooks).where(eq(guestbooks.id, messageId))
+        const deletedMessage = await db
+          .delete(guestbooks)
+          .where(eq(guestbooks.id, messageId))
+          .returning()
+
+        app.io.emit('delete-message', { messageId: deletedMessage[0]?.id })
 
         return reply.status(200).send()
       },

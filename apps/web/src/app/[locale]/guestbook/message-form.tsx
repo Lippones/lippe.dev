@@ -2,7 +2,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
 import { Loader2 } from 'lucide-react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -27,7 +27,6 @@ interface MessageFormProps {
 
 export function MessageForm({ isAuthenticated }: MessageFormProps) {
   const searchParams = useSearchParams()
-  const router = useRouter()
 
   const defaultMessage = searchParams.get('message')
 
@@ -49,7 +48,6 @@ export function MessageForm({ isAuthenticated }: MessageFormProps) {
     mutationKey: ['createMessage'],
     mutationFn: sendMessage,
     onSuccess() {
-      router.refresh()
       reset()
     },
   })
