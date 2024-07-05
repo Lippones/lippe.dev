@@ -10,6 +10,8 @@ export const auth = fastifyPlugin(async (app: FastifyInstance) => {
       try {
         const session = await request.jwtVerify<Session>()
 
+        console.log(session)
+
         return session
       } catch (error) {
         throw new UnauthorizedError('Unauthorized')

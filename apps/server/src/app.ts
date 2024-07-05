@@ -27,6 +27,9 @@ app.register(fastifyCors, {
 
 app.register(fastifyJwt, {
   secret: env.AUTH_SECRET,
+  verify: {
+    algorithms: ['HS256'],
+  },
 })
 
 app.register(fastifyIO, {
@@ -49,7 +52,7 @@ app.setErrorHandler((error, _request, reply) => {
   }
 
   if (env.NODE_ENV !== 'production') {
-    console.log(error)
+    // console.log(error)
   } else {
     // TODO: Usar alguma ferramenta de log
   }

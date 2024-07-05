@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import { generateJWTSession } from '@/actions/auth'
 
-const apiUrl = new URL('/api', env.NEXT_PUBLIC_URL).href
+const apiUrl = env.NEXT_PUBLIC_API_URL
 
 export const api = axios.create({
   baseURL: apiUrl,

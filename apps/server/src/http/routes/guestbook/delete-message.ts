@@ -13,22 +13,33 @@ export async function createMessage(app: FastifyInstance) {
         summary: 'Delete message',
         params: z.object({
           messageId: z.string().uuid(),
-          userId: z.string().uuid(),
         }),
       },
     },
     async (request, reply) => {
-      const { messageId, userId } = request.params
+      const { messageId } = request.params
+
+      const {
+        user: { id },
+      } = await request.getCurrentUser()
+
+      if (!id) {
+        return reply.status(401).send({ message: 'Unauthorized' })
+      }
 
       const user = await db.query.users.findFirst({
         where(fields) {
-          return eq(fields.id, userId)
+          return eq(fields.id, id)
         },
       })
 
-      if (!user) {
+      const isOwner = user?.id === id
+
+      if (!isOwner) {
         return reply.status(404).send({ message: 'User not found' })
       }
+
+      await db.delete(guestbooks).where(eq(guestbooks.id, messageId))
 
       return reply.status(200).send()
     },
