@@ -2,7 +2,7 @@ import { env } from '@lippe/env'
 import { io } from 'socket.io-client'
 import { create } from 'zustand'
 
-import { SpotifyCurrentTrackResponse } from '@/services/spotify/types'
+import { SpotifyCurrentTrackResponse } from '@/@types/spotify-response'
 
 interface CurrentTrackStore {
   currentTrack: SpotifyCurrentTrackResponse | null

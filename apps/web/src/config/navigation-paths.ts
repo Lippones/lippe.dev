@@ -6,7 +6,7 @@ export type Path = {
   href: string
 }
 
-const paths = ['home', 'projects', 'about'] as const
+const paths = ['home', 'projects', 'guestbook', 'about'] as const
 
 export async function navigationPaths() {
   const t = await getTranslations('navigation')

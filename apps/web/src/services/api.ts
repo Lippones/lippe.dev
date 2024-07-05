@@ -1,8 +1,25 @@
 import { env } from '@lippe/env'
 import axios from 'axios'
 
-const apiUrl = new URL('/api', env.NEXT_PUBLIC_URL).href
+import { generateJWTSession } from '@/actions/auth'
+
+const apiUrl = env.NEXT_PUBLIC_API_URL
 
 export const api = axios.create({
   baseURL: apiUrl,
 })
+
+api.interceptors.request.use(
+  async (config) => {
+    const token = await generateJWTSession()
+
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`
+    }
+
+    return config
+  },
+  (error) => {
+    return Promise.reject(error)
+  },
+)

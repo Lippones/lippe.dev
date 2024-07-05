@@ -1,7 +1,7 @@
 import { ComponentProps } from 'react'
 import { FaSpotify } from 'react-icons/fa'
 
-import { SpotifyCurrentTrackResponse } from '@/services/spotify/types'
+import { SpotifyCurrentTrackResponse } from '@/@types/spotify-response'
 import { formatMilliseconds } from '@/utils/format-milliseconds'
 
 interface BadgeSpotifyProps extends ComponentProps<'div'> {
