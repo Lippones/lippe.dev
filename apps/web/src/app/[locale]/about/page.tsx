@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 
 import Me from '@/assets/profile.png'
-import BannerGif from '@/assets/sanji.gif'
+import BannerGif from '@/assets/teclado.gif'
 import { InfiniteText } from '@/components/infinite-text'
 import { Separator } from '@/components/ui/separator'
 import { availableLocales } from '@/config'
@@ -80,8 +80,8 @@ export default async function About({ params: { locale } }: AboutPageProps) {
         </div>
         <Image
           src={BannerGif}
-          alt="Sanji cooking"
-          className="w-full rounded-2xl"
+          alt="Banner"
+          className="max-h-[300px] w-full rounded-2xl object-cover"
         />
         <Image
           quality={100}
