@@ -113,7 +113,7 @@ export function NavBar({ paths, pathname, handleOpenChange }: NavBarProps) {
         animate={{ opacity: 1, x: '0%' }}
         exit={{ opacity: 0, x: '100%' }}
         transition={{ ease: 'easeInOut', duration: 0.5 }}
-        className="fixed right-0 top-0 h-full w-[80vw] rounded-l-lg border border-border bg-background p-8 shadow-lg md:w-[500px]"
+        className="fixed right-0 top-0 h-screen w-[80vw] rounded-l-lg border border-border bg-background p-8 shadow-lg md:w-[500px]"
       >
         <div className="flex items-center justify-between">
           <span className="text-muted-foreground">Navigation</span>
