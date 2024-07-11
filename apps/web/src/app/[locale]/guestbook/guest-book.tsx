@@ -8,11 +8,7 @@ import { MessageForm } from './message-form'
 import { MessageList } from './message-list'
 
 export async function GuestBook() {
-  const [session, { messages }] = await Promise.all([
-    auth(),
-    getMessages({}),
-    new Promise((resolve) => setTimeout(resolve, 5000)),
-  ])
+  const [session, { messages }] = await Promise.all([auth(), getMessages({})])
 
   return (
     <>
