@@ -4,7 +4,7 @@ import { createMessage } from './guestbook/create-message'
 import { deleteMessage } from './guestbook/delete-message'
 import { getMessage } from './guestbook/get-messages'
 import { clientsRealTime } from './real-time/clients-real-time'
-import { currentPlayingTrack } from './real-time/spotify/current-playing-track'
+import { currentPlayingTrack } from './spotify/current-playing-track'
 
 export async function appRoutes(app: FastifyInstance) {
   // Spotify
