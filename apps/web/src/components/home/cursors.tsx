@@ -25,6 +25,10 @@ export function Cursors() {
     })
   }, [clientIp, x, y])
 
+  useEffect(() => {
+    console.log(clients)
+  }, [clients])
+
   return (
     <>
       {clients.map((client) => (

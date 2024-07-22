@@ -23,12 +23,14 @@ interface HeroWorldProps {
 }
 
 export function HeroWorld({ address }: HeroWorldProps) {
-  const { addClient } = connectedClientsStore((state) => ({
+  const { addClient, startConnection } = connectedClientsStore((state) => ({
     addClient: state.addClient,
     updateClient: state.updateClient,
+    startConnection: state.startConnection,
   }))
 
   useEffect(() => {
+    startConnection()
     addClient({
       address,
       x: 0,

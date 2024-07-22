@@ -26,6 +26,7 @@ export const connectedClientsStore = create<ConnectedClientsStore>(
       })
 
       socket.on('clients', (clients: Client[]) => {
+        console.log('Received clients:', clients)
         set({ clients })
       })
     },
@@ -64,9 +65,7 @@ export const connectedClientsStore = create<ConnectedClientsStore>(
         clients: newClients,
       })
 
-      console.log('updating client', newClients[index])
-
-      socket.emit('cursor', newClients[index])
+      socket.emit('cursor-update', newClients[index])
     },
   }),
 )

@@ -38,9 +38,28 @@ export async function clientsRealTime(app: FastifyInstance) {
       console.info(`Client ${socket.id} joined the room.`)
 
       socket.on('cursor', (cursor: Client) => {
-        console.log(cursor)
+        if (hasClientWithId(cursor.id)) {
+          console.log(`Client ${cursor.id} is already in the room.`)
+          return
+        }
 
         connectedClients.add(cursor)
+
+        socket.emit('clients', Array.from(connectedClients))
+      })
+
+      socket.on('cursor-update', (cursor: Client) => {
+        const client = hasClientWithId(cursor.id)
+
+        if (!client) {
+          return
+        }
+
+        client.x = cursor.x
+        client.y = cursor.y
+
+        connectedClients.delete(client)
+        connectedClients.add(client)
 
         socket.emit('clients', Array.from(connectedClients))
       })
