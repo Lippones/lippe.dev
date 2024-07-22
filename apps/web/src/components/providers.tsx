@@ -11,6 +11,8 @@ import { TransitionPage } from '@/components/transition-page'
 import { Toaster } from '@/components/ui/sonner'
 import { InternalizationProvider } from '@/context/i18n'
 
+import { Cursors } from './home/cursors'
+
 interface ProvidersProps {
   children: React.ReactNode
   locale: string
@@ -38,6 +40,7 @@ export function Providers({ children, locale, paths, hireMe }: ProvidersProps) {
                 <Toaster />
                 <ThanksInviteDialog />
                 <Footer />
+                <Cursors />
               </div>
               <Profile />
             </TransitionPage>
