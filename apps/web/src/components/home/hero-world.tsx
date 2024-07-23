@@ -50,26 +50,12 @@ export function HeroWorld({ address }: HeroWorldProps) {
     }
   })
 
-  // const sampleArcs = [
-  //   {
-  //     order: 1,
-  //     startLat: -19.885592,
-  //     startLng: -43.951191,
-  //     endLat: -22.9068,
-  //     endLng: -43.1729,
-  //     arcAlt: 0.1,
-  //     color: colors[Math.floor(Math.random() * (colors.length - 1))],
-  //   },
-  //   {
-  //     order: 1,
-  //     startLat: 28.6139,
-  //     startLng: 77.209,
-  //     endLat: 3.139,
-  //     endLng: 101.6869,
-  //     arcAlt: 0.2,
-  //     color: colors[Math.floor(Math.random() * (colors.length - 1))],
-  //   },
-  //   {
+  const initialPosition = { lat: address.lat, lng: address.lng }
 
-  return <World globeConfig={globeConfig} data={arcs} />
+  const config = {
+    ...globeConfig,
+    initialPosition,
+  }
+
+  return <World globeConfig={config} data={arcs} />
 }
