@@ -7,27 +7,45 @@ interface ConnectedClientsStore {
   clientIp: string | null
   clients: Client[]
   addClient: (client: Client) => void
-  removeClient: (client: Client) => void
-  updateClient: (client: Partial<Client>) => void
+  removeClient: (clientId: string) => void
   connected: boolean
   startConnection: () => void
 }
 
 export const connectedClientsStore = create<ConnectedClientsStore>(
   (set, get) => ({
-    clients: [],
     clientIp: null,
+    clients: [],
     connected: false,
     startConnection: () => {
+      if (get().connected || socket.connected) return
+
       socket.on('connect', () => {
-        if (get().connected || socket.connected) return
         console.log('Connected to the server')
         set({ connected: true })
+
+        socket.emit('request-clients')
       })
 
       socket.on('clients', (clients: Client[]) => {
         console.log('Received clients:', clients)
         set({ clients })
+      })
+
+      socket.on('client-remove', (id: string) => {
+        console.log('Client removed:', id)
+        set((state) => ({
+          clients: state.clients.filter((c) => c.id !== id),
+        }))
+      })
+
+      socket.on('client-update', (updatedClient: Client) => {
+        console.log('Client updated:', updatedClient)
+        set((state) => ({
+          clients: state.clients.map((c) =>
+            c.id === updatedClient.id ? { ...c, ...updatedClient } : c,
+          ),
+        }))
       })
     },
     addClient: (client) => {
@@ -39,33 +57,12 @@ export const connectedClientsStore = create<ConnectedClientsStore>(
 
       set({
         clients: [...get().clients, client],
-        clientIp: client.address.ip,
-      })
-
-      socket.emit('cursor', client)
-    },
-    removeClient: (client) => {
-      set({
-        clients: get().clients.filter((c) => c.id !== client.id),
       })
     },
-    updateClient(client) {
-      const index = get().clients.findIndex((c) => c.id === client.id)
-      if (index === -1) {
-        return
-      }
-
-      const newClients = [...get().clients]
-      newClients[index] = {
-        ...newClients[index],
-        ...client,
-      }
-
-      set({
-        clients: newClients,
-      })
-
-      socket.emit('cursor-update', newClients[index])
+    removeClient: (clientId) => {
+      set((state) => ({
+        clients: state.clients.filter((c) => c.id !== clientId),
+      }))
     },
   }),
 )

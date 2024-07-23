@@ -2,8 +2,6 @@ import type { FastifyInstance } from 'fastify'
 
 type Client = {
   id: string
-  x: number
-  y: number
   address: {
     city: string
     country: string
@@ -37,30 +35,7 @@ export async function clientsRealTime(app: FastifyInstance) {
 
       console.info(`Client ${socket.id} joined the room.`)
 
-      socket.on('cursor', (cursor: Client) => {
-        if (hasClientWithId(cursor.id)) {
-          console.log(`Client ${cursor.id} is already in the room.`)
-          return
-        }
-
-        connectedClients.add(cursor)
-
-        socket.emit('clients', Array.from(connectedClients))
-      })
-
-      socket.on('cursor-update', (cursor: Client) => {
-        const client = hasClientWithId(cursor.id)
-
-        if (!client) {
-          return
-        }
-
-        client.x = cursor.x
-        client.y = cursor.y
-
-        connectedClients.delete(client)
-        connectedClients.add(client)
-
+      socket.on('request-clients', () => {
         socket.emit('clients', Array.from(connectedClients))
       })
 
@@ -71,6 +46,8 @@ export async function clientsRealTime(app: FastifyInstance) {
             break
           }
         }
+
+        socket.broadcast.emit('client-remove', socket.id)
 
         if (connectedClients.size === 0) {
           console.info('No clients connected. Stopping global timer.')

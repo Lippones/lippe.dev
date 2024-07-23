@@ -1,7 +1,5 @@
 export type Client = {
   id: string
-  x: number
-  y: number
   address: {
     city: string
     country: string
