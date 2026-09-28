@@ -229,6 +229,10 @@
     grid-template-columns: minmax(0, 1fr) !important;
     row-gap: 12px !important;
   }
+  /* As paginas de caso apertam um pouco mais que a home. */
+  [data-page="case"] [data-row] {
+    row-gap: 10px !important;
+  }
   [data-nowrap] {
     white-space: normal !important;
   }
