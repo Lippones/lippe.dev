@@ -32,6 +32,8 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# o exemplo precisa ser versionado: e ele que documenta as variaveis
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +41,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# artefatos temporarios de verificacao pixel-a-pixel
+/public/__ref*.html
+/public/__compare.js
+/public/__audit.js
+
+# material de trabalho local do design: backups da copy antiga e o canvas
+# exportado com payload de 2,4 MB
+/.design-src/copy-backup/
+/.design-src/now-playing/spotify-now-playing.html
