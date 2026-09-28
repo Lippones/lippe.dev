@@ -1,26 +1,238 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), Inter, Helvetica, Arial, sans-serif;
+  --font-display: var(--font-inter-tight), var(--font-inter), Inter, Helvetica,
+    sans-serif;
+
+  /* O design não acopla line-height ao font-size: cada tamanho herda `normal`.
+     Sem isto o Preflight aplica 1.5 e todo o eixo vertical desloca. */
+  --text-xs--line-height: normal;
+  --text-sm--line-height: normal;
+  --text-base--line-height: normal;
+  --text-lg--line-height: normal;
+  --text-xl--line-height: normal;
+
+  /* O design colapsa em 900px. Este é o mesmo limite, como variante do
+     Tailwind, para o bloco de música não precisar de media query solta. */
+  --breakpoint-wide: 901px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    background: #191919;
+    line-height: normal;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: #191919;
+    color: #f5f5f5;
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  .display {
+    font-family: var(--font-display);
+  }
+
+  a:hover {
+    color: #ffffff;
+  }
+
+  ::selection {
+    background: #f5f5f5;
+    color: #191919;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Somente a home usa os alternates do Inter; as paginas de caso nao. */
+[data-page="home"] {
+  font-feature-settings: "cv11", "ss01";
+}
+
+/* Bilingue sem re-render: as duas versoes vao no HTML e o CSS mostra uma.
+   Escopado em [data-lang] para nunca casar com o <html lang>. */
+[data-lang] [lang="en"] {
+  display: none;
+}
+[data-lang="en"] [lang="en"] {
+  display: revert;
+}
+[data-lang="en"] [lang="pt"] {
+  display: none;
+}
+
+/* Reveal na entrada em viewport. O estado inicial escondido vale so onde ha
+   scripting, entao nao ha flash na primeira pintura nem conteudo preso
+   invisivel quando o JS nao roda. */
+@media (scripting: enabled) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(var(--reveal-distance, 22px));
+    transition:
+      opacity 0.9s cubic-bezier(0.16, 0.84, 0.24, 1),
+      transform 0.9s cubic-bezier(0.16, 0.84, 0.24, 1);
+    will-change: opacity, transform;
+  }
+  [data-reveal][data-shown] {
+    opacity: 1;
+    transform: none;
+  }
+  /* Depois da transicao o transform sai de cena: qualquer transform ativo cria
+     containing block e re-ancoraria o peek (position: fixed) na linha. */
+  [data-reveal][data-settled] {
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Linhas de projeto: preenchimento de baixo para cima, deslize do conteudo,
+   seta e cartao de preview que segue o cursor. */
+[data-row="project"] .fv-fill {
+  position: absolute;
+  inset: 0;
+  background: #202020;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.62s cubic-bezier(0.16, 0.84, 0.24, 1);
+  z-index: 0;
+}
+[data-row="project"]:hover .fv-fill {
+  transform: scaleY(1);
+}
+[data-row="project"] .fv-c {
+  position: relative;
+  z-index: 2;
+  transition:
+    transform 0.62s cubic-bezier(0.16, 0.84, 0.24, 1),
+    color 0.4s;
+}
+[data-row="project"]:hover .fv-num {
+  transform: translateX(6px);
+  color: #a3a3a3;
+}
+[data-row="project"]:hover .fv-name {
+  transform: translateX(10px);
+}
+[data-row="project"]:hover .fv-blurb {
+  transform: translateX(6px);
+  color: #c4c4c4;
+}
+[data-row="project"] .fv-arrow {
+  display: inline-block;
+  opacity: 0;
+  transform: translate(-6px, 4px);
+  transition:
+    opacity 0.45s,
+    transform 0.45s cubic-bezier(0.16, 0.84, 0.24, 1);
+}
+[data-row="project"]:hover .fv-arrow {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+[data-row="project"] .fv-peek {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 210px;
+  height: 140px;
+  border-radius: 4px;
+  border: 1px solid #3b3b3b;
+  background-color: #232323;
+  background-image: repeating-linear-gradient(
+    135deg,
+    #2c2c2c 0 7px,
+    #232323 7px 14px
+  );
+  pointer-events: none;
+  opacity: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  transform: translate(-9999px, -9999px);
+}
+[data-row="project"] .fv-peek[data-ready="1"] {
+  transition:
+    opacity 0.35s ease,
+    transform 0.45s cubic-bezier(0.16, 0.84, 0.24, 1);
+}
+[data-row="project"]:hover .fv-peek[data-ready="1"] {
+  opacity: 1;
+}
+@media (hover: none), (max-width: 900px) {
+  [data-row="project"] .fv-peek {
+    display: none;
+  }
+}
+
+/* Setas nao existem no subset latin do Inter. Sem um stack explicito elas caem
+   no fallback sintetico do next/font, que aplica size-adjust e mede diferente
+   do design (que resolve direto para Helvetica). */
+.fv-glyph {
+  font-family: Helvetica, Arial, sans-serif;
+}
+/* Em titulos grandes a caixa inline do glifo (metricas da Helvetica) esticaria
+   a linha em 1px. Zerar o line-height tira a caixa da conta sem mover o glifo,
+   que continua desenhado a partir da mesma baseline. */
+.fv-glyph-flat {
+  line-height: 0;
+}
+
+/* Placeholders hachurados (imagens pendentes) e chips de logo da trajetoria. */
+.ph-texture {
+  border: 1px solid #2c2c2c;
+  background-color: #202020;
+  background-image: repeating-linear-gradient(
+    135deg,
+    #282828 0 7px,
+    #202020 7px 14px
+  );
+}
+.ph-chip {
+  border: 1px solid #2c2c2c;
+  border-radius: 5px;
+  background-color: #202020;
+  background-image: repeating-linear-gradient(
+    135deg,
+    #282828 0 5px,
+    #202020 5px 10px
+  );
+}
+
+/* Abaixo de 900px as grades de 12 colunas e as linhas multi-coluna colapsam. */
+@media (max-width: 900px) {
+  [data-grid] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  [data-span] {
+    grid-column: auto !important;
+  }
+  [data-row] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    row-gap: 12px !important;
+  }
+  [data-nowrap] {
+    white-space: normal !important;
+  }
+  [data-hide-sm] {
+    display: none !important;
+  }
 }
