@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Filipe Vieira — Mobile Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  html { background: #191919; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+  body { margin: 0; background: #191919; color: #F5F5F5; font-family: Inter, Helvetica, Arial, sans-serif; font-feature-settings: "cv11", "ss01"; }
+  * { box-sizing: border-box; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: #FFFFFF; }
+  h1, h2, h3, .display { font-family: 'Inter Tight', Inter, Helvetica, sans-serif; }
+  ::selection { background: #F5F5F5; color: #191919; }
+  [lang="en"] { display: none; }
+  [data-lang="en"] [lang="en"] { display: revert; }
+  [data-lang="en"] [lang="pt"] { display: none; }
+  @keyframes fvdot { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
+  [data-row="project"] .fv-fill { position: absolute; inset: 0; background: #202020; transform: scaleY(0); transform-origin: bottom; transition: transform .62s cubic-bezier(.16,.84,.24,1); z-index: 0; }
+  [data-row="project"]:hover .fv-fill { transform: scaleY(1); }
+  [data-row="project"] .fv-c { position: relative; z-index: 2; transition: transform .62s cubic-bezier(.16,.84,.24,1), color .4s; }
+  [data-row="project"]:hover .fv-num { transform: translateX(6px); color: #A3A3A3; }
+  [data-row="project"]:hover .fv-name { transform: translateX(10px); }
+  [data-row="project"]:hover .fv-blurb { transform: translateX(6px); color: #C4C4C4; }
+  [data-row="project"] .fv-arrow { display: inline-block; opacity: 0; transform: translate(-6px, 4px); transition: opacity .45s, transform .45s cubic-bezier(.16,.84,.24,1); }
+  [data-row="project"]:hover .fv-arrow { opacity: 1; transform: translate(0, 0); }
+  [data-row="project"] .fv-peek { position: fixed; top: 0; left: 0; width: 210px; height: 140px; border-radius: 4px; border: 1px solid #3B3B3B; background-color: #232323; background-image: repeating-linear-gradient(135deg, #2C2C2C 0 7px, #232323 7px 14px); pointer-events: none; opacity: 0; z-index: 30; display: grid; place-items: center; transform: translate(-9999px, -9999px); }
+  [data-row="project"] .fv-peek[data-ready="1"] { transition: opacity .35s ease, transform .45s cubic-bezier(.16,.84,.24,1); }
+  [data-row="project"]:hover .fv-peek[data-ready="1"] { opacity: 1; }
+  @media (hover: none), (max-width: 900px) { [data-row="project"] .fv-peek { display: none; } }
+  @media (max-width: 900px) {
+    [data-grid] { grid-template-columns: minmax(0, 1fr) !important; }
+    [data-span] { grid-column: auto !important; }
+    [data-row] { grid-template-columns: minmax(0, 1fr) !important; row-gap: 12px !important; }
+    [data-nowrap] { white-space: normal !important; }
+    [data-hide-sm] { display: none !important; }
+  }
+</style>
+</helmet>
+<div data-lang="{{ lang }}" style="min-height: 100vh; background: #191919; overflow-x: hidden; padding: 0 clamp(18px, 3.4vw, 44px);">
+
+  <header style="position: sticky; top: 0; z-index: 40; display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 22px 0 18px; background: linear-gradient(#191919F2 62%, #19191900); backdrop-filter: blur(8px);">
+    <a href="#top" style="font-family: 'Inter Tight', Inter, sans-serif; font-size: 15px; font-weight: 500; letter-spacing: -0.02em;">Filipe Vieira</a>
+    <div style="display: flex; align-items: baseline; gap: clamp(16px, 2.4vw, 34px); font-size: 13px; color: #9A9A9A;">
+      <a href="#work" style="transition: color .25s;" style-hover="color:#F5F5F5"><span lang="pt">Trabalho</span><span lang="en">Work</span></a>
+      <a href="#about" style="transition: color .25s;" style-hover="color:#F5F5F5"><span lang="pt">Sobre</span><span lang="en">About</span></a>
+      <a href="mailto:filipe68ft@hotmail.com" style="transition: color .25s;" style-hover="color:#F5F5F5"><span lang="pt">Contato</span><span lang="en">Contact</span></a>
+      <button type="button" onClick="{{ toggleLang }}" style="padding: 0; border: 0; background: transparent; color: #9A9A9A; font-family: Inter, sans-serif; font-size: 13px; cursor: pointer;">
+        <span style="color: {{ ptColor }};">PT</span><span style="color: #4B4B4B; padding: 0 3px;">·</span><span style="color: {{ enColor }};">EN</span>
+      </button>
+    </div>
+  </header>
+
+  <section id="top" data-grid="" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px clamp(16px, 2vw, 32px); padding: clamp(56px, 11vh, 130px) 0 clamp(56px, 9vh, 110px); align-items: end;">
+    <h1 data-span="" data-reveal="" style="grid-column: 1 / 13; margin: 0; font-size: clamp(36px, 6.6vw, 118px); line-height: 0.9; letter-spacing: -0.05em; font-weight: 500; text-wrap: balance;">
+      <span lang="pt">Faço aplicativos<br />que cabem na mão<br /><span style="font-weight: 300; color: #767676;">e no dia</span> de quem usa.</span>
+      <span lang="en">I make apps that fit<br />in the hand <span style="font-weight: 300; color: #767676;">and the day</span><br />of whoever uses them.</span>
+    </h1>
+    <div data-span="" data-reveal="" style="grid-column: 1 / 13; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 20px clamp(28px, 4vw, 64px); margin-top: clamp(14px, 2vw, 26px);">
+      <div>
+        <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;"><span lang="pt">Agora</span><span lang="en">Now</span></div>
+        <div style="margin-top: 6px; font-size: 14px; line-height: 1.45; color: #D6D6D6;"><span lang="pt">Dev Mobile Pleno<br />na Inbazz</span><span lang="en">Mid-level Mobile Dev<br />at Inbazz</span></div>
+      </div>
+      <div>
+        <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;"><span lang="pt">Base</span><span lang="en">Based</span></div>
+        <div style="margin-top: 6px; font-size: 14px; line-height: 1.45; color: #D6D6D6;">Minas Gerais, BR<br /><span data-clock="">GMT−3</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div data-grid="" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px clamp(16px, 2vw, 32px); padding-bottom: clamp(70px, 12vh, 150px); border-top: 1px solid #262626; padding-top: 30px;">
+    <p data-span="" data-reveal="" style="grid-column: 1 / 6; margin: 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(19px, 1.8vw, 27px); line-height: 1.32; letter-spacing: -0.02em; color: #EDEDED; text-wrap: pretty;">
+      <span lang="pt">Venho do full-stack, escolhi o mobile. É onde o software vira gesto — e onde cada milissegundo de atrito aparece na cara de quem usa.</span>
+      <span lang="en">I came from full-stack and chose mobile. It's where software becomes gesture — and where every millisecond of friction shows on someone's face.</span>
+    </p>
+    <p data-span="" data-reveal="" style="grid-column: 8 / 13; margin: 0; font-size: 15px; line-height: 1.7; color: #A3A3A3; text-wrap: pretty;">
+      <span lang="pt">Hoje sou responsável pelo aplicativo dos creators da Inbazz: reconstruí ele do FlutterFlow para React Native, sozinho, com o app em produção o tempo inteiro. Antes disso foram anos de TypeScript, React e Node em produto — o que me deixa confortável em ir até a API quando o app precisa.</span>
+      <span lang="en">Today I own the Inbazz creator app: I rebuilt it from FlutterFlow into React Native, alone, with the app live the whole time. Before that, years of TypeScript, React and Node on product teams — which is why I'm comfortable going into the API when the app needs it.</span>
+    </p>
+  </div>
+
+  <section id="work" style="padding-bottom: clamp(60px, 10vh, 120px);">
+    <div data-reveal="" style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding-bottom: 16px; border-bottom: 1px solid #262626;">
+      <h2 style="margin: 0; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9A9A;"><span lang="pt">Trabalho selecionado</span><span lang="en">Selected work</span></h2>
+      <span style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #565656;">01 / 04</span>
+    </div>
+
+    <div data-reveal="" style="padding-top: clamp(34px, 5vw, 64px);">
+      <div data-grid="" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 20px clamp(16px, 2vw, 32px); align-items: end;">
+        <h3 data-span="" style="grid-column: 1 / 9; margin: 0; font-size: clamp(34px, 5.6vw, 96px); line-height: 0.92; letter-spacing: -0.045em; font-weight: 500;"><a href="Case Inbazz Creator.dc.html" style="transition: color .3s;" style-hover="color:#8C8C8C">Inbazz Creator</a></h3>
+        <div data-span="" style="grid-column: 10 / 13; font-size: 13px; line-height: 1.55; color: #9A9A9A; padding-bottom: 10px;">
+          <span lang="pt">React Native, Expo, TypeScript<br />2025 — presente</span>
+          <span lang="en">React Native, Expo, TypeScript<br />2025 — present</span>
+        </div>
+      </div>
+
+      <div data-grid="" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 22px); margin-top: clamp(26px, 3.4vw, 44px);">
+        <div data-span="" style="grid-column: 1 / 8; aspect-ratio: 16 / 11; border-radius: 6px; background-color: #202020; background-image: repeating-linear-gradient(135deg, #282828 0 7px, #202020 7px 14px); border: 1px solid #2C2C2C; display: grid; place-items: center;">
+          <span style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6B6B6B; text-align: center; padding: 0 20px;">imagem · app em uso</span>
+        </div>
+        <div data-span="" style="grid-column: 8 / 13; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 1.6vw, 22px);">
+          <div style="aspect-ratio: 9 / 16; border-radius: 6px; background-color: #202020; background-image: repeating-linear-gradient(135deg, #282828 0 7px, #202020 7px 14px); border: 1px solid #2C2C2C; display: grid; place-items: center;">
+            <span style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6B6B6B; text-align: center; padding: 0 12px;">tela · campanhas</span>
+          </div>
+          <div style="aspect-ratio: 9 / 16; border-radius: 6px; background-color: #202020; background-image: repeating-linear-gradient(135deg, #282828 0 7px, #202020 7px 14px); border: 1px solid #2C2C2C; display: grid; place-items: center;">
+            <span style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6B6B6B; text-align: center; padding: 0 12px;">tela · ganhos</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="Case Inbazz Creator.dc.html" data-reveal="" style="display: inline-flex; align-items: baseline; gap: 10px; margin-top: clamp(30px, 4vw, 52px); font-size: 15px; color: #EDEDED; border-bottom: 1px solid #3B3B3B; padding-bottom: 3px; transition: gap .35s cubic-bezier(.16,.84,.24,1), border-color .3s;" style-hover="gap:16px;border-color:#F5F5F5"><span lang="pt">Ler o caso de estudo</span><span lang="en">Read the case study</span><span>→</span></a>
+      <div data-grid="" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 28px clamp(16px, 2vw, 32px); margin-top: clamp(36px, 5vw, 72px);">
+        <div data-span="" style="grid-column: 1 / 5;">
+          <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;"><span lang="pt">O teto</span><span lang="en">The ceiling</span></div>
+          <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.7; color: #A3A3A3; text-wrap: pretty;">
+            <span lang="pt">A primeira versão nasceu em FlutterFlow para validar rápido — e funcionou. Só que cada ajuste de UX, cada integração nova e cada bug em produção passou a custar caro demais.</span>
+            <span lang="en">The first version was built in FlutterFlow to validate fast — and it worked. But every UX tweak, every new integration and every production bug started costing far too much.</span>
+          </p>
+        </div>
+        <div data-span="" style="grid-column: 5 / 9;">
+          <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;"><span lang="pt">A migração</span><span lang="en">The migration</span></div>
+          <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.7; color: #A3A3A3; text-wrap: pretty;">
+            <span lang="pt">Levei o app para React Native com Expo e TypeScript: navegação redesenhada, design system interno, consumo de API organizado e releases OTA no fluxo — correção no mesmo dia, sem esperar a loja.</span>
+            <span lang="en">I moved the app to React Native with Expo and TypeScript: reworked navigation, an internal design system, clean API consumption and OTA releases in the flow — same-day fixes, no store review wait.</span>
+          </p>
+        </div>
+        <div data-span="" style="grid-column: 9 / 13;">
+          <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;"><span lang="pt">Depois</span><span lang="en">After</span></div>
+          <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.7; color: #A3A3A3; text-wrap: pretty;">
+            <span lang="pt">Uma base que o time lê e evolui. Features saem em dias, não semanas, e o app deixou de ser protótipo para virar produto — com um dev responsável de ponta a ponta.</span>
+            <span lang="en">A codebase the team can read and grow. Features ship in days instead of weeks, and the app stopped being a prototype: it's a product now, owned end to end.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: clamp(70px, 11vh, 140px); border-top: 1px solid #262626;">
+      <sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
+        <a href="{{ p.href }}" target="_blank" rel="noreferrer" data-row="project" data-reveal="" style="position: relative; display: grid; grid-template-columns: 56px minmax(0, 1.2fr) minmax(0, 1.1fr) auto; gap: clamp(14px, 2vw, 36px); align-items: baseline; padding: clamp(22px, 2.8vw, 38px) clamp(12px, 1.4vw, 20px); border-bottom: 1px solid #242424;">
+          <span class="fv-fill"></span>
+          <span class="fv-c fv-num" style="font-size: 12px; letter-spacing: 0.06em; color: #565656;">{{ p.num }}</span>
+          <span class="fv-c fv-name display" style="font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(24px, 2.8vw, 40px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 500;">{{ p.name }}</span>
+          <span class="fv-c fv-blurb" style="font-size: 14px; line-height: 1.6; color: #9A9A9A;">{{ p.blurb }}</span>
+          <span class="fv-c" data-nowrap="" style="display: flex; align-items: baseline; gap: 10px; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: #6B6B6B; white-space: nowrap;">
+            <span>{{ p.stack }}</span>
+            <span class="fv-arrow" style="color: #EDEDED;">↗</span>
+          </span>
+          <span class="fv-peek"><span style="font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B;">{{ p.peek }}</span></span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="about" data-grid="" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 40px clamp(16px, 2vw, 32px); padding: clamp(70px, 12vh, 150px) 0 clamp(50px, 8vh, 90px);">
+    <div data-span="" data-reveal="" style="grid-column: 1 / 8;">
+      <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9A9A;"><span lang="pt">Sobre</span><span lang="en">About</span></div>
+      <p style="margin: 22px 0 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(22px, 2.6vw, 40px); line-height: 1.22; letter-spacing: -0.032em; font-weight: 400; color: #F5F5F5; text-wrap: pretty;">
+        <span lang="pt">Não acredito em app bonito que trava. Interface é o que a pessoa vê; o resto é o que faz ela voltar amanhã.</span>
+        <span lang="en">I don't believe in a beautiful app that stutters. Interface is what people see; the rest is what makes them come back tomorrow.</span>
+      </p>
+      <p style="margin: 26px 0 0; max-width: 58ch; font-size: 15px; line-height: 1.75; color: #A3A3A3; text-wrap: pretty;">
+        <span lang="pt">Comecei em frontend, atravessei backend e parei no mobile porque é onde as duas coisas se encontram sem lugar para esconder erro. Trabalho melhor quando sou dono de algo do começo ao fim: decido a arquitetura, entrego a tela, subo o release e olho o que aconteceu depois.</span>
+        <span lang="en">I started in frontend, went through backend and stopped at mobile because that's where both meet with nowhere to hide a mistake. I work best when I own something end to end: I decide the architecture, ship the screen, cut the release and watch what happens next.</span>
+      </p>
+      <div style="margin-top: 34px; padding-top: 22px; border-top: 1px solid #262626;">
+        <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;"><span lang="pt">Ultimamente</span><span lang="en">Lately</span></div>
+        <ul style="margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 14px; line-height: 1.5; color: #A3A3A3;">
+          <li><span lang="pt">Cavando Reanimated e gesture handler até a animação ficar invisível de boa.</span><span lang="en">Digging into Reanimated and gesture handler until the animation goes invisibly good.</span></li>
+          <li><span lang="pt">Lendo código de app alheio no lugar de tutorial.</span><span lang="en">Reading other people's app code instead of tutorials.</span></li>
+          <li><span lang="pt">Tentando escrever menos e apagar mais.</span><span lang="en">Trying to write less and delete more.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div data-span="" data-reveal="" style="grid-column: 9 / 13; display: grid; gap: 0; align-content: start;">
+      <div data-row="" style="display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 14px 0; border-bottom: 1px solid #262626; font-size: 14px;">
+        <span style="color: #8C8C8C;"><span lang="pt">Experiência</span><span lang="en">Experience</span></span>
+        <span style="color: #EDEDED;"><span lang="pt">5 anos</span><span lang="en">5 years</span></span>
+      </div>
+      <div data-row="" style="display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 14px 0; border-bottom: 1px solid #262626; font-size: 14px;">
+        <span style="color: #8C8C8C;"><span lang="pt">Principal</span><span lang="en">Primary</span></span>
+        <span style="color: #EDEDED;">React Native · Expo</span>
+      </div>
+      <div data-row="" style="display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 14px 0; border-bottom: 1px solid #262626; font-size: 14px;">
+        <span style="color: #8C8C8C;"><span lang="pt">Também</span><span lang="en">Also</span></span>
+        <span style="color: #EDEDED;">TypeScript · NestJS · Next.js</span>
+      </div>
+      <div data-row="" style="display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 14px 0; border-bottom: 1px solid #262626; font-size: 14px;">
+        <span style="color: #8C8C8C;"><span lang="pt">Infra</span><span lang="en">Infra</span></span>
+        <span style="color: #EDEDED;">Postgres · Docker · CI/CD</span>
+      </div>
+      <div data-row="" style="display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 14px 0; border-bottom: 1px solid #262626; font-size: 14px;">
+        <span style="color: #8C8C8C;"><span lang="pt">Idiomas</span><span lang="en">Languages</span></span>
+        <span style="color: #EDEDED;"><span lang="pt">Português · Inglês</span><span lang="en">Portuguese · English</span></span>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-bottom: clamp(70px, 11vh, 140px);">
+    <div data-reveal="" style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding-bottom: 16px; border-bottom: 1px solid #262626;">
+      <h2 style="margin: 0; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9A9A;"><span lang="pt">Trajetória</span><span lang="en">Career</span></h2>
+    </div>
+    <div data-row="" data-reveal="" style="display: grid; grid-template-columns: 96px minmax(0, 1fr) minmax(0, 1.4fr); gap: clamp(14px, 2vw, 36px); align-items: baseline; padding: clamp(20px, 2.6vw, 32px) 0; border-bottom: 1px solid #242424;">
+      <span style="font-size: 13px; color: #D6D6D6;">2026 —</span>
+      <span class="display" style="font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(20px, 2.2vw, 30px); letter-spacing: -0.03em; font-weight: 500;"><span style="display: inline-grid; place-items: center; width: 22px; height: 22px; margin-right: 10px; vertical-align: -4px; border: 1px solid #2C2C2C; border-radius: 5px; background-color: #202020; background-image: repeating-linear-gradient(135deg, #282828 0 5px, #202020 5px 10px); font-size: 8px; color: #565656;">IB</span>Inbazz</span>
+      <span style="font-size: 14px; line-height: 1.65; color: #A3A3A3;"><span lang="pt">Desenvolvedor Mobile Pleno. Dono do app dos creators: arquitetura, features, releases e a saúde do que está em produção.</span><span lang="en">Mid-level Mobile Developer. I own the creator app: architecture, features, releases and the health of what's live.</span></span>
+    </div>
+    <div data-row="" data-reveal="" style="display: grid; grid-template-columns: 96px minmax(0, 1fr) minmax(0, 1.4fr); gap: clamp(14px, 2vw, 36px); align-items: baseline; padding: clamp(20px, 2.6vw, 32px) 0; border-bottom: 1px solid #242424;">
+      <span style="font-size: 13px; color: #8C8C8C;">2023 — 2025</span>
+      <span class="display" style="font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(20px, 2.2vw, 30px); letter-spacing: -0.03em; font-weight: 500;"><span style="display: inline-grid; place-items: center; width: 22px; height: 22px; margin-right: 10px; vertical-align: -4px; border: 1px solid #2C2C2C; border-radius: 5px; background-color: #202020; background-image: repeating-linear-gradient(135deg, #282828 0 5px, #202020 5px 10px); font-size: 8px; color: #565656;">—</span><span lang="pt">Freelance & produto</span><span lang="en">Freelance &amp; product</span></span>
+      <span style="font-size: 14px; line-height: 1.65; color: #A3A3A3;"><span lang="pt">Full-stack em Next.js, Node e Postgres para clientes e projetos próprios. Onde aprendi a entregar sozinho, do banco ao deploy.</span><span lang="en">Full-stack in Next.js, Node and Postgres for clients and my own projects. Where I learned to ship alone, from database to deploy.</span></span>
+    </div>
+    <div data-row="" data-reveal="" style="display: grid; grid-template-columns: 96px minmax(0, 1fr) minmax(0, 1.4fr); gap: clamp(14px, 2vw, 36px); align-items: baseline; padding: clamp(20px, 2.6vw, 32px) 0; border-bottom: 1px solid #242424;">
+      <span style="font-size: 13px; color: #8C8C8C;">2021 — 2023</span>
+      <span class="display" style="font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(20px, 2.2vw, 30px); letter-spacing: -0.03em; font-weight: 500;"><span style="display: inline-grid; place-items: center; width: 22px; height: 22px; margin-right: 10px; vertical-align: -4px; border: 1px solid #2C2C2C; border-radius: 5px; background-color: #202020; background-image: repeating-linear-gradient(135deg, #282828 0 5px, #202020 5px 10px); font-size: 8px; color: #565656;">—</span><span lang="pt">Frontend</span><span lang="en">Frontend</span></span>
+      <span style="font-size: 14px; line-height: 1.65; color: #A3A3A3;"><span lang="pt">JavaScript, React e muitas horas fora do horário. A obsessão por como as coisas parecem e reagem começou aqui.</span><span lang="en">JavaScript, React and a lot of after-hours. The obsession with how things look and respond started here.</span></span>
+    </div>
+  </section>
+
+  <footer style="padding: clamp(60px, 9vh, 110px) 0 34px; border-top: 1px solid #262626;">
+    <div data-reveal="">
+      <p style="margin: 0; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9A9A;"><span lang="pt">Contato</span><span lang="en">Contact</span></p>
+      <a href="mailto:filipe68ft@hotmail.com" class="display" style="display: block; margin-top: 22px; font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(34px, 7.6vw, 132px); line-height: 0.9; letter-spacing: -0.05em; font-weight: 500; color: #F5F5F5; transition: color .3s;" style-hover="color:#8E8E96">
+        <span lang="pt">Vamos conversar</span><span lang="en">Let's talk</span>
+      </a>
+      <a href="mailto:filipe68ft@hotmail.com" style="display: inline-block; margin-top: 26px; font-size: 15px; color: #A3A3A3; border-bottom: 1px solid #3B3B3B; padding-bottom: 3px; transition: color .25s, border-color .25s;" style-hover="color:#F5F5F5;border-color:#F5F5F5">filipe68ft@hotmail.com</a>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 22px; margin-top: clamp(50px, 8vh, 96px); padding-top: 20px; border-top: 1px solid #242424; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: #6B6B6B;">
+      <a href="https://github.com/Lippones" target="_blank" rel="noreferrer" style="transition: color .25s;" style-hover="color:#F5F5F5">GitHub</a>
+      <a href="https://www.linkedin.com/in/filipe-vieira-03199720b/" target="_blank" rel="noreferrer" style="transition: color .25s;" style-hover="color:#F5F5F5">LinkedIn</a>
+      <a href="https://twitter.com/Filipe64285" target="_blank" rel="noreferrer" style="transition: color .25s;" style-hover="color:#F5F5F5">X</a>
+      <a href="https://wa.me/5533998484690" target="_blank" rel="noreferrer" style="transition: color .25s;" style-hover="color:#F5F5F5">WhatsApp</a>
+      <span style="margin-left: auto; color: #3B3B3B;">© 2026</span>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;revealDistance&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:22,&quot;min&quot;:0,&quot;max&quot;:60,&quot;step&quot;:2,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Movimento&quot;}}">
+class Component extends DCLogic {
+  state = { lang: 'pt' };
+
+  componentDidMount() {
+    const nodes = Array.from(document.querySelectorAll('[data-reveal]'));
+    const dist = this.props.revealDistance == null ? 22 : this.props.revealDistance;
+    nodes.forEach((n) => {
+      n.style.opacity = '0';
+      n.style.transform = 'translateY(' + dist + 'px)';
+      n.style.transition = 'opacity .9s cubic-bezier(.16,.84,.24,1), transform .9s cubic-bezier(.16,.84,.24,1)';
+      n.style.willChange = 'opacity, transform';
+    });
+    const show = (n) => {
+      n.style.opacity = '1';
+      n.style.transform = 'none';
+      // clear transform/will-change afterwards: either creates a containing block
+      // and would re-anchor the position:fixed hover thumbnail to the row
+      setTimeout(() => { n.style.willChange = 'auto'; n.style.transform = ''; n.style.transition = ''; }, 1000);
+    };
+    if (typeof IntersectionObserver === 'function') {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => {
+          if (e.isIntersecting) {
+            setTimeout(() => show(e.target), Math.min(i * 60, 240));
+            io.unobserve(e.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.04 });
+      nodes.forEach((n) => io.observe(n));
+      this._io = io;
+    }
+    this._t = setTimeout(() => nodes.forEach(show), 2600);
+
+    this._onMove = (ev) => {
+      const row = ev.target.closest && ev.target.closest('[data-row="project"]');
+      if (!row) return;
+      const peek = row.querySelector('.fv-peek');
+      if (!peek) return;
+      const w = 210, h = 140, pad = 16;
+      const x = Math.min(ev.clientX + 26, window.innerWidth - w - pad);
+      const y = Math.min(Math.max(ev.clientY - h / 2, pad), window.innerHeight - h - pad);
+      const tilt = ((ev.clientX / Math.max(window.innerWidth, 1)) - 0.5) * 5;
+      const first = !peek.dataset.ready;
+      if (first) peek.style.transition = 'none';
+      peek.style.transform = 'translate(' + Math.round(x) + 'px,' + Math.round(y) + 'px) rotate(' + tilt.toFixed(2) + 'deg)';
+      if (first) {
+        void peek.offsetWidth; // commit the entry position before any transition exists
+        peek.style.transition = '';
+        peek.dataset.ready = '1';
+      }
+    };
+    document.addEventListener('pointermove', this._onMove, { passive: true });
+
+    const clock = document.querySelector('[data-clock]');
+    if (clock) {
+      const tick = () => {
+        const t = new Date().toLocaleTimeString('pt-BR', { timeZone: 'America/Sao_Paulo', hour: '2-digit', minute: '2-digit' });
+        clock.textContent = 'GMT−3 · ' + t;
+      };
+      tick();
+      this._c = setInterval(tick, 20000);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._onMove) document.removeEventListener('pointermove', this._onMove);
+    clearInterval(this._c);
+    clearTimeout(this._t);
+  }
+
+  renderVals() {
+    const lang = this.state.lang;
+    const pt = lang === 'pt';
+    const projects = [
+      { num: '02', name: 'Track Tidy', blurb: pt ? 'Projeto pessoal: descreva a playlist que quer e a IA separa suas músicas do Spotify.' : 'Personal project: describe the playlist you want and AI sorts your Spotify library.', stack: 'React · TS · LLM', peek: pt ? 'caso de estudo' : 'case study', href: 'Case Track Tidy.dc.html' },
+      { num: '03', name: 'Play Pare', blurb: pt ? 'Plataforma de conteúdo adulto: discrição, pagamento e moderação como requisitos de engenharia.' : 'Adult content platform: discretion, payments and moderation as engineering requirements.', stack: 'Next · Node · 18+', peek: pt ? 'caso de estudo' : 'case study', href: 'Case Play Pare.dc.html' },
+      { num: '04', name: 'EventFlow', blurb: pt ? 'Plataforma de eventos em microsserviços: ingressos, check-in e painel do organizador.' : 'Event platform on microservices: tickets, check-in and organizer dashboard.', stack: 'Next · NestJS · GraphQL', peek: pt ? 'imagem · eventflow' : 'image · eventflow', href: 'https://www.lippe.dev/project/EventFlow' }
+    ];
+    return {
+      lang,
+      projects,
+      ptColor: pt ? '#F5F5F5' : '#9A9A9A',
+      enColor: pt ? '#9A9A9A' : '#F5F5F5',
+      toggleLang: () => this.setState((s) => ({ lang: s.lang === 'pt' ? 'en' : 'pt' }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>

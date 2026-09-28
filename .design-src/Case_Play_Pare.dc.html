@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Play Pare — Filipe Vieira</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  html { background: #191919; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+  body { margin: 0; background: #191919; color: #F5F5F5; font-family: Inter, Helvetica, Arial, sans-serif; }
+  * { box-sizing: border-box; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: #FFFFFF; }
+  h1, h2, h3, .display { font-family: 'Inter Tight', Inter, Helvetica, sans-serif; }
+  ::selection { background: #F5F5F5; color: #191919; }
+  [lang="en"] { display: none; }
+  [data-lang="en"] [lang="en"] { display: revert; }
+  [data-lang="en"] [lang="pt"] { display: none; }
+  @media (max-width: 900px) {
+    [data-grid] { grid-template-columns: minmax(0, 1fr) !important; }
+    [data-span] { grid-column: auto !important; }
+    [data-row] { grid-template-columns: minmax(0, 1fr) !important; row-gap: 10px !important; }
+  }
+</style>
+</helmet>
+<div data-lang="{{ lang }}" style="min-height: 100vh; background: #191919; overflow-x: hidden; padding: 0 clamp(18px, 3.4vw, 44px);">
+
+  <div data-progress="" style="position: fixed; top: 0; left: 0; height: 1px; width: 0%; background: #F5F5F5; z-index: 60;"></div>
+
+  <header style="position: sticky; top: 0; z-index: 40; display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 22px 0 18px; background: linear-gradient(#191919F2 62%, #19191900); backdrop-filter: blur(8px);">
+    <a href="Portfolio.dc.html" style="display: inline-flex; align-items: baseline; gap: 9px; font-size: 13px; color: #9A9A9A; transition: color .25s;" style-hover="color:#F5F5F5"><span>←</span><span>Filipe Vieira</span></a>
+    <div style="display: flex; align-items: baseline; gap: clamp(16px, 2.4vw, 34px); font-size: 13px; color: #9A9A9A;">
+      <span style="color: #6B6B6B;">Play Pare</span>
+      <button type="button" onClick="{{ toggleLang }}" style="padding: 0; border: 0; background: transparent; color: #9A9A9A; font-family: Inter, sans-serif; font-size: 13px; cursor: pointer;">
+        <span style="color: {{ ptColor }};">PT</span><span style="color: #4B4B4B; padding: 0 3px;">·</span><span style="color: {{ enColor }};">EN</span>
+      </button>
+    </div>
+  </header>
+
+  <section data-grid="" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 26px clamp(16px, 2vw, 32px); padding: clamp(48px, 9vh, 110px) 0 clamp(30px, 5vh, 56px);">
+    <div data-span="" data-reveal="" style="grid-column: 1 / 9;">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
+        <span style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;"><span lang="pt">Trabalho de empresa · Web</span><span lang="en">Company work · Web</span></span>
+        <span style="padding: 3px 8px; border: 1px solid #3B3B3B; border-radius: 4px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #8C8C8C;">18+</span>
+      </div>
+      <h1 style="margin: 20px 0 0; font-size: clamp(38px, 6.6vw, 116px); line-height: 0.9; letter-spacing: -0.05em; font-weight: 500;">Play Pare</h1>
+      <p style="margin: 26px 0 0; max-width: 34ch; font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(19px, 2vw, 30px); line-height: 1.28; letter-spacing: -0.025em; color: #EDEDED; text-wrap: pretty;">
+        <span lang="pt">Uma plataforma de conteúdo adulto no Brasil: creators vendendo direto, sem intermediário e sem exposição desnecessária.</span>
+        <span lang="en">An adult content platform in Brazil: creators selling directly, with no middleman and no unnecessary exposure.</span>
+      </p>
+    </div>
+    <div data-span="" data-reveal="" style="grid-column: 10 / 13; display: grid; gap: 18px; align-content: end;">
+      <div>
+        <div style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6B6B;"><span lang="pt">Papel</span><span lang="en">Role</span></div>
+        <div style="margin-top: 5px; font-size: 14px; color: #D6D6D6;"><span lang="pt">Desenvolvimento web no time de produto</span><span lang="en">Web development on the product team</span></div>
+      </div>
+      <div>
+        <div style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6B6B;"><span lang="pt">Situação</span><span lang="en">Status</span></div>
+        <div style="margin-top: 5px; font-size: 14px; line-height: 1.5; color: #D6D6D6;"><span lang="pt">No ar, em descontinuação</span><span lang="en">Live, being sunset</span></div>
+      </div>
+      <div>
+        <div style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6B6B;">Stack</div>
+        <div style="margin-top: 5px; font-size: 14px; line-height: 1.5; color: #D6D6D6;">Next.js · TypeScript · Node · PostgreSQL</div>
+      </div>
+    </div>
+  </section>
+
+  <div data-reveal="">
+    <div style="border: 1px solid #262626; border-radius: 8px; overflow: hidden; background: #101010;">
+      <img src="images/playpare-landing.png" alt="Landing page da Play Pare" style="display: block; width: 100%; height: auto;" />
+    </div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 20px; margin-top: 12px; font-size: 12px; color: #6B6B6B;">
+      <span><span lang="pt">Landing page — única tela mostrada aqui; o resto do produto fica de fora por respeito a quem usa.</span><span lang="en">Landing page — the only screen shown here; the rest of the product stays out, out of respect for its users.</span></span>
+      <span style="letter-spacing: 0.06em; text-transform: uppercase;">playpare.com</span>
+    </div>
+  </div>
+
+  <section data-grid="" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 30px clamp(16px, 2vw, 32px); padding: clamp(60px, 10vh, 130px) 0 0;">
+    <h2 data-span="" data-reveal="" style="grid-column: 1 / 4; margin: 0; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9A9A;"><span lang="pt">01 · Por que está aqui</span><span lang="en">01 · Why it's here</span></h2>
+    <div data-span="" data-reveal="" style="grid-column: 4 / 11;">
+      <p style="margin: 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(20px, 2.2vw, 32px); line-height: 1.3; letter-spacing: -0.025em; color: #F5F5F5; text-wrap: pretty;">
+        <span lang="pt">Nenhum produto ensina mais sobre confiança do que um em que o usuário tem algo a perder se você errar.</span>
+        <span lang="en">No product teaches more about trust than one where the user has something to lose if you get it wrong.</span>
+      </p>
+      <p style="margin: 26px 0 0; max-width: 62ch; font-size: 15px; line-height: 1.75; color: #A3A3A3; text-wrap: pretty;">
+        <span lang="pt">Aqui os dois lados são sensíveis: quem vende expõe imagem e identidade, quem compra expõe hábito e cartão. Toda decisão de produto passava por uma pergunta simples — isso aumenta ou diminui o risco de alguém?</span>
+        <span lang="en">Both sides are sensitive here: sellers expose their image and identity, buyers expose habits and a card. Every product decision went through one simple question — does this raise or lower someone's risk?</span>
+      </p>
+      <p style="margin: 20px 0 0; max-width: 62ch; font-size: 15px; line-height: 1.75; color: #A3A3A3; text-wrap: pretty;">
+        <span lang="pt">Foi também o projeto onde vi de perto o que é construir para um nicho que a maior parte da infraestrutura da internet prefere não atender — pagamento, hospedagem, anúncio, tudo é mais difícil.</span>
+        <span lang="en">It's also where I saw up close what it means to build for a niche most of the internet's infrastructure would rather not serve — payments, hosting, advertising, all harder.</span>
+      </p>
+    </div>
+  </section>
+
+  <section style="padding: clamp(60px, 10vh, 130px) 0 0;">
+    <div data-reveal="" style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding-bottom: 16px; border-bottom: 1px solid #262626;">
+      <h2 style="margin: 0; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9A9A;"><span lang="pt">02 · Restrições que definiram o produto</span><span lang="en">02 · Constraints that shaped the product</span></h2>
+    </div>
+    <div data-grid="" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1px; margin-top: clamp(28px, 4vw, 48px); background: #262626; border: 1px solid #262626; border-radius: 8px; overflow: hidden;">
+      <div data-span="" data-reveal="" style="grid-column: 1 / 7; padding: clamp(22px, 2.2vw, 32px); background: #1D1D1D;">
+        <div style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6B6B6B;">01</div>
+        <h3 style="margin: 12px 0 0; font-size: clamp(18px, 1.8vw, 24px); letter-spacing: -0.02em; font-weight: 500;"><span lang="pt">Discrição é requisito, não preferência</span><span lang="en">Discretion is a requirement, not a preference</span></h3>
+        <p style="margin: 12px 0 0; font-size: 14px; line-height: 1.7; color: #A3A3A3; text-wrap: pretty;"><span lang="pt">Nome que aparece na fatura, e-mail que a plataforma dispara, o que fica no histórico do navegador — coisas que em outro produto ninguém discute e aqui eram pauta de reunião.</span><span lang="en">The name on the statement, the emails the platform sends, what stays in browser history — things nobody debates elsewhere were meeting topics here.</span></p>
+      </div>
+      <div data-span="" data-reveal="" style="grid-column: 7 / 13; padding: clamp(22px, 2.2vw, 32px); background: #1D1D1D;">
+        <div style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6B6B6B;">02</div>
+        <h3 style="margin: 12px 0 0; font-size: clamp(18px, 1.8vw, 24px); letter-spacing: -0.02em; font-weight: 500;"><span lang="pt">Pagamento é o gargalo</span><span lang="en">Payment is the bottleneck</span></h3>
+        <p style="margin: 12px 0 0; font-size: 14px; line-height: 1.7; color: #A3A3A3; text-wrap: pretty;"><span lang="pt">Boa parte dos provedores simplesmente não aceita a categoria. O produto se molda ao que sobra: menos opções, mais atenção a falha de cobrança e a repasse para o creator.</span><span lang="en">Most providers simply don't accept the category. The product bends to what's left: fewer options, much more care with failed charges and creator payouts.</span></p>
+      </div>
+      <div data-span="" data-reveal="" style="grid-column: 1 / 5; padding: clamp(22px, 2.2vw, 32px); background: #1D1D1D;">
+        <div style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6B6B6B;">03</div>
+        <h3 style="margin: 12px 0 0; font-size: clamp(17px, 1.6vw, 21px); letter-spacing: -0.02em; font-weight: 500;"><span lang="pt">Idade e consentimento</span><span lang="en">Age and consent</span></h3>
+        <p style="margin: 12px 0 0; font-size: 14px; line-height: 1.7; color: #A3A3A3; text-wrap: pretty;"><span lang="pt">Verificação não é tela de cadastro: é fluxo com prova, revisão humana e registro de quem aprovou o quê.</span><span lang="en">Verification isn't a signup screen: it's a flow with proof, human review, and a record of who approved what.</span></p>
+      </div>
+      <div data-span="" data-reveal="" style="grid-column: 5 / 9; padding: clamp(22px, 2.2vw, 32px); background: #1D1D1D;">
+        <div style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6B6B6B;">04</div>
+        <h3 style="margin: 12px 0 0; font-size: clamp(17px, 1.6vw, 21px); letter-spacing: -0.02em; font-weight: 500;"><span lang="pt">Mídia pesada, rede ruim</span><span lang="en">Heavy media, bad networks</span></h3>
+        <p style="margin: 12px 0 0; font-size: 14px; line-height: 1.7; color: #A3A3A3; text-wrap: pretty;"><span lang="pt">Vídeo é o produto. Entrega rápida no celular do Brasil inteiro define se a pessoa paga de novo no mês seguinte.</span><span lang="en">Video is the product. Fast delivery on phones across Brazil decides whether someone pays again next month.</span></p>
+      </div>
+      <div data-span="" data-reveal="" style="grid-column: 9 / 13; padding: clamp(22px, 2.2vw, 32px); background: #1D1D1D;">
+        <div style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6B6B6B;">05</div>
+        <h3 style="margin: 12px 0 0; font-size: clamp(17px, 1.6vw, 21px); letter-spacing: -0.02em; font-weight: 500;"><span lang="pt">Moderação sempre</span><span lang="en">Moderation always</span></h3>
+        <p style="margin: 12px 0 0; font-size: 14px; line-height: 1.7; color: #A3A3A3; text-wrap: pretty;"><span lang="pt">Conteúdo publicado precisa de caminho rápido de remoção. Isso é engenharia, não política de uso.</span><span lang="en">Published content needs a fast path to removal. That's engineering, not a usage policy.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section data-grid="" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 30px clamp(16px, 2vw, 32px); padding: clamp(60px, 10vh, 130px) 0 0;">
+    <h2 data-span="" data-reveal="" style="grid-column: 1 / 4; margin: 0; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9A9A;"><span lang="pt">03 · O que eu fiz</span><span lang="en">03 · What I did</span></h2>
+    <div data-span="" data-reveal="" style="grid-column: 4 / 12;">
+      <ul style="margin: 0; padding: 0; list-style: none; display: grid; gap: 0;">
+        <li data-row="" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: clamp(14px, 2vw, 36px); padding: 18px 0; border-top: 1px solid #262626; align-items: baseline;">
+          <span class="display" style="font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(17px, 1.7vw, 22px); letter-spacing: -0.02em;"><span lang="pt">Interface de descoberta</span><span lang="en">Discovery interface</span></span>
+          <span style="font-size: 14px; line-height: 1.7; color: #A3A3A3;"><span lang="pt">Navegação por perfil, cidade e tipo de conteúdo, com filtro que funciona no celular sem virar formulário.</span><span lang="en">Browsing by profile, city and content type, with filtering that works on a phone without becoming a form.</span></span>
+        </li>
+        <li data-row="" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: clamp(14px, 2vw, 36px); padding: 18px 0; border-top: 1px solid #262626; align-items: baseline;">
+          <span class="display" style="font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(17px, 1.7vw, 22px); letter-spacing: -0.02em;"><span lang="pt">Área do creator</span><span lang="en">Creator area</span></span>
+          <span style="font-size: 14px; line-height: 1.7; color: #A3A3A3;"><span lang="pt">Publicação de conteúdo, controle do que é público ou pago e visão do que entrou de dinheiro.</span><span lang="en">Publishing content, controlling what's public or paid, and seeing what came in.</span></span>
+        </li>
+        <li data-row="" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: clamp(14px, 2vw, 36px); padding: 18px 0; border-top: 1px solid #262626; align-items: baseline;">
+          <span class="display" style="font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(17px, 1.7vw, 22px); letter-spacing: -0.02em;"><span lang="pt">Fluxo de assinatura</span><span lang="en">Subscription flow</span></span>
+          <span style="font-size: 14px; line-height: 1.7; color: #A3A3A3;"><span lang="pt">Checkout curto, estados de falha explicados sem jargão e recuperação de cobrança sem constranger ninguém.</span><span lang="en">A short checkout, failure states explained without jargon, and dunning that doesn't embarrass anyone.</span></span>
+        </li>
+        <li data-row="" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: clamp(14px, 2vw, 36px); padding: 18px 0; border-top: 1px solid #262626; border-bottom: 1px solid #262626; align-items: baseline;">
+          <span class="display" style="font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(17px, 1.7vw, 22px); letter-spacing: -0.02em;"><span lang="pt">Programa de indicação</span><span lang="en">Referral program</span></span>
+          <span style="font-size: 14px; line-height: 1.7; color: #A3A3A3;"><span lang="pt">Canal de crescimento que não depende de anúncio pago — praticamente inviável nessa categoria.</span><span lang="en">A growth channel that doesn't rely on paid ads — practically impossible in this category.</span></span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section data-grid="" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 30px clamp(16px, 2vw, 32px); padding: clamp(60px, 10vh, 130px) 0 0;">
+    <h2 data-span="" data-reveal="" style="grid-column: 1 / 4; margin: 0; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9A9A;"><span lang="pt">04 · Como terminou</span><span lang="en">04 · How it ended</span></h2>
+    <div data-span="" data-reveal="" style="grid-column: 4 / 11;">
+      <p style="margin: 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(20px, 2.4vw, 36px); line-height: 1.28; letter-spacing: -0.028em; color: #F5F5F5; text-wrap: pretty;">
+        <span lang="pt">Saí da empresa e o plano era descontinuar a plataforma. Ela continua no ar — o que aprendi ali continua também.</span>
+        <span lang="en">I left the company and the plan was to sunset the platform. It's still live — and so is what I learned there.</span>
+      </p>
+      <p style="margin: 26px 0 0; max-width: 62ch; font-size: 15px; line-height: 1.75; color: #A3A3A3; text-wrap: pretty;">
+        <span lang="pt">Levo daqui um jeito de pensar produto que uso até hoje no mobile: antes de desenhar a tela, pergunte o que essa tela pode custar para a pessoa do outro lado. Em app de creator, custa reputação e dinheiro — a régua é a mesma.</span>
+        <span lang="en">What I took with me is a way of thinking I still use in mobile: before designing a screen, ask what that screen can cost the person on the other side. In a creator app, it costs reputation and money — same bar.</span>
+      </p>
+      <p style="margin: 24px 0 0; max-width: 62ch; padding: 16px 18px; border: 1px solid #262626; border-radius: 6px; font-size: 13px; line-height: 1.65; color: #8C8C8C;">
+        <span lang="pt">Nota: mantenho os detalhes deste caso em nível alto por respeito ao produto e às pessoas envolvidas. Posso falar mais sobre as decisões técnicas em conversa.</span>
+        <span lang="en">Note: I keep this case at a high level out of respect for the product and the people involved. Happy to go deeper on the technical decisions in a conversation.</span>
+      </p>
+    </div>
+  </section>
+
+  <footer style="margin-top: clamp(70px, 12vh, 150px); padding: clamp(40px, 6vh, 70px) 0 34px; border-top: 1px solid #262626;">
+    <div data-reveal="" style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 24px;">
+      <div>
+        <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;"><span lang="pt">Próximo</span><span lang="en">Next</span></div>
+        <a href="Case Inbazz Creator.dc.html" class="display" style="display: inline-block; margin-top: 14px; font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(30px, 5.4vw, 84px); line-height: 0.92; letter-spacing: -0.045em; font-weight: 500; transition: color .3s;" style-hover="color:#8C8C8C">Inbazz Creator →</a>
+      </div>
+      <a href="mailto:filipe68ft@hotmail.com" style="font-size: 15px; color: #A3A3A3; border-bottom: 1px solid #3B3B3B; padding-bottom: 3px; transition: color .25s, border-color .25s;" style-hover="color:#F5F5F5;border-color:#F5F5F5">filipe68ft@hotmail.com</a>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 22px; margin-top: clamp(40px, 6vh, 80px); padding-top: 20px; border-top: 1px solid #242424; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: #6B6B6B;">
+      <a href="Portfolio.dc.html" style="transition: color .25s;" style-hover="color:#F5F5F5"><span lang="pt">Voltar ao início</span><span lang="en">Back home</span></a>
+      <span style="margin-left: auto; color: #6B6B6B;">© 2026</span>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'pt' };
+
+  componentDidMount() {
+    const nodes = Array.from(document.querySelectorAll('[data-reveal]'));
+    nodes.forEach((n) => {
+      n.style.opacity = '0';
+      n.style.transform = 'translateY(22px)';
+      n.style.transition = 'opacity .9s cubic-bezier(.16,.84,.24,1), transform .9s cubic-bezier(.16,.84,.24,1)';
+    });
+    const show = (n) => {
+      n.style.opacity = '1';
+      n.style.transform = 'none';
+      setTimeout(() => { n.style.transform = ''; n.style.transition = ''; }, 1000);
+    };
+    if (typeof IntersectionObserver === 'function') {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => {
+          if (e.isIntersecting) {
+            setTimeout(() => show(e.target), Math.min(i * 60, 240));
+            io.unobserve(e.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.04 });
+      nodes.forEach((n) => io.observe(n));
+      this._io = io;
+    }
+    this._t = setTimeout(() => nodes.forEach(show), 2600);
+
+    const bar = document.querySelector('[data-progress]');
+    if (bar) {
+      this._onScroll = () => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const p = max > 0 ? Math.min(Math.max(window.scrollY / max, 0), 1) : 0;
+        bar.style.width = (p * 100).toFixed(2) + '%';
+      };
+      this._onScroll();
+      window.addEventListener('scroll', this._onScroll, { passive: true });
+      window.addEventListener('resize', this._onScroll);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._onScroll) {
+      window.removeEventListener('scroll', this._onScroll);
+      window.removeEventListener('resize', this._onScroll);
+    }
+    clearTimeout(this._t);
+  }
+
+  renderVals() {
+    const lang = this.state.lang;
+    return {
+      lang,
+      ptColor: lang === 'pt' ? '#F5F5F5' : '#9A9A9A',
+      enColor: lang === 'en' ? '#F5F5F5' : '#9A9A9A',
+      toggleLang: () => this.setState((s) => ({ lang: s.lang === 'pt' ? 'en' : 'pt' }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>

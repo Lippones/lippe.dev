@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;family=Inter+Tight:wght@300;400;500&amp;display=swap" rel="stylesheet" />
+  <style>
+    body { margin: 0; background: #191919; color: #F5F5F5; font-family: Inter, Helvetica, Arial, sans-serif; font-feature-settings: "cv11", "ss01"; }
+    * { box-sizing: border-box; }
+    .box { border: 1px solid #262626; border-radius: 6px; background: #1D1D1D; padding: 22px 24px; }
+    .box-strong { border-color: #3B3B3B; background: #202020; }
+    .kicker { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6B6B6B; }
+    h3 { margin: 9px 0 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: 20px; letter-spacing: -0.025em; font-weight: 500; }
+    .code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.75; letter-spacing: 0; color: #A3A3A3; }
+    .dim { color: #6B6B6B; }
+    .caption { font-size: 14px; line-height: 1.7; color: #A3A3A3; }
+    .stem { width: 1px; height: 30px; background: #2C2C2C; margin: 0 auto; }
+    .stem-lbl { display: block; text-align: center; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #565656; padding: 7px 0; }
+    ol { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 9px; }
+    ol li { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 12px; font-size: 14px; line-height: 1.6; color: #A3A3A3; }
+    ol li span:first-child { font-size: 11px; color: #565656; padding-top: 3px; }
+  </style>
+</helmet>
+
+<div style="min-height: 100vh; background: #191919; padding: 48px;">
+
+  <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding-bottom: 16px; border-bottom: 1px solid #262626;">
+    <h2 style="margin: 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9A9A;">Como o realtime funciona</h2>
+    <span style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #565656;">um poll, muitos visitantes</span>
+  </div>
+
+  <p class="caption" style="margin: 28px 0 0; max-width: 76ch;">
+    O Spotify não tem webhook de playback: não existe ninguém para avisar o site que a faixa mudou. Então "tempo real" aqui é uma coisa só —
+    <strong style="color: #EDEDED; font-weight: 500;">um poll compartilhado no servidor, e a barra andando sozinha no navegador</strong>.
+    O visitante vê movimento contínuo sem que exista uma requisição por quadro.
+  </p>
+
+  <div style="margin-top: 36px;">
+
+    <div class="box">
+      <div class="kicker">Setup · uma vez, fora do site</div>
+      <h3>Você autoriza a sua própria conta</h3>
+      <p class="caption" style="margin: 10px 0 0; max-width: 66ch;">Não há login de visitante. Você roda o fluxo de autorização uma vez, com o escopo mínimo, e guarda o refresh token como segredo do projeto.</p>
+      <p class="code" style="margin: 14px 0 0;">scope<span class="dim">:</span> user-read-currently-playing<br /><span class="dim">env:</span> SPOTIFY_CLIENT_ID · SPOTIFY_CLIENT_SECRET · SPOTIFY_REFRESH_TOKEN</p>
+    </div>
+
+    <div class="stem"></div>
+    <div class="stem-lbl">o token nunca sai do servidor</div>
+    <div class="stem"></div>
+
+    <div class="box box-strong">
+      <div class="kicker">Servidor · Route Handler</div>
+      <h3>/api/now-playing</h3>
+      <ol>
+        <li><span>01</span><span>Pega o access token do cache em memória, ou renova com o refresh token quando faltam menos de 5 min para expirar.</span></li>
+        <li><span>02</span><span>Chama <span class="code">GET /v1/me/player/currently-playing</span> uma única vez.</span></li>
+        <li><span>03</span><span>Reduz a resposta a oito campos. O bundle do cliente nunca vê token, device id nem o resto do payload.</span></li>
+        <li><span>04</span><span>Devolve com cache compartilhado, então a resposta serve todos os visitantes ao mesmo tempo.</span></li>
+      </ol>
+      <p class="code" style="margin: 18px 0 0; padding-top: 16px; border-top: 1px solid #262626;">Cache-Control<span class="dim">:</span> s-maxage=5, stale-while-revalidate=25</p>
+    </div>
+
+    <div class="stem"></div>
+    <div class="stem-lbl">uma resposta, N leitores</div>
+    <div class="stem"></div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px;">
+      <div class="box" style="padding: 18px 20px;"><div style="font-size: 14px; color: #D6D6D6;">visitante</div><div style="margin-top: 5px; font-size: 13px; color: #6B6B6B;">lê do cache</div></div>
+      <div class="box" style="padding: 18px 20px;"><div style="font-size: 14px; color: #D6D6D6;">visitante</div><div style="margin-top: 5px; font-size: 13px; color: #6B6B6B;">lê do cache</div></div>
+      <div class="box" style="padding: 18px 20px;"><div style="font-size: 14px; color: #D6D6D6;">visitante</div><div style="margin-top: 5px; font-size: 13px; color: #6B6B6B;">lê do cache</div></div>
+    </div>
+
+    <div class="stem"></div>
+    <div class="stem-lbl">e no navegador</div>
+    <div class="stem"></div>
+
+    <div class="box">
+      <div class="kicker">Cliente · a parte que parece mágica</div>
+      <h3>A barra anda sem rede</h3>
+      <ol>
+        <li><span>01</span><span>Ao receber o payload, o cliente guarda <span class="code">recebidoEm = Date.now()</span>. Usar o próprio relógio evita erro de fuso e de máquina desregulada.</span></li>
+        <li><span>02</span><span>A cada quadro, o progresso é <span class="code">progressMs + (agora − recebidoEm)</span>. Nenhuma requisição envolvida.</span></li>
+        <li><span>03</span><span>Refaz o fetch a cada 10 s, ao voltar o foco da aba, e no instante em que o progresso local passa da duração — que é quando a faixa provavelmente virou.</span></li>
+        <li><span>04</span><span>Aba escondida para tudo: sem timer, sem fetch, sem animação.</span></li>
+      </ol>
+    </div>
+
+  </div>
+
+  <div style="margin-top: 40px; padding-top: 24px; border-top: 1px solid #262626; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px;">
+    <div>
+      <div style="font-family: 'Inter Tight', Inter, sans-serif; font-size: 34px; letter-spacing: -0.035em; font-weight: 500;">12</div>
+      <div style="margin-top: 7px; font-size: 13px; line-height: 1.55; color: #8C8C8C;">chamadas ao Spotify por minuto, seja com um visitante ou dez mil</div>
+    </div>
+    <div>
+      <div style="font-family: 'Inter Tight', Inter, sans-serif; font-size: 34px; letter-spacing: -0.035em; font-weight: 500;">0</div>
+      <div style="margin-top: 7px; font-size: 13px; line-height: 1.55; color: #8C8C8C;">requisições entre um quadro e o seguinte, com a barra andando</div>
+    </div>
+    <div>
+      <div style="font-family: 'Inter Tight', Inter, sans-serif; font-size: 34px; letter-spacing: -0.035em; font-weight: 500;">1 h</div>
+      <div style="margin-top: 7px; font-size: 13px; line-height: 1.55; color: #8C8C8C;">de vida do access token, renovado no servidor antes de expirar</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 36px; padding: 20px 22px; border: 1px solid #262626; border-radius: 6px;">
+    <div class="kicker">Se um dia precisar ser instantâneo</div>
+    <p class="caption" style="margin: 10px 0 0; max-width: 76ch;">Trocar o poll do cliente por SSE: o servidor continua consultando o Spotify a cada 5 s e empurra só quando a faixa muda. Ganha-se a troca instantânea e paga-se com uma conexão aberta por visitante. Não vale a pena antes de alguém reclamar dos 10 s.</p>
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"$preview":{"width":1100,"height":1760}}'>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>

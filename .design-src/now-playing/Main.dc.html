@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;family=Inter+Tight:wght@300;400;500&amp;display=swap" rel="stylesheet" />
+  <style>
+    body { margin: 0; background: #191919; color: #F5F5F5; font-family: Inter, Helvetica, Arial, sans-serif; font-feature-settings: "cv11", "ss01"; }
+    * { box-sizing: border-box; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: #FFFFFF; }
+    h1 { font-family: 'Inter Tight', Inter, Helvetica, sans-serif; }
+    .hatch { background-color: #202020; background-image: repeating-linear-gradient(135deg, #282828 0 7px, #202020 7px 14px); }
+    .eq { display: flex; align-items: flex-end; gap: 2px; height: 9px; }
+    .eq i { display: block; width: 2px; height: 9px; background: #F5F5F5; transform-origin: bottom; animation: eqbar 1s ease-in-out infinite; }
+    .eq i:nth-child(1) { animation-delay: -.1s; }
+    .eq i:nth-child(2) { animation-delay: -.55s; }
+    .eq i:nth-child(3) { animation-delay: -.3s; }
+    @keyframes eqbar { 0%, 100% { transform: scaleY(.28); } 50% { transform: scaleY(1); } }
+    .eq[data-still="1"] i { animation: none; transform: scaleY(.28); background: #6B6B6B; }
+    /* botao, nao div: o widget e a interacao principal e precisa ser alcancavel
+       por teclado, com foco visivel. */
+    .np { display: block; width: 234px; padding: 0; border: 0; background: transparent; text-align: left; font: inherit; color: inherit; cursor: pointer; border-radius: 4px; }
+    .np:hover .np-title { color: #FFFFFF; }
+    .np:hover .np-art { border-color: #3B3B3B; }
+    .np:focus-visible { outline: 1px solid #F5F5F5; outline-offset: 6px; }
+    .np-art { transition: border-color .3s; }
+    .np-title { transition: color .3s; }
+  </style>
+</helmet>
+
+<div style="min-height: 100vh; background: #191919; padding: 0 44px; overflow: hidden;">
+
+  <header style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 22px 0 18px;">
+    <span style="font-family: 'Inter Tight', Inter, sans-serif; font-size: 15px; font-weight: 500; letter-spacing: -0.02em;">Filipe Vieira</span>
+    <div style="display: flex; align-items: baseline; gap: 34px; font-size: 13px; color: #9A9A9A;">
+      <span>Trabalho</span><span>Sobre</span><span>Contato</span>
+      <span><span style="color: #F5F5F5;">PT</span><span style="color: #4B4B4B; padding: 0 3px;">·</span><span>EN</span></span>
+    </div>
+  </header>
+
+  <section style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px 32px; padding: 99px 0 81px; align-items: end;">
+    <h1 style="grid-column: 1 / 13; margin: 0; font-size: 95px; line-height: 0.9; letter-spacing: -0.05em; font-weight: 500;">
+      Faço aplicativos<br />que cabem na mão<br /><span style="font-weight: 300; color: #767676;">e no dia</span> de quem usa.
+    </h1>
+
+    <div style="grid-column: 1 / 13; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: flex-start; gap: 20px 64px; margin-top: 26px;">
+
+      <div>
+        <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;">Agora</div>
+        <div style="margin-top: 6px; font-size: 14px; line-height: 1.45; color: #D6D6D6;">Dev Mobile Pleno<br />na Inbazz</div>
+      </div>
+
+      <div>
+        <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;">Base</div>
+        <div style="margin-top: 6px; font-size: 14px; line-height: 1.45; color: #D6D6D6;">Minas Gerais, BR<br />GMT−3 · 22:47</div>
+      </div>
+
+      <!-- Novo item da linha de metadados: mesma anatomia de rotulo + valor dos
+           dois vizinhos, com o equalizador fazendo o papel de sinal "ao vivo"
+           que o relogio ja tem. -->
+      <button type="button" class="np">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;">{{ label }}</div>
+          <sc-if value="{{ showEq }}" hint-placeholder-val="{{ true }}">
+            <div class="eq" data-still="{{ still }}" aria-hidden="true"><i></i><i></i><i></i></div>
+          </sc-if>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 12px; margin-top: 8px; opacity: {{ rowOpacity }};">
+          <sc-if value="{{ hasArt }}" hint-placeholder-val="{{ true }}">
+            <div class="np-art hatch" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 3px; border: 1px solid #2C2C2C;"></div>
+          </sc-if>
+          <sc-if value="{{ isOffline }}" hint-placeholder-val="{{ false }}">
+            <div style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 3px; border: 1px dashed #2C2C2C; display: grid; place-items: center;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#4B4B4B" stroke-width="1.2" stroke-linecap="round">
+                <path d="M2 6.2 C4.4 4.2 11.6 4.2 14 6.2" /><path d="M4.4 9 C6 7.7 10 7.7 11.6 9" /><path d="M2.5 2.5 L13.5 13.5" />
+              </svg>
+            </div>
+          </sc-if>
+          <div style="min-width: 0;">
+            <div class="np-title" style="font-size: 14px; line-height: 1.35; color: {{ titleColor }}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ title }}</div>
+            <div style="margin-top: 2px; font-size: 13px; line-height: 1.35; color: #6B6B6B; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ artist }}</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 10px; height: 1px; background: #262626;">
+          <div style="height: 1px; background: {{ barColor }}; width: {{ pct }};"></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 5px; font-size: 11px; letter-spacing: 0.04em; color: #565656; font-variant-numeric: tabular-nums;">
+          <span>{{ elapsedText }}</span>
+          <span>{{ remainingText }}</span>
+        </div>
+      </button>
+
+    </div>
+  </section>
+
+  <div style="border-top: 1px solid #262626; padding-top: 30px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px 32px;">
+    <p style="grid-column: 1 / 6; margin: 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: 26px; line-height: 1.32; letter-spacing: -0.02em; color: #EDEDED;">
+      Venho do full-stack, escolhi o mobile. É onde o software vira gesto — e onde cada milissegundo de atrito aparece na cara de quem usa.
+    </p>
+    <p style="grid-column: 8 / 13; margin: 0; font-size: 15px; line-height: 1.7; color: #A3A3A3;">
+      Hoje sou responsável pelo aplicativo dos creators da Inbazz: reconstruí ele do FlutterFlow para React Native, sozinho, com o app em produção o tempo inteiro.
+    </p>
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"playback":{"editor":"enum","options":["tocando","pausado","nada tocando","offline"],"default":"tocando","tsType":"string","section":"Estado"},"$preview":{"width":1440,"height":900}}'>
+const DURATION_MS = 214000;
+const SEEDED_MS = 61000;
+
+class Component extends DCLogic {
+  state = { elapsed: 0 };
+
+  componentDidMount() {
+    this._start = Date.now();
+    this._id = setInterval(() => {
+      if ((this.props.playback ?? 'tocando') !== 'tocando') {
+        // Reancora enquanto nao toca: sem isto o tempo parado entraria na conta
+        // e a barra pularia para frente ao retomar.
+        this._start = Date.now() - this.state.elapsed;
+        return;
+      }
+      this.setState({ elapsed: Date.now() - this._start });
+    }, 250);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._id);
+  }
+
+  renderVals() {
+    const playback = this.props.playback ?? 'tocando';
+
+    const fmt = (ms) => {
+      const total = Math.floor(ms / 1000);
+      const m = Math.floor(total / 60);
+      const s = total % 60;
+      return m + ':' + (s < 10 ? '0' + s : String(s));
+    };
+
+    // Os textos e os slots seguem o artboard Estados, que e a especificacao.
+    if (playback === 'offline') {
+      return {
+        label: 'Ouvindo', showEq: false, still: '1', hasArt: false, isOffline: true,
+        rowOpacity: '1', titleColor: '#6B6B6B',
+        title: 'Sem dados agora', artist: 'tentando de novo',
+        barColor: 'transparent', pct: '0%', elapsedText: '—', remainingText: '—'
+      };
+    }
+
+    if (playback === 'nada tocando') {
+      return {
+        label: 'Última ouvida', showEq: false, still: '1', hasArt: true, isOffline: false,
+        rowOpacity: '0.55', titleColor: '#A3A3A3',
+        title: 'Chamber of Reflection', artist: 'Mac DeMarco · há 2 h',
+        barColor: 'transparent', pct: '0%', elapsedText: '—', remainingText: fmt(DURATION_MS)
+      };
+    }
+
+    const paused = playback === 'pausado';
+    const progress = paused
+      ? SEEDED_MS
+      : (SEEDED_MS + this.state.elapsed) % DURATION_MS;
+
+    return {
+      label: paused ? 'Pausado' : 'Ouvindo',
+      showEq: true,
+      still: paused ? '1' : '0',
+      hasArt: true,
+      isOffline: false,
+      rowOpacity: paused ? '0.68' : '1',
+      titleColor: paused ? '#A3A3A3' : '#D6D6D6',
+      title: 'Chamber of Reflection',
+      artist: 'Mac DeMarco',
+      barColor: paused ? '#6B6B6B' : '#F5F5F5',
+      pct: ((progress / DURATION_MS) * 100).toFixed(2) + '%',
+      elapsedText: fmt(progress),
+      remainingText: '−' + fmt(DURATION_MS - progress)
+    };
+  }
+}
+</script>
+</body>
+</html>

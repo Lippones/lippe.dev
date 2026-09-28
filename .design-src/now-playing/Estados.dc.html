@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;family=Inter+Tight:wght@300;400;500&amp;display=swap" rel="stylesheet" />
+  <style>
+    body { margin: 0; background: #191919; color: #F5F5F5; font-family: Inter, Helvetica, Arial, sans-serif; font-feature-settings: "cv11", "ss01"; }
+    * { box-sizing: border-box; }
+    .hatch { background-color: #202020; background-image: repeating-linear-gradient(135deg, #282828 0 7px, #202020 7px 14px); }
+    .eq { display: flex; align-items: flex-end; gap: 2px; height: 9px; }
+    .eq i { display: block; width: 2px; height: 9px; background: #F5F5F5; transform-origin: bottom; animation: eqbar 1s ease-in-out infinite; }
+    .eq i:nth-child(1) { animation-delay: -.1s; }
+    .eq i:nth-child(2) { animation-delay: -.55s; }
+    .eq i:nth-child(3) { animation-delay: -.3s; }
+    @keyframes eqbar { 0%, 100% { transform: scaleY(.28); } 50% { transform: scaleY(1); } }
+    .eq.still i { animation: none; transform: scaleY(.28); background: #6B6B6B; }
+    .bar { animation: creep 12s linear infinite; }
+    @keyframes creep { from { width: 26%; } to { width: 74%; } }
+    .code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.6; letter-spacing: 0; color: #6B6B6B; }
+    .col { display: flex; flex-direction: column; gap: 22px; }
+    .caption { font-size: 13px; line-height: 1.6; color: #A3A3A3; }
+  </style>
+</helmet>
+
+<div style="min-height: 100vh; background: #191919; padding: 48px;">
+
+  <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding-bottom: 16px; border-bottom: 1px solid #262626;">
+    <h2 style="margin: 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9A9A;">Estados do widget</h2>
+    <span style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #565656;">04</span>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px; padding-top: 40px;">
+
+    <!-- 1. tocando -->
+    <div class="col">
+      <div style="width: 100%;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;">Ouvindo</div>
+          <div class="eq" aria-hidden="true"><i></i><i></i><i></i></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-top: 8px;">
+          <div class="hatch" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 3px; border: 1px solid #2C2C2C;"></div>
+          <div style="min-width: 0;">
+            <div style="font-size: 14px; line-height: 1.35; color: #D6D6D6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Chamber of Reflection</div>
+            <div style="margin-top: 2px; font-size: 13px; color: #6B6B6B;">Mac DeMarco</div>
+          </div>
+        </div>
+        <div style="margin-top: 10px; height: 1px; background: #262626;">
+          <div class="bar" style="height: 1px; background: #F5F5F5; width: 45%;"></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 5px; font-size: 11px; letter-spacing: 0.04em; color: #565656; font-variant-numeric: tabular-nums;"><span>1:37</span><span>−1:57</span></div>
+      </div>
+      <div>
+        <div style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6B6B;">Tocando</div>
+        <p class="caption" style="margin: 8px 0 0;">Barra anda sozinha no cliente. A rede só entra a cada 5 s para confirmar a faixa.</p>
+        <p class="code" style="margin: 10px 0 0;">200 · is_playing: true</p>
+      </div>
+    </div>
+
+    <!-- 2. pausado -->
+    <div class="col">
+      <div style="width: 100%;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;">Pausado</div>
+          <div class="eq still" aria-hidden="true"><i></i><i></i><i></i></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-top: 8px; opacity: .68;">
+          <div class="hatch" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 3px; border: 1px solid #2C2C2C;"></div>
+          <div style="min-width: 0;">
+            <div style="font-size: 14px; line-height: 1.35; color: #A3A3A3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Chamber of Reflection</div>
+            <div style="margin-top: 2px; font-size: 13px; color: #6B6B6B;">Mac DeMarco</div>
+          </div>
+        </div>
+        <div style="margin-top: 10px; height: 1px; background: #262626;">
+          <div style="height: 1px; background: #6B6B6B; width: 45%;"></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 5px; font-size: 11px; letter-spacing: 0.04em; color: #565656; font-variant-numeric: tabular-nums;"><span>1:37</span><span>−1:57</span></div>
+      </div>
+      <div>
+        <div style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6B6B;">Pausado</div>
+        <p class="caption" style="margin: 8px 0 0;">Interpolação congela, equalizador para, preenchimento cai para cinza. Nada de spinner.</p>
+        <p class="code" style="margin: 10px 0 0;">200 · is_playing: false</p>
+      </div>
+    </div>
+
+    <!-- 3. nada tocando -->
+    <div class="col">
+      <div style="width: 100%;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;">Última ouvida</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-top: 8px; opacity: .55;">
+          <div class="hatch" style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 3px; border: 1px solid #2C2C2C;"></div>
+          <div style="min-width: 0;">
+            <div style="font-size: 14px; line-height: 1.35; color: #A3A3A3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Chamber of Reflection</div>
+            <div style="margin-top: 2px; font-size: 13px; color: #6B6B6B;">Mac DeMarco · há 2 h</div>
+          </div>
+        </div>
+        <div style="margin-top: 10px; height: 1px; background: #262626;"></div>
+        <div style="display: flex; justify-content: space-between; margin-top: 5px; font-size: 11px; letter-spacing: 0.04em; color: #565656; font-variant-numeric: tabular-nums;"><span>—</span><span>3:34</span></div>
+      </div>
+      <div>
+        <div style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6B6B;">Nada tocando</div>
+        <p class="caption" style="margin: 8px 0 0;">O bloco nunca desaparece: cai para a última faixa ouvida, com o tempo relativo.</p>
+        <p class="code" style="margin: 10px 0 0;">204 → recently-played</p>
+      </div>
+    </div>
+
+    <!-- 4. offline -->
+    <div class="col">
+      <div style="width: 100%;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;">Ouvindo</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-top: 8px;">
+          <div style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 3px; border: 1px dashed #2C2C2C; display: grid; place-items: center;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#4B4B4B" stroke-width="1.2" stroke-linecap="round">
+              <path d="M2 6.2 C4.4 4.2 11.6 4.2 14 6.2" /><path d="M4.4 9 C6 7.7 10 7.7 11.6 9" /><path d="M2.5 2.5 L13.5 13.5" />
+            </svg>
+          </div>
+          <div style="min-width: 0;">
+            <div style="font-size: 14px; line-height: 1.35; color: #6B6B6B;">Sem dados agora</div>
+            <div style="margin-top: 2px; font-size: 13px; color: #565656;">tentando de novo</div>
+          </div>
+        </div>
+        <div style="margin-top: 10px; height: 1px; background: #262626;"></div>
+        <div style="display: flex; justify-content: space-between; margin-top: 5px; font-size: 11px; letter-spacing: 0.04em; color: #565656; font-variant-numeric: tabular-nums;"><span>—</span><span>—</span></div>
+      </div>
+      <div>
+        <div style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6B6B;">Offline ou limitado</div>
+        <p class="caption" style="margin: 8px 0 0;">Serve o último snapshot bom enquanto der. Só depois disso mostra o traço.</p>
+        <p class="code" style="margin: 10px 0 0;">429 / 5xx / refresh falhou</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"$preview":{"width":1320,"height":520}}'>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>

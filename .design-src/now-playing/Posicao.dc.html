@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;family=Inter+Tight:wght@300;400;500&amp;display=swap" rel="stylesheet" />
+  <style>
+    body { margin: 0; background: #191919; color: #F5F5F5; font-family: Inter, Helvetica, Arial, sans-serif; font-feature-settings: "cv11", "ss01"; }
+    * { box-sizing: border-box; }
+    .wire { width: 340px; height: 236px; background: #1D1D1D; border: 1px solid #262626; border-radius: 5px; position: relative; overflow: hidden; }
+    .blk { background: #262626; border-radius: 2px; }
+    .spot { border: 1px dashed #F5F5F5; border-radius: 3px; background: rgba(245, 245, 245, 0.06); }
+    .label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6B6B; }
+    .caption { font-size: 13px; line-height: 1.65; color: #A3A3A3; }
+    .trade { font-size: 13px; line-height: 1.65; color: #6B6B6B; }
+    h3 { margin: 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: 19px; letter-spacing: -0.02em; font-weight: 500; }
+  </style>
+</helmet>
+
+<div style="min-height: 100vh; background: #191919; padding: 48px;">
+
+  <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding-bottom: 16px; border-bottom: 1px solid #262626;">
+    <h2 style="margin: 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9A9A;">Onde o widget mora — decisão aberta</h2>
+    <span style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #565656;">rascunho</span>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, 340px); gap: 48px; padding-top: 40px;">
+
+    <!-- A -->
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div class="wire">
+        <div class="blk" style="position: absolute; left: 16px; top: 14px; width: 74px; height: 8px;"></div>
+        <div class="blk" style="position: absolute; right: 16px; top: 14px; width: 108px; height: 8px;"></div>
+        <div class="blk" style="position: absolute; left: 16px; top: 58px; width: 264px; height: 20px;"></div>
+        <div class="blk" style="position: absolute; left: 16px; top: 84px; width: 232px; height: 20px;"></div>
+        <div class="blk" style="position: absolute; left: 16px; top: 110px; width: 250px; height: 20px;"></div>
+        <div class="blk" style="position: absolute; right: 122px; top: 152px; width: 54px; height: 30px;"></div>
+        <div class="blk" style="position: absolute; right: 16px; top: 152px; width: 54px; height: 30px;"></div>
+        <div class="spot" style="position: absolute; left: 16px; top: 148px; width: 96px; height: 38px;"></div>
+        <div class="blk" style="position: absolute; left: 16px; bottom: 18px; width: 308px; height: 1px; background: #262626;"></div>
+      </div>
+      <div>
+        <div class="label">Opção A</div>
+        <h3 style="margin-top: 7px;">Na linha de metadados do hero</h3>
+        <p class="caption" style="margin: 10px 0 0;">Fica ao lado de "Agora" e "Base", que já são estado ao vivo. Nenhum cromo novo na página, e todo mundo vê sem rolar.</p>
+        <p class="trade" style="margin: 8px 0 0;">Custo: divide o palco com a manchete e aperta a linha em telas médias.</p>
+      </div>
+    </div>
+
+    <!-- B -->
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div class="wire">
+        <div class="blk" style="position: absolute; left: 16px; top: 14px; width: 74px; height: 8px;"></div>
+        <div class="blk" style="position: absolute; right: 16px; top: 14px; width: 108px; height: 8px;"></div>
+        <div class="blk" style="position: absolute; left: 16px; top: 50px; width: 264px; height: 18px;"></div>
+        <div class="blk" style="position: absolute; left: 16px; top: 72px; width: 210px; height: 18px;"></div>
+        <div style="position: absolute; left: 16px; top: 116px; width: 308px; height: 1px; background: #262626;"></div>
+        <div class="blk" style="position: absolute; left: 16px; top: 132px; width: 180px; height: 30px;"></div>
+        <div class="spot" style="position: absolute; left: 16px; top: 178px; width: 132px; height: 40px;"></div>
+        <div class="blk" style="position: absolute; right: 16px; top: 190px; width: 96px; height: 8px;"></div>
+      </div>
+      <div>
+        <div class="label">Opção B</div>
+        <h3 style="margin-top: 7px;">No rodapé, junto do contato</h3>
+        <p class="caption" style="margin: 10px 0 0;">Fecha a página com uma nota pessoal, no mesmo lugar onde já estão GitHub e WhatsApp. Não disputa atenção com nada.</p>
+        <p class="trade" style="margin: 8px 0 0;">Custo: quase ninguém rola até o fim, então a feature raramente é vista.</p>
+      </div>
+    </div>
+
+    <!-- C -->
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div class="wire">
+        <div class="blk" style="position: absolute; left: 16px; top: 14px; width: 74px; height: 8px;"></div>
+        <div class="blk" style="position: absolute; right: 16px; top: 14px; width: 108px; height: 8px;"></div>
+        <div class="blk" style="position: absolute; left: 16px; top: 58px; width: 264px; height: 20px;"></div>
+        <div class="blk" style="position: absolute; left: 16px; top: 84px; width: 232px; height: 20px;"></div>
+        <div class="blk" style="position: absolute; left: 16px; top: 110px; width: 250px; height: 20px;"></div>
+        <div class="blk" style="position: absolute; left: 16px; top: 152px; width: 150px; height: 12px;"></div>
+        <div class="spot" style="position: absolute; left: 14px; bottom: 14px; width: 176px; height: 46px;"></div>
+      </div>
+      <div>
+        <div class="label">Opção C</div>
+        <h3 style="margin-top: 7px;">Dock fixo no canto</h3>
+        <p class="caption" style="margin: 10px 0 0;">Acompanha a rolagem inteira, inclusive nas páginas de caso. É a opção que mais parece um player de verdade.</p>
+        <p class="trade" style="margin: 8px 0 0;">Custo: é o único elemento flutuante do site e briga com o silêncio do layout.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="caption" style="margin: 40px 0 0; max-width: 78ch;">Desenhei o hi-fi na Opção A porque ela reaproveita um bloco que já existe e já é ao vivo. As outras duas ficam em rascunho até você escolher.</p>
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"$preview":{"width":1220,"height":700}}'>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>

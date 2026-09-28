@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Track Tidy — Filipe Vieira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  html { background: #191919; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+  body { margin: 0; background: #191919; color: #F5F5F5; font-family: Inter, Helvetica, Arial, sans-serif; }
+  * { box-sizing: border-box; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: #FFFFFF; }
+  h1, h2, h3, .display { font-family: 'Inter Tight', Inter, Helvetica, sans-serif; }
+  ::selection { background: #F5F5F5; color: #191919; }
+  [lang="en"] { display: none; }
+  [data-lang="en"] [lang="en"] { display: revert; }
+  [data-lang="en"] [lang="pt"] { display: none; }
+  @media (max-width: 900px) {
+    [data-grid] { grid-template-columns: minmax(0, 1fr) !important; }
+    [data-span] { grid-column: auto !important; }
+    [data-row] { grid-template-columns: minmax(0, 1fr) !important; row-gap: 10px !important; }
+  }
+</style>
+</helmet>
+<div data-lang="{{ lang }}" style="min-height: 100vh; background: #191919; overflow-x: hidden; padding: 0 clamp(18px, 3.4vw, 44px);">
+
+  <div data-progress="" style="position: fixed; top: 0; left: 0; height: 1px; width: 0%; background: #F5F5F5; z-index: 60;"></div>
+
+  <header style="position: sticky; top: 0; z-index: 40; display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 22px 0 18px; background: linear-gradient(#191919F2 62%, #19191900); backdrop-filter: blur(8px);">
+    <a href="Portfolio.dc.html" style="display: inline-flex; align-items: baseline; gap: 9px; font-size: 13px; color: #9A9A9A; transition: color .25s;" style-hover="color:#F5F5F5"><span>←</span><span>Filipe Vieira</span></a>
+    <div style="display: flex; align-items: baseline; gap: clamp(16px, 2.4vw, 34px); font-size: 13px; color: #9A9A9A;">
+      <span style="color: #6B6B6B;">Track Tidy</span>
+      <button type="button" onClick="{{ toggleLang }}" style="padding: 0; border: 0; background: transparent; color: #9A9A9A; font-family: Inter, sans-serif; font-size: 13px; cursor: pointer;">
+        <span style="color: {{ ptColor }};">PT</span><span style="color: #4B4B4B; padding: 0 3px;">·</span><span style="color: {{ enColor }};">EN</span>
+      </button>
+    </div>
+  </header>
+
+  <section data-grid="" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 26px clamp(16px, 2vw, 32px); padding: clamp(48px, 9vh, 110px) 0 clamp(30px, 5vh, 56px);">
+    <div data-span="" data-reveal="" style="grid-column: 1 / 9;">
+      <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;"><span lang="pt">Projeto pessoal · Web</span><span lang="en">Personal project · Web</span></div>
+      <h1 style="margin: 20px 0 0; font-size: clamp(38px, 6.6vw, 116px); line-height: 0.9; letter-spacing: -0.05em; font-weight: 500;">Track Tidy</h1>
+      <p style="margin: 26px 0 0; max-width: 32ch; font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(19px, 2vw, 30px); line-height: 1.28; letter-spacing: -0.025em; color: #EDEDED; text-wrap: pretty;">
+        <span lang="pt">Uma dor minha: 1.063 músicas curtidas e nenhuma playlist decente. Descrevi o que queria e deixei a IA separar.</span>
+        <span lang="en">A pain of my own: 1,063 liked songs and no decent playlist. I described what I wanted and let the AI sort it out.</span>
+      </p>
+    </div>
+    <div data-span="" data-reveal="" style="grid-column: 10 / 13; display: grid; gap: 18px; align-content: end;">
+      <div>
+        <div style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6B6B;"><span lang="pt">Papel</span><span lang="en">Role</span></div>
+        <div style="margin-top: 5px; font-size: 14px; color: #D6D6D6;"><span lang="pt">Tudo — ideia, produto, código</span><span lang="en">Everything — idea, product, code</span></div>
+      </div>
+      <div>
+        <div style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6B6B;"><span lang="pt">Motivo</span><span lang="en">Why</span></div>
+        <div style="margin-top: 5px; font-size: 14px; line-height: 1.5; color: #D6D6D6;"><span lang="pt">Entender IA em produção, não em demo</span><span lang="en">Understanding AI in production, not in a demo</span></div>
+      </div>
+      <div>
+        <div style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6B6B;">Stack</div>
+        <div style="margin-top: 5px; font-size: 14px; line-height: 1.5; color: #D6D6D6;">TypeScript · React · Spotify API · LLM</div>
+      </div>
+      <div>
+        <div style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6B6B;"><span lang="pt">Código</span><span lang="en">Code</span></div>
+        <a href="https://github.com/Lippones/Track-Tidy" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: baseline; gap: 7px; margin-top: 5px; font-size: 14px; color: #D6D6D6; border-bottom: 1px solid #3B3B3B; padding-bottom: 2px; transition: color .25s, border-color .25s;" style-hover="color:#F5F5F5;border-color:#F5F5F5">github.com/Lippones/Track-Tidy <span>↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <div data-reveal="" style="border-radius: 8px; border: 1px solid #2C2C2C; overflow: hidden; background: #101010;">
+    <img src="images/tracktidy-landing.png" alt="Track Tidy landing page" style="display: block; width: 100%; height: auto;" />
+  </div>
+
+  <section data-grid="" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 30px clamp(16px, 2vw, 32px); padding: clamp(60px, 10vh, 130px) 0 0;">
+    <h2 data-span="" data-reveal="" style="grid-column: 1 / 4; margin: 0; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9A9A;"><span lang="pt">01 · A dor</span><span lang="en">01 · The itch</span></h2>
+    <div data-span="" data-reveal="" style="grid-column: 4 / 11;">
+      <p style="margin: 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(20px, 2.2vw, 32px); line-height: 1.3; letter-spacing: -0.025em; color: #F5F5F5; text-wrap: pretty;">
+        <span lang="pt">Organizar música à mão é trabalho chato de gente que gosta de música. Ninguém termina.</span>
+        <span lang="en">Sorting music by hand is boring work for people who love music. Nobody ever finishes.</span>
+      </p>
+      <p style="margin: 26px 0 0; max-width: 62ch; font-size: 15px; line-height: 1.75; color: #A3A3A3; text-wrap: pretty;">
+        <span lang="pt">Eu queria "só as músicas do Mac DeMarco e do Vacations", "separa por idioma", "algo pra dormir". Toda vez a mesma coisa: abrir o Spotify, arrastar faixa por faixa, desistir no meio. Era um problema de intenção — eu sabia descrever o resultado, só não queria executar.</span>
+        <span lang="en">I wanted "only Mac DeMarco and Vacations", "split by language", "something to sleep to". Every time the same thing: open Spotify, drag track by track, give up halfway. It was an intent problem — I could describe the result, I just didn't want to do the work.</span>
+      </p>
+      <p style="margin: 20px 0 0; max-width: 62ch; font-size: 15px; line-height: 1.75; color: #A3A3A3; text-wrap: pretty;">
+        <span lang="pt">Descrever resultado é exatamente o que um modelo de linguagem faz bem. Então o projeto virou duas coisas ao mesmo tempo: resolver a minha dor e me obrigar a colocar IA em algo que outras pessoas usariam — com conta de verdade, permissão de verdade e erro de verdade.</span>
+        <span lang="en">Describing a result is exactly what a language model is good at. So the project became two things at once: fixing my own itch and forcing myself to put AI into something other people would use — with real accounts, real permissions and real failures.</span>
+      </p>
+    </div>
+  </section>
+
+  <section style="padding: clamp(60px, 10vh, 130px) 0 0;">
+    <div data-reveal="" style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding-bottom: 16px; border-bottom: 1px solid #262626;">
+      <h2 style="margin: 0; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9A9A;"><span lang="pt">02 · Três passos, nada mais</span><span lang="en">02 · Three steps, nothing more</span></h2>
+      <span style="font-size: 12px; color: #6B6B6B;"><span lang="pt">Conectar → escolher → descrever</span><span lang="en">Connect → pick → describe</span></span>
+    </div>
+    <div data-grid="" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(20px, 2.4vw, 40px); padding-top: clamp(28px, 4vw, 48px); align-items: start;">
+      <div data-span="" data-reveal="" style="grid-column: 1 / 6;">
+        <div style="border-radius: 8px; border: 1px solid #2C2C2C; overflow: hidden; background: #101010;">
+          <img src="images/tracktidy-select.png" alt="Seleção de playlists" style="display: block; width: 100%; height: auto;" />
+        </div>
+      </div>
+      <div data-span="" data-reveal="" style="grid-column: 6 / 13;">
+        <h3 style="margin: 0; font-size: clamp(20px, 2.2vw, 30px); line-height: 1.1; letter-spacing: -0.03em; font-weight: 500;"><span lang="pt">A escolha vem antes do prompt</span><span lang="en">The choice comes before the prompt</span></h3>
+        <p style="margin: 16px 0 0; max-width: 54ch; font-size: 15px; line-height: 1.75; color: #A3A3A3; text-wrap: pretty;">
+          <span lang="pt">A primeira versão jogava a biblioteca inteira no modelo. Ficou caro, lento e impreciso. Deixar a pessoa escolher a fonte — as curtidas, uma playlist específica — cortou o custo e melhorou o resultado, porque restringiu o espaço de decisão antes de a IA entrar.</span>
+          <span lang="en">The first version threw the entire library at the model. Expensive, slow, imprecise. Letting the person pick the source — liked songs, one specific playlist — cut cost and improved output, because it narrowed the decision space before the AI even started.</span>
+        </p>
+        <ul style="margin: 24px 0 0; padding: 0; list-style: none; display: grid; gap: 0; max-width: 54ch;">
+          <li data-row="" style="display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 14px; padding: 13px 0; border-top: 1px solid #262626; font-size: 15px; line-height: 1.6; color: #A3A3A3;">
+            <span style="color: #6B6B6B; font-size: 12px;">01</span>
+            <span><span lang="pt">Login com Spotify, escopo mínimo de permissão.</span><span lang="en">Spotify login, minimum permission scope.</span></span>
+          </li>
+          <li data-row="" style="display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 14px; padding: 13px 0; border-top: 1px solid #262626; font-size: 15px; line-height: 1.6; color: #A3A3A3;">
+            <span style="color: #6B6B6B; font-size: 12px;">02</span>
+            <span><span lang="pt">Seleção da fonte: curtidas ou playlists específicas.</span><span lang="en">Pick the source: liked songs or specific playlists.</span></span>
+          </li>
+          <li data-row="" style="display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 14px; padding: 13px 0; border-top: 1px solid #262626; border-bottom: 1px solid #262626; font-size: 15px; line-height: 1.6; color: #A3A3A3;">
+            <span style="color: #6B6B6B; font-size: 12px;">03</span>
+            <span><span lang="pt">Prompt em português comum: "separa por idioma", "só rock indie".</span><span lang="en">A prompt in plain language: "split by language", "indie rock only".</span></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: clamp(60px, 10vh, 130px) 0 0;">
+    <div data-reveal="" style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding-bottom: 16px; border-bottom: 1px solid #262626;">
+      <h2 style="margin: 0; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9A9A;"><span lang="pt">03 · IA que falha bem</span><span lang="en">03 · AI that fails gracefully</span></h2>
+    </div>
+    <div data-grid="" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 30px clamp(16px, 2vw, 32px); padding-top: clamp(28px, 4vw, 48px);">
+      <p data-span="" data-reveal="" style="grid-column: 1 / 7; margin: 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(19px, 2vw, 28px); line-height: 1.32; letter-spacing: -0.025em; color: #F5F5F5; text-wrap: pretty;">
+        <span lang="pt">A parte interessante não é o modelo acertar. É o que acontece quando ele erra, demora ou devolve zero música.</span>
+        <span lang="en">The interesting part isn't the model getting it right. It's what happens when it's wrong, slow, or returns zero songs.</span>
+      </p>
+      <p data-span="" data-reveal="" style="grid-column: 8 / 13; margin: 0; font-size: 15px; line-height: 1.75; color: #A3A3A3; text-wrap: pretty;">
+        <span lang="pt">Por isso cada pedido virou um job com estado visível: rascunho, processando, concluído. A pessoa vê o prompt que escreveu, quantas músicas entraram e quantas playlists saíram — inclusive quando o resultado foi zero. Um job que falha não some, ele fica na tela contando o que aconteceu.</span>
+        <span lang="en">That's why every request became a job with visible state: draft, processing, done. You see the prompt you wrote, how many songs went in and how many playlists came out — including when the answer was zero. A failed job doesn't disappear; it stays on screen and says what happened.</span>
+      </p>
+    </div>
+    <div data-reveal="" style="margin-top: clamp(28px, 4vw, 48px); border-radius: 8px; border: 1px solid #2C2C2C; overflow: hidden; background: #101010;">
+      <img src="images/tracktidy-results.png" alt="Playlists criadas pela IA, com prompt e total de músicas" style="display: block; width: 100%; height: auto;" />
+    </div>
+    <div data-grid="" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1px; margin-top: clamp(28px, 4vw, 48px); background: #262626; border: 1px solid #262626; border-radius: 8px; overflow: hidden;">
+      <div data-span="" style="grid-column: 1 / 5; padding: 24px; background: #1D1D1D;">
+        <div style="font-size: 14px; font-weight: 500;"><span lang="pt">Assíncrono por padrão</span><span lang="en">Async by default</span></div>
+        <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.6; color: #8C8C8C;"><span lang="pt">Nenhuma requisição de IA vive dentro de um clique. Vira job, roda atrás e a tela conta o progresso.</span><span lang="en">No AI request lives inside a click. It becomes a job, runs behind, and the screen reports progress.</span></p>
+      </div>
+      <div data-span="" style="grid-column: 5 / 9; padding: 24px; background: #1D1D1D;">
+        <div style="font-size: 14px; font-weight: 500;"><span lang="pt">Resultado auditável</span><span lang="en">Auditable output</span></div>
+        <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.6; color: #8C8C8C;"><span lang="pt">O prompt fica guardado junto do resultado. Sem isso não existe como melhorar o que o modelo entende.</span><span lang="en">The prompt is stored next to the result. Without that there's no way to improve what the model understands.</span></p>
+      </div>
+      <div data-span="" style="grid-column: 9 / 13; padding: 24px; background: #1D1D1D;">
+        <div style="font-size: 14px; font-weight: 500;"><span lang="pt">Nada destrutivo</span><span lang="en">Nothing destructive</span></div>
+        <p style="margin: 10px 0 0; font-size: 14px; line-height: 1.6; color: #8C8C8C;"><span lang="pt">A IA só cria playlists novas. Nenhuma faixa é removida da biblioteca de quem usa — erro de modelo não pode custar música.</span><span lang="en">The AI only creates new playlists. Nothing is removed from anyone's library — a model mistake can't cost you music.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section data-grid="" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 30px clamp(16px, 2vw, 32px); padding: clamp(60px, 10vh, 130px) 0 0;">
+    <h2 data-span="" data-reveal="" style="grid-column: 1 / 4; margin: 0; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9A9A;"><span lang="pt">04 · O que aprendi</span><span lang="en">04 · What I learned</span></h2>
+    <div data-span="" data-reveal="" style="grid-column: 4 / 11;">
+      <p style="margin: 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(20px, 2.4vw, 36px); line-height: 1.28; letter-spacing: -0.028em; color: #F5F5F5; text-wrap: pretty;">
+        <span lang="pt">Colocar IA em produção é menos sobre prompt e mais sobre desenhar o que fazer com uma resposta que você não controla.</span>
+        <span lang="en">Shipping AI is less about the prompt and more about designing what to do with an answer you don't control.</span>
+      </p>
+      <ul style="margin: 28px 0 0; padding: 0; list-style: none; display: grid; gap: 0; max-width: 66ch;">
+        <li data-row="" style="display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 14px; padding: 15px 0; border-top: 1px solid #262626; font-size: 15px; line-height: 1.65; color: #A3A3A3;">
+          <span style="color: #6B6B6B; font-size: 12px;">→</span>
+          <span><span lang="pt">Restringir a entrada é mais eficaz do que refinar o prompt: menos contexto, resposta melhor e mais barata.</span><span lang="en">Constraining the input beats refining the prompt: less context, better and cheaper answers.</span></span>
+        </li>
+        <li data-row="" style="display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 14px; padding: 15px 0; border-top: 1px solid #262626; font-size: 15px; line-height: 1.65; color: #A3A3A3;">
+          <span style="color: #6B6B6B; font-size: 12px;">→</span>
+          <span><span lang="pt">Latência é design, não infra: sem estado visível, três segundos parecem quebra.</span><span lang="en">Latency is design, not infra: with no visible state, three seconds feel like a crash.</span></span>
+        </li>
+        <li data-row="" style="display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 14px; padding: 15px 0; border-top: 1px solid #262626; border-bottom: 1px solid #262626; font-size: 15px; line-height: 1.65; color: #A3A3A3;">
+          <span style="color: #6B6B6B; font-size: 12px;">→</span>
+          <span><span lang="pt">Ação de IA precisa ser reversível — ou, de preferência, não destrutiva desde o começo.</span><span lang="en">AI actions need to be reversible — or better, non-destructive from the start.</span></span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer style="margin-top: clamp(70px, 12vh, 150px); padding: clamp(40px, 6vh, 70px) 0 34px; border-top: 1px solid #262626;">
+    <div data-reveal="" style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 24px;">
+      <div>
+        <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;"><span lang="pt">Próximo</span><span lang="en">Next</span></div>
+        <a href="Case Play Pare.dc.html" class="display" style="display: inline-block; margin-top: 14px; font-family: 'Inter Tight', Inter, sans-serif; font-size: clamp(30px, 5.4vw, 84px); line-height: 0.92; letter-spacing: -0.045em; font-weight: 500; transition: color .3s;" style-hover="color:#8C8C8C">Play Pare →</a>
+      </div>
+      <a href="mailto:filipe68ft@hotmail.com" style="font-size: 15px; color: #A3A3A3; border-bottom: 1px solid #3B3B3B; padding-bottom: 3px; transition: color .25s, border-color .25s;" style-hover="color:#F5F5F5;border-color:#F5F5F5">filipe68ft@hotmail.com</a>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 22px; margin-top: clamp(40px, 6vh, 80px); padding-top: 20px; border-top: 1px solid #242424; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: #6B6B6B;">
+      <a href="Portfolio.dc.html" style="transition: color .25s;" style-hover="color:#F5F5F5"><span lang="pt">Voltar ao início</span><span lang="en">Back home</span></a>
+      <a href="https://github.com/Lippones" target="_blank" rel="noreferrer" style="transition: color .25s;" style-hover="color:#F5F5F5">GitHub</a>
+      <span style="margin-left: auto; color: #6B6B6B;">© 2026</span>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'pt' };
+
+  componentDidMount() {
+    const nodes = Array.from(document.querySelectorAll('[data-reveal]'));
+    nodes.forEach((n) => {
+      n.style.opacity = '0';
+      n.style.transform = 'translateY(22px)';
+      n.style.transition = 'opacity .9s cubic-bezier(.16,.84,.24,1), transform .9s cubic-bezier(.16,.84,.24,1)';
+    });
+    const show = (n) => {
+      n.style.opacity = '1';
+      n.style.transform = 'none';
+      setTimeout(() => { n.style.transform = ''; n.style.transition = ''; }, 1000);
+    };
+    if (typeof IntersectionObserver === 'function') {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => {
+          if (e.isIntersecting) {
+            setTimeout(() => show(e.target), Math.min(i * 60, 240));
+            io.unobserve(e.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.04 });
+      nodes.forEach((n) => io.observe(n));
+      this._io = io;
+    }
+    this._t = setTimeout(() => nodes.forEach(show), 2600);
+
+    const bar = document.querySelector('[data-progress]');
+    if (bar) {
+      this._onScroll = () => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const p = max > 0 ? Math.min(Math.max(window.scrollY / max, 0), 1) : 0;
+        bar.style.width = (p * 100).toFixed(2) + '%';
+      };
+      this._onScroll();
+      window.addEventListener('scroll', this._onScroll, { passive: true });
+      window.addEventListener('resize', this._onScroll);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._onScroll) {
+      window.removeEventListener('scroll', this._onScroll);
+      window.removeEventListener('resize', this._onScroll);
+    }
+    clearTimeout(this._t);
+  }
+
+  renderVals() {
+    const lang = this.state.lang;
+    return {
+      lang,
+      ptColor: lang === 'pt' ? '#F5F5F5' : '#9A9A9A',
+      enColor: lang === 'en' ? '#F5F5F5' : '#9A9A9A',
+      toggleLang: () => this.setState((s) => ({ lang: s.lang === 'pt' ? 'en' : 'pt' }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;family=Inter+Tight:wght@300;400;500&amp;display=swap" rel="stylesheet" />
+  <style>
+    body { margin: 0; background: #191919; color: #F5F5F5; font-family: Inter, Helvetica, Arial, sans-serif; font-feature-settings: "cv11", "ss01"; }
+    * { box-sizing: border-box; }
+    .phone { width: 390px; height: 844px; background: #191919; border: 1px solid #2C2C2C; border-radius: 22px; overflow: hidden; position: relative; }
+    .hatch { background-color: #202020; background-image: repeating-linear-gradient(135deg, #282828 0 7px, #202020 7px 14px); }
+    .hatch-lg { background-color: #202020; background-image: repeating-linear-gradient(135deg, #282828 0 10px, #202020 10px 20px); }
+    .eq { display: flex; align-items: flex-end; gap: 2px; height: 9px; }
+    .eq i { display: block; width: 2px; height: 9px; background: #F5F5F5; transform-origin: bottom; animation: eqbar 1s ease-in-out infinite; }
+    .eq i:nth-child(1) { animation-delay: -.1s; }
+    .eq i:nth-child(2) { animation-delay: -.55s; }
+    .eq i:nth-child(3) { animation-delay: -.3s; }
+    @keyframes eqbar { 0%, 100% { transform: scaleY(.28); } 50% { transform: scaleY(1); } }
+    .bar { animation: creep 12s linear infinite; }
+    @keyframes creep { from { width: 26%; } to { width: 74%; } }
+    .caption { font-size: 13px; line-height: 1.65; color: #A3A3A3; }
+    .label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6B6B; }
+  </style>
+</helmet>
+
+<div style="background: #191919; padding: 48px;">
+  <div style="display: flex; gap: 80px; align-items: flex-start;">
+
+    <!-- 1. widget no hero -->
+    <div style="width: 390px;">
+      <div class="phone">
+        <div style="padding: 0 18px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; padding: 22px 0 18px;">
+            <span style="font-family: 'Inter Tight', Inter, sans-serif; font-size: 15px; font-weight: 500; letter-spacing: -0.02em;">Filipe Vieira</span>
+            <div style="display: flex; align-items: baseline; gap: 16px; font-size: 13px; color: #9A9A9A;">
+              <span>Sobre</span>
+              <span><span style="color: #F5F5F5;">PT</span><span style="color: #4B4B4B; padding: 0 3px;">·</span><span>EN</span></span>
+            </div>
+          </div>
+
+          <h1 style="margin: 56px 0 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: 36px; line-height: 0.9; letter-spacing: -0.05em; font-weight: 500;">
+            Faço aplicativos<br />que cabem na mão<br /><span style="font-weight: 300; color: #767676;">e no dia</span> de quem usa.
+          </h1>
+
+          <div style="margin-top: 40px; display: grid; gap: 20px;">
+            <div>
+              <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;">Agora</div>
+              <div style="margin-top: 6px; font-size: 14px; line-height: 1.45; color: #D6D6D6;">Dev Mobile Pleno na Inbazz</div>
+            </div>
+            <div>
+              <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;">Base</div>
+              <div style="margin-top: 6px; font-size: 14px; line-height: 1.45; color: #D6D6D6;">Minas Gerais, BR · GMT−3 · 22:47</div>
+            </div>
+
+            <!-- alvo de toque de 60px: linha inteira e clicavel -->
+            <button type="button" style="display: block; width: 100%; margin: 0 -10px; padding: 10px; border-radius: 6px; background: #1D1D1D; border: 1px solid #242424; text-align: left; font: inherit; color: inherit; cursor: pointer;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6B6B;">Ouvindo</div>
+                <div class="eq" aria-hidden="true"><i></i><i></i><i></i></div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 12px; margin-top: 9px;">
+                <div class="hatch" style="flex: 0 0 auto; width: 44px; height: 44px; border-radius: 3px; border: 1px solid #2C2C2C;"></div>
+                <div style="min-width: 0; flex: 1 1 auto;">
+                  <div style="font-size: 14px; line-height: 1.35; color: #D6D6D6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Chamber of Reflection</div>
+                  <div style="margin-top: 2px; font-size: 13px; color: #6B6B6B; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Mac DeMarco</div>
+                </div>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#565656" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;">
+                  <path d="M6 3 L11 8 L6 13" />
+                </svg>
+              </div>
+              <div style="margin-top: 11px; height: 1px; background: #262626;">
+                <div class="bar" style="height: 1px; background: #F5F5F5; width: 45%;"></div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 22px;">
+        <div class="label">No hero</div>
+        <p class="caption" style="margin: 8px 0 0; max-width: 34ch;">Empilhado, o bloco ganha fundo e borda para virar um alvo de toque de 60 px de altura, com a seta indicando que abre.</p>
+      </div>
+    </div>
+
+    <!-- 2. folha inferior -->
+    <div style="width: 390px;">
+      <div class="phone">
+        <div style="padding: 0 18px; filter: blur(2px); opacity: .3;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; padding: 22px 0 18px;">
+            <span style="font-family: 'Inter Tight', Inter, sans-serif; font-size: 15px; font-weight: 500;">Filipe Vieira</span>
+          </div>
+          <h1 style="margin: 56px 0 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: 36px; line-height: 0.9; letter-spacing: -0.05em; font-weight: 500;">Faço aplicativos<br />que cabem na mão</h1>
+        </div>
+        <div style="position: absolute; inset: 0; background: #191919; opacity: .84;"></div>
+
+        <div style="position: absolute; left: 0; right: 0; bottom: 0; background: #1D1D1D; border-top: 1px solid #262626; border-radius: 14px 14px 0 0; padding: 12px 24px 24px;">
+          <div style="width: 36px; height: 3px; border-radius: 2px; background: #3B3B3B; margin: 0 auto 20px;"></div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 9px;">
+              <div class="eq" aria-hidden="true"><i></i><i></i><i></i></div>
+              <span style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6B6B6B;">Tocando agora</span>
+            </div>
+            <button type="button" aria-label="Fechar" style="display: grid; place-items: center; width: 44px; height: 44px; margin-right: -12px; border: 0; background: transparent; color: #6B6B6B; cursor: pointer;">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round">
+                <path d="M2 2 L12 12 M12 2 L2 12" />
+              </svg>
+            </button>
+          </div>
+
+          <div style="position: relative; margin-top: 14px;">
+            <div style="position: absolute; inset: -20px; border-radius: 50%; background: radial-gradient(55% 55% at 50% 45%, rgba(245, 245, 245, 0.07) 0%, rgba(245, 245, 245, 0) 72%); pointer-events: none;"></div>
+            <div class="hatch-lg" style="position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 6px; border: 1px solid #2C2C2C; display: grid; place-items: center;">
+              <span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #6B6B6B;">capa do álbum</span>
+            </div>
+          </div>
+
+          <h2 style="margin: 20px 0 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: 26px; line-height: 1.1; letter-spacing: -0.03em; font-weight: 500;">Chamber of Reflection</h2>
+          <div style="margin-top: 7px; font-size: 15px; color: #A3A3A3;">Mac DeMarco</div>
+          <div style="margin-top: 4px; font-size: 13px; color: #6B6B6B;">Salad Days · 2014</div>
+
+          <div style="margin-top: 20px; height: 2px; background: #262626;">
+            <div class="bar" style="height: 2px; background: #F5F5F5; width: 45%;"></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; letter-spacing: 0.04em; color: #565656; font-variant-numeric: tabular-nums;"><span>1:37</span><span>3:34</span></div>
+
+          <div style="display: flex; align-items: center; justify-content: center; gap: 9px; height: 48px; margin-top: 20px; border: 1px solid #3B3B3B; border-radius: 6px; font-size: 15px; color: #EDEDED;">
+            Abrir no Spotify
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 9 L9 4 M5 4 H9 V8" />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 22px;">
+        <div class="label">Folha inferior</div>
+        <p class="caption" style="margin: 8px 0 0; max-width: 34ch;">No celular o modal sobe como folha, não como caixa centrada: a capa ganha a largura toda e o botão fica onde o polegar já está.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"$preview":{"width":980,"height":1090}}'>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1440, "h": 900, "title": "Hero com o widget", "is_interactive": true },
+    { "file": "Modal.dc.html", "x": 1560, "y": 0, "w": 1440, "h": 900, "title": "Modal expandido", "is_interactive": true },
+    { "file": "Estados.dc.html", "x": 0, "y": 1060, "w": 1320, "h": 520, "title": "Estados" },
+    { "file": "Mobile.dc.html", "x": 1440, "y": 1060, "w": 980, "h": 1090, "title": "Mobile" },
+    { "file": "Posicao.dc.html", "x": 0, "y": 1720, "w": 1220, "h": 700, "title": "Onde ele mora" },
+    { "file": "Arquitetura.dc.html", "x": 0, "y": 2560, "w": 1100, "h": 1760, "title": "Arquitetura realtime" }
+  ],
+  "annotations": [
+    {
+      "id": "brief",
+      "x": 0,
+      "y": -320,
+      "w": 620,
+      "text": "Now Playing do Spotify no lippe.dev\n\nO widget entra na linha de metadados do hero, ao lado de Agora e Base — o bloco que já é estado ao vivo por causa do relógio. Clicar abre o modal.\n\nA barra de progresso destes artboards anda de verdade: é o comportamento, não uma imagem parada."
+    },
+    {
+      "id": "capa",
+      "x": 1560,
+      "y": -320,
+      "w": 420,
+      "text": "A capa é placeholder hachurado, a mesma linguagem que o portfólio já usa para imagem pendente. Em produção vem da API.\n\nO brilho atrás da capa usa a cor dominante da arte; aqui está no branco neutro do sistema para não inventar cor de álbum."
+    },
+    {
+      "id": "marca",
+      "x": 1220,
+      "y": 2560,
+      "w": 380,
+      "text": "Atribuição do Spotify está como texto, sem o logo. O logo é marca registrada e deve vir do brand kit oficial deles, não desenhado à mão."
+    },
+    {
+      "id": "spec",
+      "x": 1360,
+      "y": 2760,
+      "w": 380,
+      "text": "Estados é a especificação: os textos e os slots de tempo do widget no hero seguem esse artboard, não o contrário."
+    }
+  ],
+  "launch": { "view": "canvas" }
+}
