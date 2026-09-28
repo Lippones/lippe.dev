@@ -42,7 +42,6 @@ export const SOCIALS = [
     href: "https://www.linkedin.com/in/filipe-vieira-dev/",
   },
   { label: "X", href: "https://twitter.com/Filipe64285" },
-  { label: "WhatsApp", href: "https://wa.me/5533998484690" },
 ] as const;
 
 export const EMAIL = "filipe68ft@hotmail.com";
