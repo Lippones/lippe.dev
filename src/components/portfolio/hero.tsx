@@ -1,4 +1,5 @@
 import { Clock } from "./clock";
+import { NowPlaying } from "./now-playing";
 import { T } from "./t";
 
 const label = "text-xs tracking-[0.06em] uppercase text-[#6B6B6B]";
@@ -77,6 +78,7 @@ export function Hero() {
               <Clock />
             </div>
           </div>
+          <NowPlaying />
         </div>
       </section>
 

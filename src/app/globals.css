@@ -196,6 +196,95 @@
   line-height: 0;
 }
 
+/* Bloco de musica no hero. O equalizador e o sinal de "ao vivo", como o
+   relogio ao lado dele. */
+.np-eq {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 9px;
+}
+.np-eq i {
+  display: block;
+  width: 2px;
+  height: 9px;
+  background: #f5f5f5;
+  transform-origin: bottom;
+  animation: np-eq-bar 1s ease-in-out infinite;
+}
+.np-eq i:nth-child(1) {
+  animation-delay: -0.1s;
+}
+.np-eq i:nth-child(2) {
+  animation-delay: -0.55s;
+}
+.np-eq i:nth-child(3) {
+  animation-delay: -0.3s;
+}
+@keyframes np-eq-bar {
+  0%,
+  100% {
+    transform: scaleY(0.28);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+.np-eq[data-still="true"] i {
+  animation: none;
+  transform: scaleY(0.28);
+  background: #6b6b6b;
+}
+@media (prefers-reduced-motion: reduce) {
+  .np-eq i {
+    animation: none;
+    transform: scaleY(0.6);
+  }
+}
+
+.np-trigger:not(:disabled) {
+  cursor: pointer;
+}
+.np-trigger:not(:disabled):hover .np-title {
+  color: #ffffff;
+}
+.np-trigger:not(:disabled):hover .np-art {
+  border-color: #3b3b3b;
+}
+.np-art {
+  transition: border-color 0.3s;
+}
+.np-trigger:focus-visible {
+  outline: 1px solid #f5f5f5;
+  outline-offset: 6px;
+  border-radius: 2px;
+}
+
+/* O <dialog> nativo entrega travamento de foco, Escape e inerte por baixo sem
+   codigo nenhum; aqui so removemos o cromo padrao do navegador. */
+.np-dialog {
+  max-height: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  /* No celular sobe como folha inferior, onde o polegar alcanca. */
+  width: 100%;
+  max-width: 100%;
+  margin: auto auto 0;
+}
+@media (min-width: 901px) {
+  .np-dialog {
+    width: auto;
+    max-width: none;
+    margin: auto;
+  }
+}
+.np-dialog::backdrop {
+  background: rgb(25 25 25 / 0.88);
+  backdrop-filter: blur(3px);
+}
+
 /* Placeholders hachurados (imagens pendentes) e chips de logo da trajetoria. */
 .ph-texture {
   border: 1px solid #2c2c2c;
