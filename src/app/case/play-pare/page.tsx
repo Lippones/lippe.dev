@@ -136,7 +136,7 @@ export default function PlayPareCase() {
   return (
     <CaseShell
       title="Play Pare"
-      next={{ label: "Inbazz Creator", href: "/case/inbazz-creator" }}
+      next={{ label: "Nouli", href: "/case/nouli" }}
     >
       <section
         data-grid=""

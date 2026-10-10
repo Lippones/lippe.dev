@@ -6,6 +6,8 @@ export type Project = {
   stack: string;
   blurb: { pt: string; en: string };
   peek: { pt: string; en: string };
+  /** Mídia da prévia no hover. Sem ela, a prévia mostra só o rótulo. */
+  peekMedia?: { video: string; poster: string };
 };
 
 export const PROJECTS: readonly Project[] = [
@@ -32,6 +34,22 @@ export const PROJECTS: readonly Project[] = [
       en: "Adult content platform: discretion, payments and moderation as engineering requirements.",
     },
     peek: { pt: "caso de estudo", en: "case study" },
+  },
+  {
+    num: "04",
+    name: "Nouli",
+    href: "/case/nouli",
+    external: false,
+    stack: "Expo · pdf.js · TS",
+    blurb: {
+      pt: "Projeto pessoal: leitor iOS que transforma PDF em texto de livro, tudo no aparelho.",
+      en: "Personal project: an iOS reader that turns PDFs into book text, all on the device.",
+    },
+    peek: { pt: "caso de estudo", en: "case study" },
+    peekMedia: {
+      video: "/videos/nouli/logo-loop.mp4",
+      poster: "/videos/nouli/logo-loop-poster.webp",
+    },
   },
 ] as const;
 

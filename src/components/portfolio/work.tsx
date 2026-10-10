@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { PROJECTS } from "./data";
@@ -18,7 +19,7 @@ export function Work() {
           <T pt="Trabalho selecionado" en="Selected work" />
         </h2>
         <span className="text-xs tracking-[0.06em] uppercase text-[#565656]">
-          01 / 03
+          01 / 04
         </span>
       </div>
 
@@ -167,9 +168,32 @@ export function Work() {
               <span className="fv-arrow fv-glyph text-[#EDEDED]">↗</span>
             </span>
             <span className="fv-peek">
-              <span className="text-[10px] tracking-[0.14em] uppercase text-[#6B6B6B]">
-                <T pt={project.peek.pt} en={project.peek.en} />
-              </span>
+              {project.peekMedia ? (
+                <>
+                  <video
+                    src={project.peekMedia.video}
+                    poster={project.peekMedia.poster}
+                    muted
+                    loop
+                    autoPlay
+                    playsInline
+                    preload="metadata"
+                    aria-hidden="true"
+                    className="absolute inset-0 size-full rounded-[3px] object-cover motion-reduce:hidden"
+                  />
+                  <Image
+                    src={project.peekMedia.poster}
+                    alt=""
+                    fill
+                    sizes="210px"
+                    className="hidden rounded-[3px] object-cover motion-reduce:block"
+                  />
+                </>
+              ) : (
+                <span className="text-[10px] tracking-[0.14em] uppercase text-[#6B6B6B]">
+                  <T pt={project.peek.pt} en={project.peek.en} />
+                </span>
+              )}
             </span>
             </Row>
           );
